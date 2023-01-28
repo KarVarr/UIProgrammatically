@@ -36,6 +36,15 @@ class ViewController: UIViewController {
         label.minimumScaleFactor = 0.5
         return label
     }()
+    
+    let dot: UIPageControl = {
+        let dot = UIPageControl()
+        dot.translatesAutoresizingMaskIntoConstraints = false
+        dot.backgroundStyle = .automatic
+        dot.numberOfPages = 3
+        dot.currentPage = 0
+        return dot
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +53,7 @@ class ViewController: UIViewController {
         setupImage()
         setupTitleLabel()
         setupLoremLabel()
+        setupDot()
     }
     
     func setupImage()  {
@@ -72,6 +82,14 @@ class ViewController: UIViewController {
             loremLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 16),
             loremLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
            
+        ])
+    }
+    
+    func setupDot() {
+        view.addSubview(dot)
+        NSLayoutConstraint.activate([
+            dot.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            dot.topAnchor.constraint(equalTo: loremLabel.bottomAnchor, constant: 20)
         ])
     }
 
