@@ -13,4 +13,4 @@
 
 | App.                                                            | Image             |
 | ----------------------------------------------------------------| :---------------: |
-| Boy Waving Hello             | <img src="image/Boy.png" alt="photo" width="300" />  |
+| Boy Waving Hello             | <img src="images/Boy.png" alt="photo" width="300" />  |
