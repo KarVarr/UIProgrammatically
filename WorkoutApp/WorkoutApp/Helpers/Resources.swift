@@ -14,4 +14,15 @@ enum Resources {
         
         static var separator = UIColor(hexString: "#E8ECEF")
     }
+    
+    enum Strings {
+        enum TabBar {
+            
+        }
+    }
+    
+    enum Images {
+        
+    }
+    
 }
