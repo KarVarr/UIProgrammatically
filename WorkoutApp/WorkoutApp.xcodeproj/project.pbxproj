@@ -16,6 +16,7 @@
 		17A5307F298AC17100E3056D /* UIColors + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A5307E298AC17100E3056D /* UIColors + ext.swift */; };
 		17A53083298AC25C00E3056D /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A53082298AC25C00E3056D /* Resources.swift */; };
 		17A53085298AD4B800E3056D /* NavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A53084298AD4B800E3056D /* NavBarController.swift */; };
+		17A53088298AD88E00E3056D /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A53087298AD88E00E3056D /* BaseController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		17A5307E298AC17100E3056D /* UIColors + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColors + ext.swift"; sourceTree = "<group>"; };
 		17A53082298AC25C00E3056D /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		17A53084298AD4B800E3056D /* NavBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarController.swift; sourceTree = "<group>"; };
+		17A53087298AD88E00E3056D /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +67,7 @@
 				17A5307A298AC12600E3056D /* Helpers */,
 				17A53075298ABDEB00E3056D /* Application */,
 				17A53065298ABC6400E3056D /* ViewController.swift */,
-				17A53078298AC09C00E3056D /* TabBarController.swift */,
-				17A53084298AD4B800E3056D /* NavBarController.swift */,
+				17A53086298AD83100E3056D /* Controllers */,
 				17A53077298ABE2E00E3056D /* SupportingFiles */,
 			);
 			path = WorkoutApp;
@@ -106,6 +107,16 @@
 				17A5307E298AC17100E3056D /* UIColors + ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		17A53086298AD83100E3056D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				17A53078298AC09C00E3056D /* TabBarController.swift */,
+				17A53087298AD88E00E3056D /* BaseController.swift */,
+				17A53084298AD4B800E3056D /* NavBarController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +195,7 @@
 				17A53085298AD4B800E3056D /* NavBarController.swift in Sources */,
 				17A53083298AC25C00E3056D /* Resources.swift in Sources */,
 				17A53062298ABC6400E3056D /* AppDelegate.swift in Sources */,
+				17A53088298AD88E00E3056D /* BaseController.swift in Sources */,
 				17A53064298ABC6400E3056D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
