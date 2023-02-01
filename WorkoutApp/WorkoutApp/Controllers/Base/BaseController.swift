@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum NavBarPosition {
+    case left
+    case right
+}
+
 class BaseController: UIViewController {
     
     
@@ -22,7 +27,32 @@ class BaseController: UIViewController {
     func layoutViews() {}
     func configure() {
         view.backgroundColor = Resources.Colors.background
+    }
+    
+    func nabBarLeftButtonHandler() {
+        print("Left tapped")
+    }
+   @objc func nabBarRightButtonHandler() {
+        print("Right tapped")
+    }
+}
+
+extension BaseController {
+    func addNavBarButton(at position: NavBarPosition, with title: String) {
+        let button = UIButton(type: .system)
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(Resources.Colors.active, for: .normal)
+        button.setTitleColor(Resources.Colors.inActive, for: .disabled)
+        button.titleLabel?.font = Resources.Fonts.helveticaRegular(with: 17)
         
+        switch position {
+        case .left :
+            button.addTarget(self, action: #selector(nabBarLeftButtonHandler), for: .touchUpInside)
+            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+        case .right:
+            button.addTarget(self, action: #selector(nabBarRightButtonHandler), for: .touchUpInside)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        }
         
     }
 }
