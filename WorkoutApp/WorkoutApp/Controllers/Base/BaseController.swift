@@ -22,7 +22,7 @@ class BaseController: UIViewController {
     func layoutViews() {}
     func configure() {
         view.backgroundColor = Resources.Colors.background
-        title = "ddd"
+        
         
     }
 }
