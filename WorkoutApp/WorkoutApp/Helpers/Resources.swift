@@ -17,12 +17,20 @@ enum Resources {
     
     enum Strings {
         enum TabBar {
-            
+            static var overview = "Overview"
+            static var session = "Session"
+            static var progress = "Progress"
+            static var settings = "Settings"
         }
     }
     
     enum Images {
-        
+        enum TabBar {
+            static var overview = UIImage(named: "overview")
+            static var session = UIImage(named: "session")
+            static var progress = UIImage(named: "progress")
+            static var settings = UIImage(named: "setting")
+        }
     }
     
 }
