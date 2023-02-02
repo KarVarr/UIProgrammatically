@@ -60,7 +60,7 @@ enum Resources {
         }
         
         enum Common {
-            static var allWorkoutsButton = UIImage(named: "down_arrow")
+            static var downArrow = UIImage(named: "down_arrow")
         }
     }
     //MARK: - Fonts
