@@ -15,7 +15,9 @@ enum Resources {
         
         
         static var background = UIColor(hexString: "#F8F9F9")
-        static var separator = UIColor(hexString: "#E8ECEF")
+        static var separator = UIColor (hexString: "#E8ECEF")
+        static var secondary = UIColor (hexString: "#FOF3FF")
+        
         static var titleGray = UIColor(hexString: "#545C77")
         
     }
@@ -27,6 +29,26 @@ enum Resources {
             static var progress = "Progress"
             static var settings = "Settings"
         }
+        
+        enum NavBar {
+            static var session = "High Intensity Cardio"
+            static var settings = "Settings"
+            static var progress = "Workout Progress"
+        }
+        
+        enum Overview {
+            static var allWorkoutsButton = "All Workouts"
+        }
+        
+        enum Session {
+            static var navBarLeft = "Pause"
+            static var navBarRight = "Finish"
+        }
+        
+        enum Progress {
+            static var navBarLeft = "Export"
+            static var navBarRight = "Details"
+        }
     }
     //MARK: - Images
     enum Images {
@@ -35,6 +57,10 @@ enum Resources {
             static var session = UIImage(named: "session")
             static var progress = UIImage(named: "progress")
             static var settings = UIImage(named: "setting")
+        }
+        
+        enum Common {
+            static var allWorkoutsButton = UIImage(named: "down_arrow")
         }
     }
     //MARK: - Fonts

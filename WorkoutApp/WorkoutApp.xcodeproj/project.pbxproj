@@ -21,6 +21,7 @@
 		17CB15FC298ADFF000EB9387 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB15FB298ADFF000EB9387 /* SessionController.swift */; };
 		17CB15FE298AE04100EB9387 /* ProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB15FD298AE04100EB9387 /* ProgressController.swift */; };
 		17CB1600298AE06200EB9387 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB15FF298AE06200EB9387 /* SettingsController.swift */; };
+		17CB162A298C189C00EB9387 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB1629298C189C00EB9387 /* SecondaryButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		17CB15FB298ADFF000EB9387 /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
 		17CB15FD298AE04100EB9387 /* ProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressController.swift; sourceTree = "<group>"; };
 		17CB15FF298AE06200EB9387 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		17CB1629298C189C00EB9387 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		17CB15F7298ADF9400EB9387 /* Overview */ = {
 			isa = PBXGroup;
 			children = (
+				17CB1628298C188200EB9387 /* Views */,
 				17A53065298ABC6400E3056D /* OverviewController.swift */,
 			);
 			path = Overview;
@@ -169,6 +172,14 @@
 				17CB15FD298AE04100EB9387 /* ProgressController.swift */,
 			);
 			path = Progress;
+			sourceTree = "<group>";
+		};
+		17CB1628298C188200EB9387 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				17CB1629298C189C00EB9387 /* SecondaryButton.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +258,7 @@
 				17CB15F3298ADC5F00EB9387 /* TabBarController.swift in Sources */,
 				17A5307F298AC17100E3056D /* UIColors + ext.swift in Sources */,
 				17CB15FC298ADFF000EB9387 /* SessionController.swift in Sources */,
+				17CB162A298C189C00EB9387 /* SecondaryButton.swift in Sources */,
 				17CB15FE298AE04100EB9387 /* ProgressController.swift in Sources */,
 				17A53085298AD4B800E3056D /* NavBarController.swift in Sources */,
 				17A53083298AC25C00E3056D /* Resources.swift in Sources */,
