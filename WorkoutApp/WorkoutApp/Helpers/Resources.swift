@@ -31,6 +31,7 @@ enum Resources {
         }
         
         enum NavBar {
+            static var overview = "Today"
             static var session = "High Intensity Cardio"
             static var settings = "Settings"
             static var progress = "Workout Progress"
@@ -59,8 +60,11 @@ enum Resources {
             static var settings = UIImage(named: "setting")
         }
         
+        
+        
         enum Common {
             static var downArrow = UIImage(named: "down_arrow")
+            static var add = UIImage(named: "addButton")
         }
     }
     //MARK: - Fonts
