@@ -9,25 +9,23 @@ import UIKit
 
 class OverviewController: BaseController {
     
-    
     private let navBar = OverviewNavBar()
-    //private let allWorkoutsButton = SecondaryButton()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         
     }
-
-
+    
 }
 
 extension OverviewController {
     override func addViews() {
         super.addViews()
+        //title = "Working Tracking App"
+        navigationController?.tabBarItem.title = Resources.Strings.Overview.allWorkoutsButton
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        view.addView(navBar)
         
-        view.addSubview(navBar)
-        //view.addSubview(allWorkoutsButton)
     }
     
     override func layoutViews() {
@@ -37,17 +35,11 @@ extension OverviewController {
             navBar.topAnchor.constraint(equalTo: view.topAnchor),
             navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            navBar.heightAnchor.constraint(equalToConstant: 113),
-            
-
         ])
     }
     
     override func configure() {
         super.configure()
-        
-        navBar.translatesAutoresizingMaskIntoConstraints = false
-        
         
     }
 }

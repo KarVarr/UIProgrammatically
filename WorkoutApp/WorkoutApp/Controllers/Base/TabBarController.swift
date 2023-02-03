@@ -34,7 +34,6 @@ final class TabBarController: UITabBarController {
         let sessionController = SessionController()
         let progressController = ProgressController()
         let settingsController = SettingsController()
-    
         
         let overviewNavigation = NavBarController(rootViewController: overviewController)
         let sessionNavigation = NavBarController(rootViewController: sessionController)
