@@ -27,6 +27,7 @@
 		17CB1651298FEEB600EB9387 /* BaseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB1650298FEEB600EB9387 /* BaseInfoView.swift */; };
 		17CB1654298FFE6D00EB9387 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB1653298FFE6D00EB9387 /* WeekView.swift */; };
 		17CB16562990018700EB9387 /* WeedayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB16552990018700EB9387 /* WeedayView.swift */; };
+		17CB1658299009B800EB9387 /* Date + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB1657299009B800EB9387 /* Date + ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		17CB1650298FEEB600EB9387 /* BaseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInfoView.swift; sourceTree = "<group>"; };
 		17CB1653298FFE6D00EB9387 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		17CB16552990018700EB9387 /* WeedayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeedayView.swift; sourceTree = "<group>"; };
+		17CB1657299009B800EB9387 /* Date + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 			children = (
 				17A5307E298AC17100E3056D /* UIColors + ext.swift */,
 				17CB15F4298ADD9E00EB9387 /* UIView + ext.swift */,
+				17CB1657299009B800EB9387 /* Date + ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				17CB15F5298ADD9E00EB9387 /* UIView + ext.swift in Sources */,
 				17CB15F3298ADC5F00EB9387 /* TabBarController.swift in Sources */,
 				17A5307F298AC17100E3056D /* UIColors + ext.swift in Sources */,
+				17CB1658299009B800EB9387 /* Date + ext.swift in Sources */,
 				17CB1654298FFE6D00EB9387 /* WeekView.swift in Sources */,
 				17CB15FC298ADFF000EB9387 /* SessionController.swift in Sources */,
 				17CB162A298C189C00EB9387 /* SecondaryButton.swift in Sources */,
