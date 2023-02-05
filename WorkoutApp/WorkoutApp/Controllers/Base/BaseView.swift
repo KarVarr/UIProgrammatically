@@ -25,6 +25,9 @@ class BaseView: UIView {
 @objc extension BaseView {
     func setupViews() {}
     func constaintViews() {}
-    func configureAppearance() {}
+    func configureAppearance() {
+        backgroundColor = .white
+    }
     
+   
 }

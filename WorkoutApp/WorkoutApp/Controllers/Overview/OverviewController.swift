@@ -22,7 +22,7 @@ extension OverviewController {
     override func setupViews() {
         super.setupViews()
         //title = "Working Tracking App"
-        navigationController?.tabBarItem.title = R.Strings.Overview.allWorkoutsButton
+        navigationController?.tabBarItem.title = R.Strings.TabBar.title(for: .overview)
         navigationController?.setNavigationBarHidden(true, animated: true)
         view.setupViews(navBar)
         
