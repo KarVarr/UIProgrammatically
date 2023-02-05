@@ -19,17 +19,17 @@ class OverviewController: BaseController {
 }
 
 extension OverviewController {
-    override func addViews() {
-        super.addViews()
+    override func setupViews() {
+        super.setupViews()
         //title = "Working Tracking App"
-        navigationController?.tabBarItem.title = Resources.Strings.Overview.allWorkoutsButton
+        navigationController?.tabBarItem.title = R.Strings.Overview.allWorkoutsButton
         navigationController?.setNavigationBarHidden(true, animated: true)
-        view.addView(navBar)
+        view.setupViews(navBar)
         
     }
     
-    override func layoutViews() {
-        super.layoutViews()
+    override func constaintViews() {
+        super.constaintViews()
         
         NSLayoutConstraint.activate([
             navBar.topAnchor.constraint(equalTo: view.topAnchor),
@@ -38,8 +38,8 @@ extension OverviewController {
         ])
     }
     
-    override func configure() {
-        super.configure()
+    override func configureAppearance() {
+        super.configureAppearance()
         
     }
 }

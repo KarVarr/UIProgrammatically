@@ -42,7 +42,7 @@ extension UIView {
         }
     }
     
-    func addView(_ view: UIView) {
+    func setupViews(_ view: UIView) {
         addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
     }
