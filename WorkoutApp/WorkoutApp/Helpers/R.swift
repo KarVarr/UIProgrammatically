@@ -68,8 +68,6 @@ enum R {
             }
         }
         
-        
-        
         enum Common {
             static var downArrow = UIImage(named: "down_arrow")
             static var add = UIImage(named: "add_button")

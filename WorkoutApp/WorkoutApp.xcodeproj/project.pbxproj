@@ -21,10 +21,10 @@
 		17CB15FC298ADFF000EB9387 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB15FB298ADFF000EB9387 /* SessionController.swift */; };
 		17CB15FE298AE04100EB9387 /* ProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB15FD298AE04100EB9387 /* ProgressController.swift */; };
 		17CB1600298AE06200EB9387 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB15FF298AE06200EB9387 /* SettingsController.swift */; };
-		17CB162A298C189C00EB9387 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB1629298C189C00EB9387 /* SecondaryButton.swift */; };
+		17CB162A298C189C00EB9387 /* WAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB1629298C189C00EB9387 /* WAButton.swift */; };
 		17CB162C298D4DE400EB9387 /* OverviewNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB162B298D4DE400EB9387 /* OverviewNavBar.swift */; };
 		17CB162E298D636000EB9387 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB162D298D636000EB9387 /* BaseView.swift */; };
-		17CB1651298FEEB600EB9387 /* BaseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB1650298FEEB600EB9387 /* BaseInfoView.swift */; };
+		17CB1651298FEEB600EB9387 /* WABaseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB1650298FEEB600EB9387 /* WABaseInfoView.swift */; };
 		17CB1654298FFE6D00EB9387 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB1653298FFE6D00EB9387 /* WeekView.swift */; };
 		17CB16562990018700EB9387 /* WeedayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB16552990018700EB9387 /* WeedayView.swift */; };
 		17CB1658299009B800EB9387 /* Date + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB1657299009B800EB9387 /* Date + ext.swift */; };
@@ -47,10 +47,10 @@
 		17CB15FB298ADFF000EB9387 /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
 		17CB15FD298AE04100EB9387 /* ProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressController.swift; sourceTree = "<group>"; };
 		17CB15FF298AE06200EB9387 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
-		17CB1629298C189C00EB9387 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
+		17CB1629298C189C00EB9387 /* WAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WAButton.swift; sourceTree = "<group>"; };
 		17CB162B298D4DE400EB9387 /* OverviewNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewNavBar.swift; sourceTree = "<group>"; };
 		17CB162D298D636000EB9387 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
-		17CB1650298FEEB600EB9387 /* BaseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInfoView.swift; sourceTree = "<group>"; };
+		17CB1650298FEEB600EB9387 /* WABaseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WABaseInfoView.swift; sourceTree = "<group>"; };
 		17CB1653298FFE6D00EB9387 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		17CB16552990018700EB9387 /* WeedayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeedayView.swift; sourceTree = "<group>"; };
 		17CB1657299009B800EB9387 /* Date + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + ext.swift"; sourceTree = "<group>"; };
@@ -135,6 +135,7 @@
 		17A5308A298ADB0600E3056D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				17A6A9CB29903712003BE599 /* Navigation */,
 				17CB15FA298ADFC400EB9387 /* Progress */,
 				17CB15F9298ADFB800EB9387 /* Settings */,
 				17CB15F8298ADFA900EB9387 /* Session */,
@@ -144,12 +145,20 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		17A6A9CB29903712003BE599 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				17CB15F2298ADC5F00EB9387 /* TabBarController.swift */,
+				17A53084298AD4B800E3056D /* NavBarController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		17CB15F6298ADF7F00EB9387 /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				17CB164F298FEE6100EB9387 /* Views */,
-				17CB15F2298ADC5F00EB9387 /* TabBarController.swift */,
-				17A53084298AD4B800E3056D /* NavBarController.swift */,
+				17CB1629298C189C00EB9387 /* WAButton.swift */,
 				17CB162D298D636000EB9387 /* BaseView.swift */,
 			);
 			path = Base;
@@ -192,7 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				17CB1652298FFE5700EB9387 /* WeekView */,
-				17CB1629298C189C00EB9387 /* SecondaryButton.swift */,
 				17CB162B298D4DE400EB9387 /* OverviewNavBar.swift */,
 			);
 			path = Views;
@@ -202,7 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				17A53087298AD88E00E3056D /* BaseController.swift */,
-				17CB1650298FEEB600EB9387 /* BaseInfoView.swift */,
+				17CB1650298FEEB600EB9387 /* WABaseInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -295,7 +303,7 @@
 				17CB1658299009B800EB9387 /* Date + ext.swift in Sources */,
 				17CB1654298FFE6D00EB9387 /* WeekView.swift in Sources */,
 				17CB15FC298ADFF000EB9387 /* SessionController.swift in Sources */,
-				17CB162A298C189C00EB9387 /* SecondaryButton.swift in Sources */,
+				17CB162A298C189C00EB9387 /* WAButton.swift in Sources */,
 				17CB15FE298AE04100EB9387 /* ProgressController.swift in Sources */,
 				17A53085298AD4B800E3056D /* NavBarController.swift in Sources */,
 				17A53083298AC25C00E3056D /* R.swift in Sources */,
@@ -304,7 +312,7 @@
 				17A53088298AD88E00E3056D /* BaseController.swift in Sources */,
 				17CB16562990018700EB9387 /* WeedayView.swift in Sources */,
 				17A53064298ABC6400E3056D /* SceneDelegate.swift in Sources */,
-				17CB1651298FEEB600EB9387 /* BaseInfoView.swift in Sources */,
+				17CB1651298FEEB600EB9387 /* WABaseInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
