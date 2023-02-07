@@ -90,8 +90,8 @@
 		17A53060298ABC6400E3056D /* WorkoutApp */ = {
 			isa = PBXGroup;
 			children = (
-				17A5308A298ADB0600E3056D /* Controllers */,
 				17A5307A298AC12600E3056D /* Helpers */,
+				17A5308A298ADB0600E3056D /* Controllers */,
 				17A53075298ABDEB00E3056D /* Application */,
 				17A53077298ABE2E00E3056D /* SupportingFiles */,
 			);
@@ -142,8 +142,8 @@
 				17A6A9CB29903712003BE599 /* Navigation */,
 				17CB15FA298ADFC400EB9387 /* Progress */,
 				17CB15F9298ADFB800EB9387 /* Settings */,
-				17CB15F8298ADFA900EB9387 /* Session */,
 				17CB15F7298ADF9400EB9387 /* Overview */,
+				17CB15F8298ADFA900EB9387 /* Session */,
 				17CB15F6298ADF7F00EB9387 /* Base */,
 			);
 			path = Controllers;
