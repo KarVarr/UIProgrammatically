@@ -10,5 +10,6 @@ import UIKit
 enum R {
     enum Strings {
         static let segmentTitle = "Fahrenheit or celsius"
+        static let temperatureTitle = "Enter temperature"
     }
 }
