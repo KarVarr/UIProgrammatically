@@ -15,6 +15,7 @@
 		17A6AB6B299A9DDA003BE599 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6AB6A299A9DDA003BE599 /* Resources.swift */; };
 		17A6AB78299AAFC5003BE599 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6AB77299AAFC5003BE599 /* Titles.swift */; };
 		17A6AB7A299AB191003BE599 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6AB79299AB191003BE599 /* Segment.swift */; };
+		17A6AB7C299ABD37003BE599 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6AB7B299ABD37003BE599 /* TextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		17A6AB6A299A9DDA003BE599 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		17A6AB77299AAFC5003BE599 /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
 		17A6AB79299AB191003BE599 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		17A6AB7B299ABD37003BE599 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				17A6AB77299AAFC5003BE599 /* Titles.swift */,
 				17A6AB79299AB191003BE599 /* Segment.swift */,
+				17A6AB7B299ABD37003BE599 /* TextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				17A6AB78299AAFC5003BE599 /* Titles.swift in Sources */,
 				17A6AB7A299AB191003BE599 /* Segment.swift in Sources */,
 				17A6AB56299A8F02003BE599 /* ViewController.swift in Sources */,
+				17A6AB7C299ABD37003BE599 /* TextField.swift in Sources */,
 				17A6AB52299A8F02003BE599 /* AppDelegate.swift in Sources */,
 				17A6AB6B299A9DDA003BE599 /* Resources.swift in Sources */,
 				17A6AB54299A8F02003BE599 /* SceneDelegate.swift in Sources */,

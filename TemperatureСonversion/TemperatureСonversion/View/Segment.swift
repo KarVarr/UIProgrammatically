@@ -10,7 +10,5 @@ import UIKit
 class Segment {
     let segment = UISegmentedControl(items: ["Celsius", "Fahrenheit"])
     
-    func configure () {
-        segment.selectedSegmentIndex = 0
-    }
+   
 }
