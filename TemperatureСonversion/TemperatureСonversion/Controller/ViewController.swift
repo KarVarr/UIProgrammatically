@@ -14,8 +14,10 @@ class ViewController: UIViewController {
     let resultTitle = Titles()
     
     let segment = Segment()
-    
     let textField = TextField()
+    let resultLabel = ResultLabel()
+    
+    var result = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,7 @@ extension ViewController {
          view.addSubview(segmentTitle.title)
          view.addSubview(temperatureTitle.title)
          view.addSubview(resultTitle.title)
+         view.addSubview(resultLabel.label)
      }
      
      
@@ -60,9 +63,11 @@ extension ViewController {
              textField.textField.heightAnchor.constraint(equalToConstant: 40),
              
              resultTitle.title.topAnchor.constraint(equalTo: textField.textField.bottomAnchor, constant: 50),
-             resultTitle.title.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30)
+             resultTitle.title.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
              
-             
+            resultLabel.label.topAnchor.constraint(equalTo: resultTitle.title.bottomAnchor, constant: 20),
+            // resultLabel.label.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 320),
+             resultLabel.label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50)
          ])
      }
      
@@ -73,6 +78,9 @@ extension ViewController {
          
          segment.segment.translatesAutoresizingMaskIntoConstraints = false
          segment.segment.selectedSegmentIndex = 0
+         
+         resultLabel.label.text = "\(result)"
+         resultLabel.label.translatesAutoresizingMaskIntoConstraints = false
          
          
      }
