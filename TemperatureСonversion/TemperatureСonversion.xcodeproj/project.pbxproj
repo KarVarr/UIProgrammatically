@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1785331D299D4FA2001C2415 /* ResultLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1785331C299D4FA2001C2415 /* ResultLabel.swift */; };
+		1785331F299D60A7001C2415 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1785331E299D60A7001C2415 /* Button.swift */; };
 		17A6AB52299A8F02003BE599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6AB51299A8F02003BE599 /* AppDelegate.swift */; };
 		17A6AB54299A8F02003BE599 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6AB53299A8F02003BE599 /* SceneDelegate.swift */; };
 		17A6AB56299A8F02003BE599 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6AB55299A8F02003BE599 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		1785331C299D4FA2001C2415 /* ResultLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultLabel.swift; sourceTree = "<group>"; };
+		1785331E299D60A7001C2415 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		17A6AB4E299A8F02003BE599 /* TemperatureСonversion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TemperatureСonversion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17A6AB51299A8F02003BE599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17A6AB53299A8F02003BE599 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				17A6AB79299AB191003BE599 /* Segment.swift */,
 				17A6AB7B299ABD37003BE599 /* TextField.swift */,
 				1785331C299D4FA2001C2415 /* ResultLabel.swift */,
+				1785331E299D60A7001C2415 /* Button.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				17A6AB7C299ABD37003BE599 /* TextField.swift in Sources */,
 				17A6AB52299A8F02003BE599 /* AppDelegate.swift in Sources */,
 				17A6AB6B299A9DDA003BE599 /* Resources.swift in Sources */,
+				1785331F299D60A7001C2415 /* Button.swift in Sources */,
 				17A6AB54299A8F02003BE599 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

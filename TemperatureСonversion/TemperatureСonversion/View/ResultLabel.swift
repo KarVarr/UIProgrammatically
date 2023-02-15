@@ -8,5 +8,10 @@
 import UIKit
 
 class ResultLabel {
-    var label = UILabel()
+    var label: UILabel = {
+        let label = UILabel()
+        label.text = "0"
+        return label
+    }()
+    
 }
