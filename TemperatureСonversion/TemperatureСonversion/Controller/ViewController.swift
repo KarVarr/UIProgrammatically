@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     let segmentTitle = Titles()
     let temperatureTitle = Titles()
@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     
     var result: Double = 0
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
@@ -27,7 +29,6 @@ class ViewController: UIViewController {
         addView()
         layout()
         settings()
-        
     }
     
 }
@@ -43,6 +44,8 @@ extension ViewController {
         view.addSubview(resultTitle.title)
         view.addSubview(resultLabel.label)
         view.addSubview(button.button)
+        
+        self.textField.textField.delegate = self
     }
     
     
@@ -81,14 +84,12 @@ extension ViewController {
         temperatureTitle.configure(with: R.Strings.temperatureTitle)
         resultTitle.configure(with: R.Strings.resultTitle)
         
-        //textField.textField.addTarget(self, action: #selector(textFieldInput(_:)), for: .editingChanged)
         
         segment.segment.translatesAutoresizingMaskIntoConstraints = false
         segment.segment.selectedSegmentIndex = 0
         
         resultLabel.label.translatesAutoresizingMaskIntoConstraints = false
         resultLabel.label.text = "0"
-        //textField.textField.text = "0"
         
         button.button.translatesAutoresizingMaskIntoConstraints = false
         button.button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
@@ -110,6 +111,9 @@ extension ViewController {
         resultLabel.label.text = "\(result)"
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.textField.textField.endEditing(true)
+    }
     
     
 }

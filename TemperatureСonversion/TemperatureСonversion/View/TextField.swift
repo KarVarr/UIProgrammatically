@@ -19,11 +19,11 @@ class TextField: UIView {
         textField.keyboardType = .numberPad
         textField.clearButtonMode = .whileEditing
         textField.contentVerticalAlignment = .center
-       
+        
         return textField
     }()
     
-
+    
     
     
     
