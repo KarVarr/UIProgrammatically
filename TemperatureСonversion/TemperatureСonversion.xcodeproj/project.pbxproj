@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1785331D299D4FA2001C2415 /* ResultLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1785331C299D4FA2001C2415 /* ResultLabel.swift */; };
 		1785331F299D60A7001C2415 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1785331E299D60A7001C2415 /* Button.swift */; };
+		1785337329A2937E001C2415 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1785337229A2937E001C2415 /* Result.swift */; };
 		17A6AB52299A8F02003BE599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6AB51299A8F02003BE599 /* AppDelegate.swift */; };
 		17A6AB54299A8F02003BE599 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6AB53299A8F02003BE599 /* SceneDelegate.swift */; };
 		17A6AB56299A8F02003BE599 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6AB55299A8F02003BE599 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		1785331C299D4FA2001C2415 /* ResultLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultLabel.swift; sourceTree = "<group>"; };
 		1785331E299D60A7001C2415 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		1785337229A2937E001C2415 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		17A6AB4E299A8F02003BE599 /* TemperatureСonversion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TemperatureСonversion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17A6AB51299A8F02003BE599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17A6AB53299A8F02003BE599 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1785337129A29357001C2415 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1785337229A2937E001C2415 /* Result.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		17A6AB45299A8F02003BE599 = {
 			isa = PBXGroup;
 			children = (
@@ -67,8 +77,9 @@
 			isa = PBXGroup;
 			children = (
 				17A6AB66299A9485003BE599 /* Application */,
-				17A6AB6C299AA0E9003BE599 /* Controller */,
+				1785337129A29357001C2415 /* Model */,
 				17A6AB6E299AA12A003BE599 /* View */,
+				17A6AB6C299AA0E9003BE599 /* Controller */,
 				17A6AB69299A9DC6003BE599 /* Helpers */,
 				17A6AB65299A9456003BE599 /* Resources */,
 			);
@@ -198,6 +209,7 @@
 				1785331D299D4FA2001C2415 /* ResultLabel.swift in Sources */,
 				17A6AB7C299ABD37003BE599 /* TextField.swift in Sources */,
 				17A6AB52299A8F02003BE599 /* AppDelegate.swift in Sources */,
+				1785337329A2937E001C2415 /* Result.swift in Sources */,
 				17A6AB6B299A9DDA003BE599 /* Resources.swift in Sources */,
 				1785331F299D60A7001C2415 /* Button.swift in Sources */,
 				17A6AB54299A8F02003BE599 /* SceneDelegate.swift in Sources */,

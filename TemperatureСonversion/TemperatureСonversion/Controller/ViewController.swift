@@ -108,7 +108,7 @@ extension ViewController {
                   result = (Double(textField.textField.text!)! - 32) * 0.5556
               }
 
-        resultLabel.label.text = "\(result)"
+        resultLabel.label.text = "\(Int(result))"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
