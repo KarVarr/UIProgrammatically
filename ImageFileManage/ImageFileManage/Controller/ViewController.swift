@@ -11,6 +11,7 @@ class ViewController: UIViewController {
  
     let table = ImageTableView()
     
+    
     var imageArray = [String]()
     
     override func viewDidLoad() {
@@ -73,6 +74,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = imageArray[indexPath.row]
         cell.selectionStyle = .none
+      //self.navigationController?.pushViewController(imageView, animated: true)
         return cell
     }
     
@@ -80,6 +82,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return 80
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let imageName = imageArray[indexPath.row]
+        let imageView = ImageController(imageName: imageName)
+        
+        self.present(imageView, animated: true)
+    }
     
 }
 

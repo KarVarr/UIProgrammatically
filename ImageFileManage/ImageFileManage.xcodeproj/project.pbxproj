@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1724062829A3A1DE0009E0A5 /* ImageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1724062729A3A1DE0009E0A5 /* ImageTableView.swift */; };
+		1724062A29A3AEAB0009E0A5 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1724062929A3AEAB0009E0A5 /* ImageController.swift */; };
 		1785338129A296A3001C2415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1785338029A296A3001C2415 /* AppDelegate.swift */; };
 		1785338329A296A3001C2415 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1785338229A296A3001C2415 /* SceneDelegate.swift */; };
 		1785338529A296A3001C2415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1785338429A296A3001C2415 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		1724062729A3A1DE0009E0A5 /* ImageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableView.swift; sourceTree = "<group>"; };
+		1724062929A3AEAB0009E0A5 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		1785337D29A296A3001C2415 /* ImageFileManage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFileManage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1785338029A296A3001C2415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1785338229A296A3001C2415 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				1785338429A296A3001C2415 /* ViewController.swift */,
+				1724062929A3AEAB0009E0A5 /* ImageController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1724062A29A3AEAB0009E0A5 /* ImageController.swift in Sources */,
 				1785338529A296A3001C2415 /* ViewController.swift in Sources */,
 				1724062829A3A1DE0009E0A5 /* ImageTableView.swift in Sources */,
 				1785338129A296A3001C2415 /* AppDelegate.swift in Sources */,
