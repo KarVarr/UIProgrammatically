@@ -7,23 +7,61 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
-
+class ViewController: UIViewController {
+ 
+    let table = ImageTableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
         
-        tableView.register(TableCell.self, forCellReuseIdentifier: "Cell")
+        
+        addSubview()
+        layout()
+        setting()
+        
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+}
+
+//MARK: - settings
+extension ViewController {
+    func addSubview () {
+        view.addSubview(table.tableView)
+    }
+    
+    func layout () {
+        //table.tableView.frame = view.bounds
+        NSLayoutConstraint.activate([
+            table.tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            table.tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            table.tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            table.tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
+    func setting () {
+        table.tableView.delegate = self
+        table.tableView.dataSource = self
+    }
+}
+
+
+//MARK: - tableView settings
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableCell
-        cell.name
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    
 }
 
