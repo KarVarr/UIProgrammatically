@@ -8,9 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
- 
-    let table = ImageTableView()
     
+    let table = ImageTableView()
     
     var imageArray = [String]()
     
@@ -24,6 +23,8 @@ class ViewController: UIViewController {
         
     }
 }
+
+        
 
 //MARK: - settings
 extension ViewController {
@@ -74,7 +75,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = imageArray[indexPath.row]
         cell.selectionStyle = .none
-      //self.navigationController?.pushViewController(imageView, animated: true)
         return cell
     }
     
@@ -85,8 +85,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let imageName = imageArray[indexPath.row]
         let imageView = ImageController(imageName: imageName)
+        imageView.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(imageView, animated: true)
+       // self.present(imageView, animated: true)
         
-        self.present(imageView, animated: true)
     }
     
 }
