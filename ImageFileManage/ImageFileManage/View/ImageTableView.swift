@@ -13,7 +13,8 @@ struct ImageTableView {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        
         return table
     }()
 }
+
+
