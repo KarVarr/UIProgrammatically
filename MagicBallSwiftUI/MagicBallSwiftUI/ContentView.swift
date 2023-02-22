@@ -7,19 +7,29 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
+    
+    let colorlightGreen = Color(red: 0.52, green: 0.98, blue: 0.82)
+    let colorGrayShadow = Color(red: 0.33, green: 0.62, blue: 0.53)
+    
     var body: some View {
         ZStack {
-            Color.mint
-                .background(.mint)
+            colorlightGreen
+                .background(colorlightGreen)
             
             VStack {
                 ZStack {
                     Circle()
-                        .fill(.indigo)
-                        .shadow(radius: 5)
+                        .fill(
+                            .shadow(.inner(color: colorGrayShadow, radius: 30, x: 13, y: 3))
+                            .shadow(.inner(color: colorGrayShadow, radius: 10, x: -3, y: -3))
+                        )
+                        .foregroundColor(colorlightGreen)
+                        
                     Text("YES, Defiantly")
-                        .foregroundColor(.white)
+                        .foregroundColor(.indigo)
                         .font(.largeTitle)
                 }
                 .padding(.top, 20)
