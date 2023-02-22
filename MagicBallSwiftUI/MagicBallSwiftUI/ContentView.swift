@@ -14,6 +14,10 @@ struct ContentView: View {
     let colorlightGreen = Color(red: 0.52, green: 0.98, blue: 0.82)
     let colorGrayShadow = Color(red: 0.33, green: 0.62, blue: 0.53)
     
+    @State private var currentAnswer = R.String.askSome
+    let answer = Answers()
+    let randomNumber = 0..<Answers().allAnswer.count
+    
     var body: some View {
         ZStack {
             colorlightGreen
@@ -28,9 +32,10 @@ struct ContentView: View {
                         )
                         .foregroundColor(colorlightGreen)
                         
-                    Text("YES, Defiantly")
+                    Text(currentAnswer)
                         .foregroundColor(.indigo)
-                        .font(.largeTitle)
+                        .font(.title)
+                        
                 }
                 .padding(.top, 20)
                 
@@ -42,8 +47,8 @@ struct ContentView: View {
                         .fill(LinearGradient(gradient: Gradient(colors: [.green, .black]), startPoint: .topLeading, endPoint: .bottomTrailing))
                         .frame(width: 100, height: 50)
                         .shadow(color: .yellow, radius: 1, x: 6, y:  6)
-                    Button("CLICK") {
-                        
+                    Button(R.String.buttonTitle) {
+                        currentAnswer = answer.allAnswer.randomElement() ?? "YES"
                     }
                     .foregroundColor(.white)
                 }
