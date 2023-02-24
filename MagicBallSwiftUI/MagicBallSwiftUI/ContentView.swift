@@ -21,7 +21,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             colorlightGreen
-                .background(colorlightGreen)
+                .ignoresSafeArea()
             
             VStack {
                 ZStack {
@@ -46,9 +46,10 @@ struct ContentView: View {
                     RoundedRectangle(cornerRadius: 20)
                         .fill(LinearGradient(gradient: Gradient(colors: [.green, .black]), startPoint: .topLeading, endPoint: .bottomTrailing))
                         .frame(width: 100, height: 50)
-                        .shadow(color: .yellow, radius: 1, x: 6, y:  6)
+                        .shadow(color: colorGrayShadow, radius: 5, x: 4, y: 4)
                     Button(R.String.buttonTitle) {
                         currentAnswer = answer.allAnswer.randomElement() ?? "YES"
+                        
                     }
                     .foregroundColor(.white)
                 }
