@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     var weatherLabel = Temperature()
     var getButton = ButtonTemperature()
     
-    let didTapGetWeather = GetWeather()
+//    let getWeatherButton = Weather()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +21,30 @@ class ViewController: UIViewController {
         layout()
         settings()
         
-        getButton.button.addTarget(self, action: #selector(didTapGetWeather.GetWeatherButton), for: .touchUpInside)
+        getButton.button.addTarget(self, action: #selector(getWeather), for: .touchUpInside)
         
+    }
+    
+    @objc func getWeather() {
+        let urlString = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true"
+          let url = URL(string: urlString)!
+          let request = URLRequest(url: url)
+          let task = URLSession.shared.dataTask(with: request) {data, response, error in
+              if let error = error {
+                  print("Error: \(error.localizedDescription)")
+                  return
+              }
+              do {
+                  let weatherData = try JSONDecoder().decode(WeatherData.self, from: data!)
+                  DispatchQueue.main.async {
+                      self.weatherLabel.label.text = "\(weatherData.currentWeather.temperature) °C"
+                      
+                  }
+              } catch {
+                  print("Error decoding weather data: \(error.localizedDescription) ")
+              }
+          }
+          task.resume()
     }
 
 

@@ -14,7 +14,7 @@
 		1799910729A91EBF002396F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1799910529A91EBF002396F4 /* LaunchScreen.storyboard */; };
 		1799911329A92152002396F4 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1799911229A92152002396F4 /* Temperature.swift */; };
 		1799911529A92380002396F4 /* ButtonTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1799911429A92380002396F4 /* ButtonTemperature.swift */; };
-		1799911A29A9272A002396F4 /* GetWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1799911929A9272A002396F4 /* GetWeather.swift */; };
+		1799911E29A93054002396F4 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1799911D29A93054002396F4 /* WeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		1799910829A91EBF002396F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1799911229A92152002396F4 /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		1799911429A92380002396F4 /* ButtonTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTemperature.swift; sourceTree = "<group>"; };
-		1799911929A9272A002396F4 /* GetWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeather.swift; sourceTree = "<group>"; };
+		1799911D29A93054002396F4 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +108,7 @@
 		1799911629A926E8002396F4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1799911929A9272A002396F4 /* GetWeather.swift */,
+				1799911D29A93054002396F4 /* WeatherData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,8 +185,8 @@
 			files = (
 				179990FF29A91EBE002396F4 /* ViewController.swift in Sources */,
 				179990FB29A91EBE002396F4 /* AppDelegate.swift in Sources */,
+				1799911E29A93054002396F4 /* WeatherData.swift in Sources */,
 				1799911329A92152002396F4 /* Temperature.swift in Sources */,
-				1799911A29A9272A002396F4 /* GetWeather.swift in Sources */,
 				179990FD29A91EBE002396F4 /* SceneDelegate.swift in Sources */,
 				1799911529A92380002396F4 /* ButtonTemperature.swift in Sources */,
 			);
