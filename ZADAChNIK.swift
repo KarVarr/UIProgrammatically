@@ -85,4 +85,49 @@ let num1 = 5
 let num2 = "num is: "
 let sumNum =  num2 + String(num1) 
 
+// ПРОДВИНУТЫЙ УРОВЕНЬ.
+// 1) Создайте 5-6 строк с названиями городов. Затем создайте 5-6 строк с названиями стран.
+// Если название города совпадает со страной — выведите в консоль название страны, города и 
+// слово: ПРАВИЛЬНО!
+
+let city1 = "Paris"
+let city2 = "Madrid"
+
+let country1 = "France"
+let country2 = "Spain"
+
+
+func goodCity(_ city: String, _ country: String) -> String {
+    var str = ""
+    if city == "Paris" && country == "France" || city == "Madrid" && country == "Spain" {
+        str = "\(country), \(city) ПРАВИЛЬНО!"
+    } else {
+        str = "\(country), \(city) НЕПРАВИЛЬНО!"
+    }
+
+    return str 
+}
+
+print(goodCity("Paris", "France")) // France, Paris ПРАВИЛЬНО!
+print(goodCity("Madrid", "France")) // France, Madrid НЕПРАВИЛЬНО!
+
+//2) Возьмите созданные страны и проверьте их: содержат ли они букву A(буква на ваш выбор).
+
+print(city1.contains("a")) // true
+print(city1.contains("S")) // false
+
+//3) Создайте строку — набор букв кириллицей. Буквы абсолютно любые, строчные.
+
+var str1 = "Привет как дела"
+
+//4) Замените их, создав отдельную переменную, на заглавные. А потом на строчные латинские.
+
+var strUpperCase = str1.uppercased() //ПРИВЕТ КАК ДЕЛА
+strUpperCase = "Hello, how are you".lowercased() // hello, how are you
+
+//5) Посчитайте индекс под которым находится каждая отдельно взятая буква.
+
+Array(strUpperCase).enumerated().map{
+    print("\($1) has index \($0)")
+}
 
