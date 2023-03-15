@@ -131,3 +131,46 @@ Array(strUpperCase).enumerated().map{
     print("\($1) has index \($0)")
 }
 
+
+// 3. Массивы
+// 1) Создайте массив учеников из 12 мальчиков
+
+var boys = ["Koly", "Toly", "Sacha", "Pacha", "Lecha","Andrey","Sereg","Vitaliy","Arsen","Bob","Mike", "Kain"]
+
+// 2) Добавьте 7 девочек: с помощью append и по определённому индексу: см. insert.
+// Выведите результат в консоль
+
+boys.append(contentsOf:["Dacha","Masha","Aleksandra","Marina"])
+boys.insert("Sveta", at: 0)
+boys.insert("Anna", at: 5)
+
+// 3) Удалите 7 учеников так, чтобы получилось 5 мальчиков и 5 девочек. См. Удаление по 
+// диапазону. Выведите результат в консоль.
+
+boys.removeSubrange(1...8) //["Sveta", "Vitaliy", "Arsen", "Bob", "Mike", "Kain", "Dacha", "Masha", "Aleksandra", "Marina"]
+
+//4) Создайте массив оценок от 0 до 5 и второй — от 6 до 10. Объедените два массива в один.
+var grade = [0,1,2,3,4,5]
+var grade2 = [6,7,8,9,10]
+
+let gradeAll = grade +  grade2 // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+// 5) Присвойте каждому ученику оценку. Так, чтобы в консоли получилось примерно: «Вася — 5 
+// баллов.Неплохо.».
+
+for i in 0..<gradeAll.count - 1 {
+  if i < 4 {
+     print("\(boys[i]) - \(gradeAll[i]) баллов. Очень плохо!!!")
+  } else if i < 8 {
+    print("\(boys[i]) - \(gradeAll[i]) баллов. Неплохо!")
+  } else {
+    print("\(boys[i]) - \(gradeAll[i]) баллов. Отлично!")
+  }
+}
+
+// 6) Создайте массив из чисел. Числа - это купюры в долларах. Посчитать количество денег и 
+// вывести в консоль
+
+let dollarArray = [1,2,5,10,20,50,100,500]
+print(dollarArray.reduce(0,+))
+
