@@ -174,3 +174,87 @@ for i in 0..<gradeAll.count - 1 {
 let dollarArray = [1,2,5,10,20,50,100,500]
 print(dollarArray.reduce(0,+))
 
+
+// ПРОДВИНУТЫЙ УРОВЕНЬ.
+// 1) Создайте 10 строк с названиями стран. Создайте массив.
+//Проверьте строки: если в строке более 5 символов — добавить её в массив. Но если строка 
+//содержит букву А - заменить эту букву на другую и добавить изменённую строку в массив.
+
+var counry1 = "USA"
+var counry2 = "Russia"
+var counry3 = "Armenia"
+var counry4 = "France"
+var counry5 = "Italy"
+var counry6 = "Germany"
+var counry7 = "Cuba"
+var counry8 = "Canada"
+var counry9 = "China"
+var counry10 = "Japan"
+
+
+var countryArray = [String]()
+countryArray.append(counry1)
+countryArray.append(counry2)
+countryArray.append(counry3)
+countryArray.append(counry4)
+countryArray.append(counry5)
+countryArray.append(counry6)
+countryArray.append(counry7)
+countryArray.append(counry8)
+countryArray.append(counry9)
+countryArray.append(counry10)
+
+var countries = [String]()
+
+for country in countryArray {
+  if country.count > 5 {
+    if country.contains("A") {
+      let newCountry = country.replacingOccurrences(of: "A", with: "X")
+      countries.append(newCountry)
+    }
+    
+    
+  }
+}
+// ["USA", "Russia", "Armenia", "France", "Italy", "Germany", "Cuba", "Canada", "China", "Japan"]
+// ["Xrmenia"]
+
+
+// 2) Создайте массив из 20-30 значений любого типа. Сделайте линейную сортировку (linear sort).
+
+    var unsortedArray = [23,24,11,12,13,14,1,2,3,4,5,6,7,8,15,16,17,27,28,29,18,9,20,21,22,25,26,30,9,10]
+
+    var sortedArray = [Int]()
+   
+    for i in 0..<unsortedArray.count {
+            sortedArray.append(i)
+    }
+   // sortedArray  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+ 
+//  3) Сделайте сортировку пузырьком (bubble sort).
+
+ var bubbleArray = [Int]()
+ for i in 0..<unsortedArray.count - 1 {
+     for j in 0..<unsortedArray.count - i - 1 {
+     if unsortedArray[j] > unsortedArray[j + 1] {
+         let temp = unsortedArray[j]
+         unsortedArray[j] = unsortedArray[j + 1]
+         unsortedArray[j + 1] = temp
+         }
+     }
+ }
+ //bubbleArray [1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+ 
+ 
+ //4) Сделайте быструю сортировку (quick sort)
+  unsortedArray = [23,24,11,12,13,14,1,2,3,4,5,6,7,8,15,16,17,27,28,29,18,9,20,21,22,25,26,30,9,10]
+ 
+  var quickArray = [Int]()
+  
+ while quickArray != unsortedArray.sorted() {
+     let pivot = unsortedArray.count / 2 
+     let leftSide = unsortedArray.filter{$0 < pivot}
+     let rightSide = unsortedArray.filter{$0 > pivot}
+     let center = unsortedArray.filter{$0 == pivot}
+     quickArray = leftSide + center + rightSide
+ }
