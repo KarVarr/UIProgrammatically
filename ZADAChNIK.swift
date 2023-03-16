@@ -258,3 +258,45 @@ for country in countryArray {
      let center = unsortedArray.filter{$0 == pivot}
      quickArray = leftSide + center + rightSide
  }
+
+// 4. Словари
+// 1) Создайте 10 разных Dictionary с разными типами данных. Один из них должен содержать все месяца года на русском. Второй на английском.
+
+    var monthRus = [1: "Январь", 2: "Февраль", 3: "Март", 4: "Апрель", 5: "Май", 6: "Июнь", 7: "Июль", 8: "Август", 9: "Сентябрь", 10: "Октябрь", 11: "Ноябрь", 12: "Декабрь"]
+
+    var monthEng = [1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August", 9: "September", 10: "Octobor", 11: "November", 12: "December"]
+
+// 2) Соберите все ключи и значения каждого Dictionary и распечатайте в консоль
+
+// print(monthRus.keys) [8, 3, 12, 6, 2, 7, 9, 4, 5, 10, 11, 1]
+// print(monthEng.keys) [2, 1, 8, 12, 3, 4, 7, 9, 6, 10, 5, 11]
+
+// 3) Создайте пустой Dictionary и через условный оператор if проверьте, пустой он или нет. Если пустой, то в условии добавьте в него пар значений.
+
+    var dict: [Int: String] = [Int: String]()
+    
+    if dict.isEmpty {
+        dict[1] = "Hello"
+    }
+
+    //dict //[1: "Hello"]
+    
+// 4) Cоздайте словарь — ключ: «иномарка», «значение»: название машины.
+
+    var cars = ["Audi": "S4", "BMW": "M3", "Mersedes": "E63"]
+
+//5) Добавьте в него значение по ключу - «отечественная». Распечатайте ключи и значения в консоль. Затем отдельно только значения.
+//Удалите из словаря иномарку по ключу (двумя способами: через nil и removeValue().
+
+    cars["LADA"] = "2107"
+    //["Audi": "S4", "Mersedes": "E63", "BMW": "M3", "LADA": "2107"]
+    cars["Audi"] = nil
+    //["BMW": "M3", "LADA": "2107", "Mersedes": "E63"]
+    cars.removeValue(forKey: "BMW")
+    //["LADA": "2107", "Mersedes": "E63"]
+
+
+
+
+
+
