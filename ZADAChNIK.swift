@@ -324,5 +324,52 @@ for country in countryArray {
     }
 
 
+//5. Кортежи
+//1) Создать кортеж с 3-5 значениями. Вывести их в консоль 3 способами. 
+    
+    var someTupls = (first:1, second:2,third:3,forth:4,fivth:5)
+    // print(someTupls.first)
+   //print(someTupls.0) 1
+   let (one, two, three, four, five) = someTupls
+   //print(one,four) 1 4
+  
+    
+//2) Давайте представим, что мы сотрудник ГАИ и у нас есть какое-то количество нарушителей. 
+/*
+Задача. Создать кортеж с тремя параметрами:
+ первый - превышение скорости: количество пойманных;
+ второй - вождение нетрезвым: количество пойманных;
+ третий - бесправники: количество пойманных.
+Распечатайте наших бедокуров в консоль через print().
+*/
+
+var men1 = (speed:5, alcohol: 10, licence: 20)
+
+//print("Speedlimit not obey more then \(men1.speed) people") Speedlimit not obey more then 5 people
+//print("Alkohol drivers: \(men1.alcohol)") Alkohol drivers: 10
+//print("Driver with no licence: \(men1.licence)")  Driver with no licence: 20
+
+// 3) Выведите каждый параметр в консоль. Тремя способами.
+
+let (underTen, underTwenty, underThirty) = men1
+
+print(underTen) 
+print(men1.0)  
+print(men1.speed) 
+
+//4) Создайте второй кортеж — нашего напарника. Значения задайте другие.
+
+var men2 = (speed: 10, alcohol: 2, licence: 20)
+
+// 5) Пусть напарники соревнуются: создайте третий кортеж, который содержит в себе разницу между первым и вторым.
+// Вывести в консоль тремя способами.
+
+let sum = (speed: men1.speed - men2.speed, alcohol: men1.alcohol - men2.alcohol, licence: men1.licence - men2.licence)
+
+let (sumSpeed, sumAlcohol, sumLicence ) = sum
+
+print(sum.speed) -5
+print(sum.1) 
+print(sum.sumSpeed)
 
 
