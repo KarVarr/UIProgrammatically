@@ -295,7 +295,33 @@ for country in countryArray {
     cars.removeValue(forKey: "BMW")
     //["LADA": "2107", "Mersedes": "E63"]
 
+//     ПРОДВИНУТЫЙ УРОВЕНЬ.
+// 1) Создайте словарь, где ключ — фамилия солдата, а значение — его приветствие.
 
+    var family = ["Miller": "YEAP", "Black": "HAY", "Senna": "HELLO", "Tramp": "HEY FOLKCS"]
+    
+// 2) В цикле пройдитесь по всем ключам и распечатайте фамилию каждого солдата.
+
+    family.map{print($0.key)}
+    
+//3) Сделайте тоже самое со значениями и распечатайте приветствие каждого солдата.
+    
+    family.map{print($0.value)}
+    
+//4) Отсортировать словарь так, чтобы фамилии шли по алфавиту. 
+
+    family.map{$0.key.sorted(by: <)}
+// print(family) ["Black": "HAY", "Miller": "YEAP", "Tramp": "HEY FOLKCS", "Senna": "HELLO"]
+    
+//5) Создайте логическую проверку: если ключ словаря — Иванов, то скажите, что это снайпер. Сделайте тоже самое со всеми ключами.
+    
+    for i in family.keys {
+        if i == "Miller" || i == "Senna" {
+            print("\(i) is a sniper")
+        } else {
+            print("\(i) is a solder")
+        }
+    }
 
 
 
