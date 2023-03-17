@@ -373,3 +373,51 @@ print(sum.1)
 print(sum.sumSpeed)
 
 
+ /*
+ПРОДВИНУТЫЙ УРОВЕНЬ.
+1) Создать 10 кортежей-разработчиков, каждый с 4 параметрами: имя, возраст, опыт, 
+специальность. Пока не задавайте никаких данных.
+
+2) После создания всем задайте имя, 3 из них — задайте возраст (любые значения выше 23),4 — опыт и только 2 — специальность.
+3) Используя проверки if/else, выводите сообщения по логике: если возраст больше 23, есть опыт и специальность это ios — в консоль выводите имя и сообщение- принят на работу
+4) Тех, кто младше 23, добавьте в массив и отсортируйте. Найдите в этом массиве 
+максимальное значение и удалите его.
+5) Создайте массив и в проверку из пункта 3 добавьте условие: если специальность не ios —
+добавить в созданный массив.
+*/
+
+
+var developers: [(String, Int, Int, String)] = [(String, Int, Int, String)](repeating: ("", 0, 0, ""), count: 10)
+
+developers[0] = ("John", 20, 1, "Android")
+developers[1] = ("Jane", 24, 2, "Web")
+developers[2] = ("Alice", 18, 5, "iOS")
+developers[3] = ("Bob", 30, 7, "Web")
+developers[4] = ("David", 25, 3, "Android")
+developers[5] = ("Amy", 27, 4, "iOS")
+developers[6] = ("Chris", 26, 2, "Web")
+developers[7] = ("Eva", 29, 6, "iOS")
+developers[8] = ("Frank", 24, 2, "Android")
+developers[9] = ("Billy", 44, 7, "Web")
+
+var devArray: [(String, Int, Int, String)] = [(String, Int, Int, String)]()
+
+var devArrayNotIosDev: [(String, Int, Int, String)] = [(String, Int, Int, String)]()
+
+for dev in developers {
+    if dev.1 > 23 && dev.2 > 3 && dev.3 == "iOS" {
+        print("\(dev.0) вы приняты на работу")
+
+    } else if dev.1 < 23 {
+       print("\(dev.0) мы с вами свяжемся позже!")
+        devArray.append(dev)
+    } else if dev.3 != "iOS" {
+        devArrayNotIosDev.append(dev)
+    }
+}
+
+print(devArray.sorted(by: <)) // [("Alice", 18, 5, "iOS"), ("John", 20, 1, "Android")]
+print(devArrayNotIosDev) // [("Jane", 24, 2, "Web"), ("Bob", 30, 7, "Web"), ("David", 25, 3, "Android"), ("Chris", 26, 2, "Web"), ("Frank", 24, 2, "Android"), ("Billy", 44, 7, "Web")]
+
+
+
