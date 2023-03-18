@@ -475,3 +475,122 @@ switch score {
     default: print("you'll have best job ever")
 }
 
+/*
+7. Функции
+1) Создать 3 функции: 
+ первая функция принимает массив Int и сортирует его по порядку (возрастание). После 
+этого распечатывает результат в консоль;
+ вторая функция принимает массив String, меняет 1, 2 и 3 элементы и сортирует по 
+алфавиту. После этого распечатывает результат в консоль;
+ третья функция принимает 2 массива String и складывает их. После этого 
+распечатывает результат в консоль
+*/
+
+
+func sortArray(_ array: [Int]) {
+    print("\(array.sorted(by: <))")
+    
+}
+sortArray([5,7,2,0,4,23,767,23,6,6,234,64,867,345,234,6456,3,4,1,90])
+
+var arrayOfStrings = ["one", "two", "three", "four", "five", "six"]
+
+func stringArray (_ strArray: [String]) {
+    var array = strArray
+    array[0] = "first"
+    array[1] = "second"
+    array[2] = "third"
+    print(array.sorted(by: <))
+
+}
+stringArray(arrayOfStrings)
+
+let fArray = ["hello", "world"]
+let sArray = ["I'm", "a", "developer"]
+
+func sumOfArray(_ firstArray: [String], _ secondArray: [String]) {
+    print(firstArray + secondArray)
+}
+sumOfArray(fArray,sArray)
+
+//2) Создать журнал для учителя, который будет принимать имя студента, профессию и оценку и 
+//записывает это все в массив. И внесите 10 студентов туда и распечатаете через цикл for.
+
+var tableOfStudent = [String]()
+
+
+func student(nameOf pupl: String, ocupation work: String, raiting score: String) {
+    tableOfStudent.append("\(pupl) \(work) \(score)")
+}
+
+student(nameOf: "Bob", ocupation: "Dev", raiting: "22")
+student(nameOf: "Mike", ocupation: "Technologe", raiting: "18")
+
+for pupl in tableOfStudent {
+    print(pupl)
+}
+
+//3) Создать функцию которая принимает имя и фамилию, потом положить это в массив и 
+//вывести результат в консоль
+var womenArray = [String]()
+
+func woman(firstName fName: String, lastName lName: String) {
+
+    womenArray.append("\(fName) \(lName)")
+}
+
+woman(firstName: "Brabara",lastName:  "Straizen")
+
+print(womenArray) //["Brabara Straizen"]
+
+//4) Создайте функцию которая принимает параметры и вычисляет площадь круга
+
+
+func radiusCircle(_ r: Int) -> Double{
+    return 3.14 * Double(r * r) 
+}
+print(radiusCircle(6)) //113.04
+
+// 5) Создайте Dictionary с именем ученики , где ключ name и score, а значение (1 тюпл из 5 имен) 
+// и (второй тюпл из 5 оценок).И распечатайте только имена по ключу.
+
+
+let dictStudents: [String: Any] = [
+    "name": ("Bob", "Mike", "Zabor", "Doscka", "Koza"),
+    "score": (5,2,3,4,2)
+]
+
+print(dictStudents["name"] ?? "noName") //("Bob", "Mike", "Zabor", "Doscka", "Koza")
+
+/*
+ПРОДВИНУТЫЙ УРОВЕНЬ.
+1) Функция принимает 3 массива String. Задача: сложить их вместе, преобразовать в тип Int и 
+посчитать сумму. Распечатать результат в консоль.
+*/
+
+func sumOfStringArrays(_ arr1: [String], _ arr2: [String], _ arr3: [String]) -> Int {
+    let arrayNums1 = arr1.map{Int($0)}
+    let arrayNums2 = arr2.map{Int($0)}
+    let arrayNums3 = arr3.map{Int($0)}
+    let sum = arrayNums1 + arrayNums2 + arrayNums3 
+    return sum.map({$0!}).reduce(0, +)
+}
+
+print(sumOfStringArrays(["2", "6", "44"], ["55", "23", "1"], ["1", "4", "7"])) //143
+
+
+//2) Создайте функцию, которая принимает строку-рассказ без пробелов и знаков препинаний, 
+//всё с маленькой буквы и на латинице.
+
+
+func storyConventor(_ str: String) -> String {
+  return str.split(separator: ",").map{ String($0) }.joined(separator: "\n")
+}
+
+print(storyConventor("Создайте функцию, которая принимает строку-рассказ, без пробелов и знаков препинаний,всё с маленькой буквы и на латинице."))
+/*
+Создайте функцию
+ которая принимает строку-рассказ
+ без пробелов и знаков препинаний
+всё с маленькой буквы и на латинице.
+*/
