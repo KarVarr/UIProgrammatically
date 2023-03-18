@@ -419,5 +419,59 @@ for dev in developers {
 print(devArray.sorted(by: <)) // [("Alice", 18, 5, "iOS"), ("John", 20, 1, "Android")]
 print(devArrayNotIosDev) // [("Jane", 24, 2, "Web"), ("Bob", 30, 7, "Web"), ("David", 25, 3, "Android"), ("Chris", 26, 2, "Web"), ("Frank", 24, 2, "Android"), ("Billy", 44, 7, "Web")]
 
+/*
+ 6. Управление потоком: циклы
+1) Создайте массив "дни в месяцах":
+Распечатайте элементы, содержащие количество дней в соответствующем месяце, используя 
+цикл for и этот массив.
 
+*/
+
+let daysInMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+let months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август","Сентябрь", "Октябрь", "Ноябрь","Декабрь"]
+for day in 0..<12 {
+        print("В \(months[day]) \(daysInMonths[day]) дней ")    
+}
+
+//2) Создать в if и отдельно в switch программу которая будет смотреть на возраст человека и 
+//говорить куда ему идти в школу, в садик, в универ, на работу или на пенсию и тд.
+
+let man = 44
+
+if  man < 18 {
+    print("go to the school")
+} else if man < 23 {
+    print("go to the college")
+} else if man < 60 {
+
+    print("go to the work")
+} else {
+    print("retire")
+}
+
+switch man {
+    case 6...18: print("go to the school")
+    case 18...23: print("go to the college")
+    case 23...60: print("go to the work")
+    default: print("retire")
+}
+
+//3) В switch и отдельно в if создать систему оценивания школьников по 12 бальной системе и 
+//высказывать через print мнение.
+
+let score = 10
+
+if score < 4 {
+    print("you need more practice")
+} else if score < 8 {
+    print("you have patenchial")
+} else {
+    print("you'll have best job ever")
+}
+
+switch score {
+    case 0...4: print("you need more practice")
+    case 4...8:  print("you have patenchial")
+    default: print("you'll have best job ever")
+}
 
