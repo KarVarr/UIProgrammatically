@@ -594,3 +594,78 @@ print(storyConventor("Создайте функцию, которая прини
  без пробелов и знаков препинаний
 всё с маленькой буквы и на латинице.
 */
+
+/*
+8. Замыкания
+1) Написать, как понимаете замыкания: что это, для чего нужны?
+2) Написать 10 своих замыканий на примере сортировок массивов.
+*/
+
+var array = (0...20)
+print(array.filter{$0 > 10}) //[11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+print(array.map{$0 + 10}) //[10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+print(array.contains{$0 % 2 == 0}) // true
+print(array.reduce(0, +)) // 210
+print(array.sorted(by: >)) // [20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+print(array.first(where: {$0 == 10})) // Optional(10)
+print(array.enumerated().map{"number \($1) with index \($0)"})
+
+//3) Написать функцию, которая принимает массив, проверяет — пустой или нет. И если пустой 
+//— нужно записать туда значения.
+
+func arrCheck (_ array: [String]) -> [String] {
+    var arr = array
+    if arr.isEmpty {
+        arr.append("Hello, World!")
+    }
+    return arr
+}
+
+print(arrCheck(["Hi there", "Bounjuar", "Hello"])) // ["Hi there", "Bounjuar", "Hello"]
+print(arrCheck([""])) // [""]
+print(arrCheck([])) // ["Hello, World!"]
+
+
+//4) Написать функцию - сайт который требует имя, фамилию, ник, емейл, пароль.
+//Всё вывести в консоль.
+
+func student (_ fName: String, _ lName: String, _ nick: String, _ email: String, _ password: String)  {
+    print( "\(fName) \(lName) \(nick) \(email) \(password)" )
+}
+student("Iliy", "Isakov", "boz", "ffrisd12@mail.com", "12345678") //Iliy Isakov  boz  ffrisd12@mail.com 12345678
+
+//5) Написать функции которые принимают в качестве аргументов массивы и словари и 
+//проверяют: пустые или нет. Если пустые — добавляют туда значения и выводят в консоль
+
+func checkArrAndDict(_ arr: [Int], _ dict: [Int: String]) {
+    var array = arr
+    var dictionary = dict
+    if array.isEmpty {
+        array.append(1)
+        print(array)
+    }
+    
+    if dictionary.isEmpty {
+        dictionary[1] = "Hello"
+        print(dictionary)
+    }
+    
+    
+}
+checkArrAndDict([1,2,3], [1: "goodbye"])
+checkArrAndDict([], [:])
+
+// ПРОДВИНУТЫЙ УРОВЕНЬ.
+// 1) Создайте функцию, которая принимает массив Double. Напишите алгоритм, который 
+// находит в массиве минимальное значение. Распечатайте результат в консоль.
+
+
+func doubMin(_ nums: [Double]) -> Double {
+    return nums.min() ?? 0.0
+} 
+func doubMax(_ nums: [Double]) -> Double {
+    return nums.max() ?? 0.0
+} 
+
+print(doubMin([4.3,66.6,12.0,13.5, 1.0, 455.9])) // 1.0
+print(doubMax([4.3,66.6,12.0,13.5, 1.0, 455.9])) // 455.9
