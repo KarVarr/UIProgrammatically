@@ -669,3 +669,127 @@ func doubMax(_ nums: [Double]) -> Double {
 
 print(doubMin([4.3,66.6,12.0,13.5, 1.0, 455.9])) // 1.0
 print(doubMax([4.3,66.6,12.0,13.5, 1.0, 455.9])) // 455.9
+
+/*
+9. Перечисления
+1) Напишите как понимаете enumerations:что это такое, в чем их смысл, зачем нужны.
+Ваше личное мнение: как и где их можно использовать?
+2) Написать по 5-10 enum разных типов + создать как можно больше своих enumerations.
+Главное, соблюдайте правила написания: понятность и заглавная буква в начале названия.
+Пропустите их через switch и распечатайте (см.видео).
+*/
+
+enum SomeEnums {
+    case pepsi, cola, lipton, fanta, bonaqua, sprite, mirinda, tarhun
+}
+
+var cocaCole = SomeEnums.cola
+
+cocaCole = .pepsi
+
+switch cocaCole {
+    case .cola: print("I like Coca Cola")
+    case .pepsi: print("I like pepsi")
+    case .lipton: print("I like lipton")
+    case .fanta: print("I like fanta")
+    case .bonaqua: print("I like bonaqua")
+    case .sprite: print("I like sprite")
+    case .mirinda: print("I like mirinda")
+    default: print("I like tarhun")
+}
+
+//3) Создайте своё резюме с использованием enum: имя, фамилия, возраст, профессия, 
+//навыки, образование, хобби и т.д. - пункты на ваше усмотрение.
+//Пропустите ваше резюме сначала через if else, затем через switch — для того, чтобы было 
+//понимание читаемости и красоты кода.
+//Дайте свою оценку первому и второму варианту написания.
+
+enum CV {
+    case firstName
+    case lastName
+    case age
+    case exp
+    case hobbie
+}
+
+struct Student {
+    let categori: CV
+    let info: String
+}
+
+let resume = [
+    Student(categori: .firstName, info: "Bob"),
+    Student(categori: .lastName, info: "Black"),
+    Student(categori: .age, info: "33"),
+    Student(categori: .exp, info: "3"),
+    Student(categori: .hobbie, info: "gym"),
+]
+
+for i in resume {
+    if i.categori == .firstName {
+        print("Name \(i.info)")
+    } else if i.categori == .lastName {
+        print("Last Name \(i.info)")
+    } else if i.categori == .age {
+        print("age \(i.info)")
+    } else if i.categori == .exp {
+        print("expiriense \(i.info)")
+    } else if i.categori == .hobbie {
+        print("hobbie \(i.info)")
+    }
+}
+
+for i in resume {
+    switch i.categori {
+        case .firstName:
+            print("Name \(i.info)")
+        case .lastName:
+            print("Last Name \(i.info)")
+        case .age: 
+            print("age \(i.info)")
+        case .exp:
+            print("expiriense \(i.info)")
+        case .hobbie: 
+            print("hobbie \(i.info)")
+        default: 
+            break
+    }
+}
+
+/*
+4) Представьте, что вы попали на завод Apple. Вам принесли MacBook, Iphone, Ipad, Apple 
+Watch и сказали: «Раскрась их в разные цвета. Джони Айву нужно вдохновение».
+
+Вы подвисли и начали раскрашивать. В итоге у вас получился красный MacBook, зеленый 
+Ipad, розовый Iphone и буро-коричневый Apple Watch. 
+Инструкция: для цветов задаём через enumeration.
+Наши девайсы располагаем в теле функции.
+Итог программы: «Айфон — розовый»
+*/
+
+enum AppleDevice {
+    case red
+    case green
+    case pink
+    case brown
+}
+
+
+
+func deviceColor(_ dev: String) -> String {
+    var col = ""
+
+        if dev == "MacBook" {
+            col = "MacBook is \(AppleDevice.red)"
+        } else if dev == "Ipad" {
+            col = "Ipad is \(AppleDevice.green)"
+        } else if dev == "Iphone" {
+            col = "Iphone is \(AppleDevice.pink)"
+        } else if dev == "Apple Watch" {
+            col = "Apple Watch is \(AppleDevice.brown)"
+        }
+    
+    return col
+}
+
+print(deviceColor("Iphone")) // Iphone is pink
