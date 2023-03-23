@@ -793,3 +793,197 @@ func deviceColor(_ dev: String) -> String {
 }
 
 print(deviceColor("Iphone")) // Iphone is pink
+
+
+//10. Классы и структуры
+//1) Написать простые классы с наследованием и без.
+
+//без наследованием
+class First {
+    let name: String
+    let age: Int
+
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age 
+    }
+
+    func printText() {
+        print("Hello, my name is \(name) and I'm \(age) year old!")
+    }
+}
+
+//с наследованием
+class Second: First {
+    override func printText () {
+        print("hello world \(name) \(age)")
+    }
+}
+
+
+let first = First(name: "Stephan", age: 12)
+first.printText() // Hello, my name is Stephan and I'm 12 year old!
+
+let second = Second(name: "Bob", age: 33) 
+second.printText() // hello world Bob 33
+
+
+/*
+2) Написать консольное приложение, в котором создать класс *House* и в нем несколько 
+свойств - *width*, *height* и несколько методов - *build* (выводит на экран умножение ширины и 
+высоты), *getWidth* и *getHeight* выводят на экран соответсвенно ширину и высоту.
+*/
+
+class Build {
+    let width: Int
+    let height: Int
+
+    init(width: Int, height: Int) {
+        self.width = width
+        self.height = height
+    }
+
+    func getWidth() {
+        print("\(width) * \(width) = \(width * width)")
+    }
+
+    func getHeight() {
+        print("\(height) * \(height) = \(height * height)") 
+    }
+}
+
+let build = Build(width: 23, height: 65)
+build.getHeight() // 65 * 65 = 4225
+build.getWidth() // 23 * 23 = 529
+
+/*
+3) Написать класс , а в нем метод который будет принимать букву (одну, может быть и типа 
+string, просто будете передавать ему одну букву) и возвращать все имена которые начинаются 
+на эту букву. 
+*/
+
+
+class Naming {
+    let letter: Character
+
+    init(letter: Character) {
+        self.letter = letter
+    }
+
+    func nameWithLetter(_ nameOfPeople: String) {
+        if nameOfPeople.contains(letter) {
+            print("Hello \(nameOfPeople): access is allowed")
+        } else {
+            print("Access is not allowed!!!")
+        }
+    }
+
+
+}
+
+let letterA = Naming(letter: "a")
+letterA.nameWithLetter("Sacha") // Hello Sacha: access is allowed
+letterA.nameWithLetter("Bob") // Access is not allowed!!!
+
+
+class AllNames {
+    let arrayOfName = [
+        "Sacha", "Macha", "Kola", "Tola", "Kain", "Mark", "Bobric", "Shobtic", "Bozz"
+    ]
+
+    func accessWithName(_ letter: Character) {
+        for i in arrayOfName {
+            if i.contains(letter) {
+                print("\(i) access is allowed")
+            } else {
+                print ("access is not allowed for \(i)")
+            }
+        }
+    }
+}
+
+let allowToTopFiles = AllNames()
+allowToTopFiles.accessWithName("z") // Bozz access is allowed
+
+
+/*
+4) Написать класс, который формирует массив учеников, сортирует и считает количество этих 
+учеников. Если учеников больше чем 30, выводится сообщение типа «в школе нет мест».
+*/
+
+
+class Pulps {
+    var arrayOfPupls = [String]()
+
+    init(arrayOfPupls: [String]) {
+        self.arrayOfPupls = arrayOfPupls
+    }
+
+    func sorfArray() {
+        print("Sorted names: \(arrayOfPupls.sorted(by: <))")
+    }
+
+    func sumOfArray() {
+        print("Count: \(arrayOfPupls.count)")
+
+         if arrayOfPupls.count > 30 {
+        print("There is no room in school!")
+    }
+    }
+    
+}
+
+let pupls = Pulps(arrayOfPupls: ["Emma", "Liam", "Olivia", "Noah", "Ava"] )
+pupls.sorfArray() // Sorted names: ["Ava", "Emma", "Liam", "Noah", "Olivia"]
+pupls.sumOfArray() // Count: 5
+
+let pupls2 = Pulps(arrayOfPupls: ["Emma", "Liam", "Olivia", "Noah", "Ava", "Ethan", "Isabella", "Oliver", "Sophia", "William", "Mia", "James", "Charlotte", "Benjamin", "Amelia", "Lucas", "Evelyn", "Henry", "Harper", "Alexander", "Abigail", "Sebastian", "Emily", "Michael", "Elizabeth", "Elijah", "Mila", "Daniel", "Ella", "Matthew", "Avery"])
+pupls2.sorfArray() // ["Abigail", "Alexander", "Amelia", "Ava", "Avery", "Benjamin", "Charlotte", "Daniel", "Elijah", "Elizabeth", "Ella", "Emily", "Emma", "Ethan", "Evelyn", "Harper", "Henry", "Isabella", "James", "Liam", "Lucas", "Matthew", "Mia", "Michael", "Mila", "Noah", "Oliver", "Olivia", "Sebastian", "Sophia", "William"]
+pupls2.sumOfArray() // Count: 31 There is no room in school!
+
+
+//let names = ["Emma", "Liam", "Olivia", "Noah", "Ava", "Ethan", "Isabella", "Oliver", "Sophia", "William", "Mia", "James", "Charlotte", "Benjamin", "Amelia", "Lucas", "Evelyn", "Henry", "Harper", "Alexander", "Abigail", "Sebastian", "Emily", "Michael", "Elizabeth", "Elijah", "Mila", "Daniel", "Ella", "Matthew", "Avery"]
+
+
+// 5) Создать 5-10 своих структур. 
+
+struct One {
+    let name: String
+    let age: Int
+}
+
+let one = One(name: "Anna", age: 13)
+print(one.name) //Anna
+print(one.age) // 13
+
+/*
+6) Сделайте список покупок! Программа записывает продукты в массив. Если вызываем 
+определённый продукт — в консоли пишем к примеру «Мёд — куплено!».
+*/
+
+struct BucketList {
+    var list = [String]()
+
+    func checkProduct(_ product: String) {
+        var bought = false
+        for i in list {
+            if i == product {
+                print("\(product) - bought")
+                bought = true
+                break
+            }
+            
+        }
+        if bought == false {
+            print("You need to buy \(product)!")
+        }
+    }
+}
+
+let listOfFruit = BucketList(list: ["apple", "pear", "watermelon", "peach", "blackberry"])
+listOfFruit.checkProduct("strawberry")
+listOfFruit.checkProduct("apple")
+
+
+
+
