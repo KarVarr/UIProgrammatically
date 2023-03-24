@@ -985,5 +985,89 @@ listOfFruit.checkProduct("strawberry")
 listOfFruit.checkProduct("apple")
 
 
+/*
+ПРОДВИНУТЫЙ УРОВЕНЬ.
+1) Консольная игра «Кролики в бочке». 
+Условия: 
+a) кроликов должно быть не меньше 9, равно как и бочек;
+б) каждый кролик и бочка — имеют свой цвет;
+в) бочка также имеет свой порядковый номер.
+Задача: если мы выбираем красную бочку 2 — фиолетовый кролик выбран и выпрыгивает из 
+бочки. Нужно добавить его в отдельный массив.
+*/
 
+
+class Game {
+    let color: String
+    
+    init(color: String) {
+        self.color = color
+    }
+}
+
+class Rabbit: Game {
+    let numberOfRabbit: Int
+
+    init(color: String, numberOfRabbit: Int) {
+        self.numberOfRabbit = numberOfRabbit
+        super.init(color: color)
+    }
+}
+
+class Barrel: Game {
+    let numberOfBarrel: Int
+
+    init(color: String, numberOfBarrel: Int) {
+        self.numberOfBarrel = numberOfBarrel
+        super.init(color: color)
+    }
+}
+
+var gameArray = [String]()
+
+let barrels = [
+    Barrel(color: "black", numberOfBarrel: 1),
+    Barrel(color: "red", numberOfBarrel: 2),
+    Barrel(color: "white", numberOfBarrel: 3),
+    Barrel(color: "pink", numberOfBarrel: 4),
+    Barrel(color: "orange", numberOfBarrel: 5),
+    Barrel(color: "yellow", numberOfBarrel: 6),
+    Barrel(color: "brown", numberOfBarrel: 7),
+    Barrel(color: "gray", numberOfBarrel: 8),
+    Barrel(color: "mint", numberOfBarrel: 9),
+]
+
+let rabbits = [
+    Rabbit(color: "red", numberOfRabbit: 1),
+    Rabbit(color: "blue", numberOfRabbit: 2),
+    Rabbit(color: "green", numberOfRabbit: 3),
+    Rabbit(color: "cyan", numberOfRabbit: 4),
+    Rabbit(color: "indigo", numberOfRabbit: 5),
+    Rabbit(color: "violet", numberOfRabbit: 6),
+    Rabbit(color: "white", numberOfRabbit: 7),
+    Rabbit(color: "black", numberOfRabbit: 8),
+    Rabbit(color: "pink", numberOfRabbit: 9),
+]
+
+
+for i in 0..<9 {
+   
+    gameArray.append("Inside the \(barrels[i].color) barrel with number \(barrels[i].numberOfBarrel) is a \(rabbits[i].color) rabbit")
+}
+
+print(gameArray) //["Inside the black barrel with number 1 is a red rabbit", "Inside the red barrel with number 2 is a blue rabbit", "Inside the white barrel with number 3 is a green rabbit", "Inside the pink barrel with number 4 is a cyan rabbit", "Inside the orange barrel with number 5 is a indigo rabbit", "Inside the yellow barrel with number 6 is a violet rabbit", "Inside the brown barrel with number 7 is a white rabbit", "Inside the gray barrel with number 8 is a black rabbit", "Inside the mint barrel with number 9 is a pink rabbit"]
+
+
+//2) С помощью функции и кортежа (tuple) двигайте наших кроликов из бочки в бочку.
+//Результат в консоли: красный кролик из розовой бочки № 1 попал в черную бочку № 4.
+
+func randomBarrel(_ rabbitColor: String, _ barrelColor: String, _ barrelNumber: Int, _ barrelColor2: String, _ barrelNumber2: Int) {
+    print("The \(rabbitColor) rabbit from a \(barrelColor) barrel #\(barrelNumber) fell into a \(barrelColor2) barrel #\(barrelNumber2)")
+}
+
+for i in 0..<9 {
+    randomBarrel(rabbits[i].color, barrels[i].color, barrels[i].numberOfBarrel, barrels[i >= 8 ? i : i + 1].color, barrels[i >= 8 ? i : i + 1].numberOfBarrel)
+}
+
+// The red rabbit from a black barrel #1 fell into a red barrel #2 etc...
 
