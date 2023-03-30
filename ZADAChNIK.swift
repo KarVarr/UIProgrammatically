@@ -1071,3 +1071,289 @@ for i in 0..<9 {
 
 // The red rabbit from a black barrel #1 fell into a red barrel #2 etc...
 
+/*
+11. Свойства экземпляра
+1. Создайте 10-20 классов с разными свойствами: хранения, вычисляемые (запись и чтение, 
+просто запись, просто чтение), ленивые, обязательно потренируйтесь с observers
+(Наблюдатели)
+*/
+
+class SomeMetod1 {
+    lazy var data: [String] = {
+    return ["Hello", "world", "!"]
+  }()
+}
+class SomeMetod2 {
+    var num: Int {
+        get {
+            let a = 4
+            let b = 5
+            return a * b
+        }
+    }
+}
+
+class SomeMetod3 {
+    var name: String
+    var age: Int
+
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+}
+
+class SomeMetod4 {
+    var myAge: Int {
+        return 2023 - 1988
+    }
+}
+
+class SomeMetod5 {
+   var radius: Double
+  
+  var area: Double {
+    return Double.pi * radius * radius
+  }
+  
+  init(radius: Double) {
+    self.radius = radius
+  }
+}
+
+class SomeMetod6 {
+    var count: Int
+
+    var isEven: Bool {
+        get {
+            return count % 2 == 0
+        }
+
+        set { 
+            if newValue {
+                count += 1
+            } else {
+                count -= 1
+            }
+        }
+
+    }
+
+    init(count: Int) {
+        self.count = count
+    }
+}
+
+class SomeMetod7 {
+  var score: Int = 0 {
+    didSet {
+      if score > oldValue {
+        print("Score increased to \(score)")
+      } else {
+        print("Score decreased to \(score)")
+      }
+    }
+  }
+  
+  func incrementScore() {
+    score += 1
+  }
+  
+  func decrementScore() {
+    score -= 1
+  }
+}
+
+
+
+
+let radius = SomeMetod5(radius: 45) // 6361.7251
+let age = SomeMetod4() // 35
+let num = SomeMetod2() // 20
+let count = SomeMetod6(count: 333) 
+let observers = SomeMetod7()
+observers.score = 5 // Score increased to 5
+
+//2. Напишите класс Калькулятор. Создать вычисляемые свойства, которые складывают, 
+//умножают, делят, вычитают. И выведите результаты в консоль(распечатайте).
+
+class Calc {
+    var a: Double 
+    var b: Double 
+
+    var sum: Double {
+        return a + b
+    }
+
+    var minus: Double {
+        return a - b
+    }
+
+    var timesBy: Double {
+        return a * b
+    }
+
+    var diveded: Double {
+        return a / b
+    }
+
+    init(a:Double, b: Double) {
+        self.a = a
+        self.b = b
+    }
+}
+
+let calculator = Calc(a:54.1, b: 94.5)
+print(calculator.sum) // 148.6
+print(calculator.minus) // -40.4
+print(calculator.timesBy) // 5112.45
+print(calculator.diveded) // 0.5724867724867725
+
+
+//3.Создайте свой AppStore! Чтобы можно было записывать и сохранять, а потом вызывать 
+//новые приложения в каждой категории. Результаты — в консоль.
+//4. Добавьте своему AppStore отзывы. К каждому приложению. В виде текстовых сообщений.
+//5. Добавьте возможность поставить оценку приложению. Но не более 5 баллов. Если кто-то 
+//пытается вставить 6 или выше — какое-нибудь сообщение.
+// 6. Подумайте, как можно добавить возможность удаления приложений из вашего AppStore.
+// Напишите в коде.
+
+class AppStore {
+  var apps: [String: [String]] = [:]
+  var reviews: [String: [String]] = [:]
+  var rates: [String: [Int]] = [:]
+
+
+    func addApp(_ app: String, toCategory category: String) {
+
+        if var categoryApps = apps[category] {
+
+        categoryApps.append(app)
+        apps[category] = categoryApps
+
+        } else {
+            apps[category] = [app]
+        }
+        reviews[app] = []
+        rates[app] = []
+    
+        print("Added \(app) to category \(category)")
+        print(apps)
+    }
+
+    func getApps(inCategory category: String) -> [String] {
+        if var categoryApps = apps[category] {
+            print("Apps in category \(category):")
+            for app in categoryApps {
+                print("- \(app)")
+            }
+            return categoryApps
+        } else {
+            print("Category \(category) not found")
+            return ["No apps"]
+        }
+    }
+
+    func addReviews(_ review: String, forApp app: String) {
+        if var appReviews = reviews[app] {
+            appReviews.append(review)
+            reviews[app] = appReviews
+        } else {
+            print("App \(app) not found")
+        }
+    }
+
+    func getReviews(inApps app: String) -> [String] {
+        if let appReviews = reviews[app] {
+            print("Reviews for \(app):")
+            for review in appReviews {
+                print(" - \(review)")
+            }
+            return appReviews
+        } else {
+            print("App \(app) not found")
+            return ["No reviews"]
+        }
+    }
+
+    func addRates(_ rate: Int, forApp app: String) {
+        if var appRates = rates[app] {
+            if rate <= 5 {
+                appRates.append(rate)
+                rates[app] = appRates
+            } else {
+                print("Value forbiden")
+            }
+            
+        } else {
+            print("App \(app) has no rate")
+        }
+    }
+
+     func removeApp(_ app: String) {
+        for (category, categoryApps) in apps {
+        if var index = categoryApps.firstIndex(of: app) {
+            apps[category]?.remove(at: index)
+            print("Removed \(app) from category \(category)")
+            break
+        }
+        }
+    
+    reviews.removeValue(forKey: app)
+    print("Removed \(app)'s reviews")
+  }
+    
+
+}
+
+
+let appStore = AppStore()
+appStore.addApp("Map",toCategory: "Navigation")  //Added Map to category Navigation
+appStore.addApp("Book", toCategory: "Education") //Added Book to category Education
+
+appStore.getApps(inCategory: "Navigation") //Apps in category Navigation:- Map
+
+appStore.addReviews("This is awesome app for you!",forApp: "Map")
+appStore.getReviews(inApps: "Map") //Reviews for Map: - This is awesome app for you!
+
+appStore.addRates(6, forApp: "Map") // Value forbiden
+appStore.addRates(4, forApp: "Map") 
+
+
+// 7. Написать 5-10 разных функций, глобальных и вложенных.
+func isEven(number: Int) -> Bool {
+    return number % 2 == 0
+}
+
+func greet(name: String) {
+    print("Hello, \(name)!")
+}
+
+func rectangleArea(length: Double, width: Double) -> Double {
+    return length * width
+}
+
+
+func areaOfCircle(radius: Double) -> Double {
+    func square(number: Double) -> Double {
+        return number * number
+    }
+    return Double.pi * square(number: radius)
+}
+
+//8. Написать 5-10 сортировок массивов и словарей, с замыканиями и без.
+
+func bubbleSort<T: Comparable>(_ array: inout [T]) {
+    guard array.count > 1 else {
+        return
+    }
+    for i in 0..<array.count {
+        for j in 1..<array.count - i {
+            if array[j] < array[j - 1] {
+                array.swapAt(j, j - 1)
+            }
+        }
+    }
+}
+
+
