@@ -1356,4 +1356,60 @@ func bubbleSort<T: Comparable>(_ array: inout [T]) {
     }
 }
 
+/*
+ПРОДВИНУТЫЙ УРОВЕНЬ.
+9. Поиграем в войнушку, как в детстве?:)
+Создайте 3 класса: Орк, Человек, Эльф. 
+У человека есть свойства (задайте на своё усмотрение), например, weaponDamage и health и 
+функция, которая рассказывает об уроне от оружия. 
+Эльф и Орк — наследники Человека. У Орка должен быть Наблюдатель, который сообщает 
+об изменении health.
+У Эльфа — тоже Наблюдатель, который сообщает об изменении weaponDamage (вроде: 
+Оружие Эльфа стало наносить больший урон! Нужно купить броню мощнее).*
+*/
+
+class Human {
+    var health: Int = 100 {
+        willSet {
+            print("Your health now \(newValue)")
+        }
+    }
+    var weaponDamage: Int = 15 {
+        willSet {
+            print("Damage now is: \(newValue)")
+        }
+    }
+
+    
+
+    func damage() {
+        print("Your damage is: \(weaponDamage)")
+    }
+}
+
+class Ork: Human {
+     override var health: Int {
+        willSet {
+            print("Ork's health now \(newValue)")
+        }
+    }
+}
+
+class Elf: Human {
+    override var weaponDamage: Int{
+        willSet {
+            print("Weapon damage now is: \(newValue). Need to buy stronger armor.")
+        }
+    }
+}
+
+let bob = Human()
+bob.health = 95
+
+let bork = Ork()
+bork.health = 70
+
+let mistrael = Elf()
+mistrael.weaponDamage = 20
+
 
