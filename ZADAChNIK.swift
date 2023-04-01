@@ -1412,4 +1412,115 @@ bork.health = 70
 let mistrael = Elf()
 mistrael.weaponDamage = 20
 
+/*
+12. Свойства типа
+1. Написать, что такое глобальные и локальные переменные (своими словами, как поняли) и 
+что такое свойства типа (в чем отличие от свойств экземпляра?)
+2. Создать глобальный массив значений (тип на ваше усмотрение)
+*/
 
+class GlobalArray {
+    static var values: [Int] = [1, 23, 4, 5, 6, 7, 345, 6, 23, 75, 435, 345]
+}
+
+/*
+Создать 2 класса:
+ первый класс сортирует массив по индексам с первого до последнего;
+ второй класс сортирует массив по индексам с последнего до первого.
+Вывести в консоль.
+*/
+
+class SortMinus {
+    func sort() {
+        let sortArr = GlobalArray.values.sorted(by: <)
+        print("array is sorted: \(sortArr)")
+    }
+}
+
+class SortPlus {
+    func sort() {
+        let sortArr = GlobalArray.values.sorted(by: >)
+        print("array is sored: \(sortArr)")
+    }
+}
+
+
+
+let min = SortMinus()
+min.sort() // array is sorted: [1, 4, 5, 6, 6, 7, 23, 23, 75, 345, 345, 435]
+let max = SortPlus() 
+max.sort() // array is sored: [435, 345, 345, 75, 23, 23, 7, 6, 6, 5, 4, 1]
+
+
+/*
+3. Создать свою компанию. В ней 2 класса-руководителя: генеральный директор и зам. по 
+продажам.
+У генерального 4 свойства. Сделать их разными: свойства типа и свойства экземпляра.
+У зама по продажам (а он класс-наследник генерального) свойства наследуются + есть ещё 2 
+своих: количество продаж и марка машины, к примеру. Все значения свойств вывести в 
+консоль.
+И третий класс — Бухгалтер. У него есть пустой метод, который принимает глобальный 
+переменный массив Работа (тип Int) и плюсует все элементы, получая сумму всех значений в 
+массиве. 
+Сумму вывести в консоль.
+*/
+
+
+
+class GeneralDirector {
+    let name: String
+    let age: Int
+    let salary: Int
+    let wife: Bool
+
+    static let companyName: String = "Boomredit"
+
+    init(name: String, age: Int, salary: Int, wife: Bool) {
+        self.name = name
+        self.age = age
+        self.salary = salary
+        self.wife = wife
+    }
+}
+
+class Manage: GeneralDirector {
+    let salesCount: Int
+    let carBrand: String
+
+    init(name: String, age: Int, salary: Int, wife: Bool, salesCount: Int, carBrand: String) {
+        self.salesCount = salesCount
+        self.carBrand = carBrand
+        super.init(name: name, age: age, salary: salary, wife: wife)
+    }
+}
+
+class Accountant {
+    func sumOfWork(_ arr: [Int]) -> Int {
+       return arr.reduce(0, +)
+    }
+}
+
+let director = GeneralDirector(name: "Bob", age: 43, salary: 200_000, wife: true)
+print("My name is \(director.name), I'm \(director.age) year old, my salary is \(director.salary), \(director.wife ? "i have a wife" : "i don't have a wife")")
+// My name is Bob, I'm 43 year old, my salary is 200000, i have a wife
+
+let manage = Manage(name: "Jack", age: 33, salary: 30_000, wife: false, salesCount: 30, carBrand: "BMW")
+print("My name is \(manage.name), I'm \(manage.age) year old, my salary is \(manage.salary), \(manage.wife ? "i have a wife" : "i don't have a wife"), also i have a car \(manage.carBrand) and my sales count is \(manage.salesCount)")
+// My name is Jack, I'm 33 year old, my salary is 30000, i don't have a wife, also i have a car BMW and my sales count is 30
+
+
+
+let accountant = Accountant()
+let work: [Int] = [100, 200, 300, 400]
+let sum = accountant.sumOfWork(work)
+print("Sum of all work: \(sum)") // Sum of all work: 1000
+
+
+/* 
+4. Создайте класс «Монстр», который будет содержать имя, породу, с какой планеты прилетел, 
+рост, вес, оружие. 
+Добавьте несколько свойств класса:
+ минимальный рост и максимальный вес монстра;
+ минимальную и максимальную мощность оружия.
+Создайте свойство, которое будет содержать количество созданных экземпляров этого класса.
+*/
