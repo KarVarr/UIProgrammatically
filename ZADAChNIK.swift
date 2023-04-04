@@ -1523,4 +1523,78 @@ print("Sum of all work: \(sum)") // Sum of all work: 1000
  минимальный рост и максимальный вес монстра;
  минимальную и максимальную мощность оружия.
 Создайте свойство, которое будет содержать количество созданных экземпляров этого класса.
+4.1. Создайте наблюдателя, который будет отслеживать наносимый ущерб от оружия монстра.
 */
+
+
+class Monster {
+    var name: String
+    var race: String
+    var planet: String
+
+    private var _height: Int
+    var height: Int {
+        get {
+            if _height < 180 {
+                return 180
+            } else {
+                return _height
+            }
+        }
+        set {
+            _height = newValue
+        }
+    }
+
+    private var _weight: Int
+    var weight: Int {
+        get {
+            if _weight > 300 {
+                return 300
+            } else {
+                return _weight
+            }
+        }
+        set {
+            _weight = newValue
+        }
+    }
+
+    private var _weaponPower: Int
+    var weaponPower: Int {
+        get {
+            if _weaponPower < 10 {
+                return 20
+            } else if _weaponPower > 50 {
+                return 50
+            } else {
+                return _weaponPower
+            }
+        }
+        set {
+            _weaponPower = newValue
+        }
+    }
+
+    var damage: Int = 0 {
+        didSet {
+            print("\(name) caused \(damage) damage.")
+        }
+    }
+
+    static var count = 0
+
+    init(name: String, race: String, planet: String, height: Int = 180, weight: Int = 300, weaponPower: Int = 20) {
+        self.name = name
+        self.race = race
+        self.planet = planet
+        self._height = height
+        self._weight = weight
+        self._weaponPower = weaponPower
+        Monster.count += 1
+    }
+}
+
+let golem = Monster(name: "Fire", race: "Golem", planet: "Earth", height: 200, weight: 290, weaponPower: 15)
+print(Monster.count) // 1
+golem.damage = 10 // Fire caused 10 damage.
