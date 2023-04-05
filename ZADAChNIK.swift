@@ -1598,3 +1598,117 @@ class Monster {
 let golem = Monster(name: "Fire", race: "Golem", planet: "Earth", height: 200, weight: 290, weaponPower: 15)
 print(Monster.count) // 1
 golem.damage = 10 // Fire caused 10 damage.
+
+
+/*13. Методы
+1) Создайте класс Программист. 
+Задайте следующие свойства: 
+a) язык программирования,
+b) библиотеки, которые программист знает,
+c) паттерны, которые программист знает,
+d) английский язык,
+e) наличие портфолио.
+
+2) Напишите метод который будет распечатывать эти свойства в консоль
+*/
+
+class Programmar {
+    var programmingLanguange: String
+    var frameforks: [String]
+    var patterns: [String]
+    var english: Bool
+    var portfolio: Bool
+
+    init(programmingLanguange: String, frameforks: [String], patterns: [String], english: Bool, portfolio: Bool) {
+        self.programmingLanguange = programmingLanguange
+        self.frameforks = frameforks
+        self.patterns = patterns
+        self.english = english
+        self.portfolio = portfolio
+    }
+
+    func allSkills() {
+        print("Programming Language: \(programmingLanguange).")
+        print( "Patterns: \(patterns.joined(separator: ", ") )")
+        print( "Frameforks: \(frameforks.joined(separator: ", ") )")
+        print("English: \(english ? "Yes" : "No").\nPortfolio: \(portfolio ? "Yes" : "No").")
+        print("")
+    }
+}
+
+let timur = Programmar(programmingLanguange: "JS", frameforks: ["React", "Tailwind"], patterns: ["MVC", "MVP"], english: false, portfolio: false)
+timur.allSkills()
+/*
+Programming Language: JS.
+Patterns: MVC, MVP
+Frameforks: React, Tailwind
+English: No.
+Portfolio: No.
+*/
+
+let bob = Programmar(programmingLanguange: "Swift", frameforks: ["UIKit", "SwiftUI", "React"], patterns: ["MVC", "MVVM"], english: true, portfolio: true)
+bob.allSkills()
+/*
+Programming Language: Swift.
+Patterns: MVC, MVVM
+Frameforks: UIKit, SwiftUI, React
+English: Yes.
+Portfolio: Yes.
+*/
+
+/*
+3) Создайте класс HRManager. 
+4) Напишите метод, который будет оценивать знания программиста и решать: брать на работу 
+или нет.
+Результат в консоли: «Не знает что такое MVC.Надо подумать.» и т. п.
+*/
+
+class HRManager {
+    func giveJob(_ patternt: [String], _ framefork: [String], _ lang: Bool, _ port: Bool) {
+      
+            if !patternt.contains("MVC") {
+                print("No MVC on the CV. Next pls!")
+            } else if !framefork.contains("React") {
+                print("Very vary bad, you need learn React and then come to us!")
+            } else if !lang {
+                print("Not good. We use only English, go home!")
+            } else if !port {
+                print("You must make CV!")
+            } else {
+                print("Well done, we hier you!")
+            }
+    }
+}
+
+let managerApple = HRManager()
+managerApple.giveJob(timur.patterns, timur.frameforks, timur.english, timur.portfolio) // Not good. We use only English, go home!
+
+managerApple.giveJob(bob.patterns, bob.frameforks, bob.english, bob.portfolio) // Well done, we hier you!
+
+/*
+ПРОДВИНУТЫЙ УРОВЕНЬ.
+1) Создайте наблюдателя, который отслеживает: прошёл ли программист собеседование.
+И если нет — добавьте этого программиста в массив.
+*/
+
+
+class ProgrammerIsPass {
+    var isPassing = [Programmar]()
+
+    func resultOfInterview(_ programmar: Programmar, _ passOrNot: Bool ) {
+        if passOrNot {
+            print("The pass the interview")
+        } else {
+            isPassing.append(programmar)
+            print("Sorry but you need more practice")
+        }
+    }
+}
+
+let getJob = ProgrammerIsPass()
+getJob.resultOfInterview(bob, true) // The pass the interview
+getJob.resultOfInterview(timur, false) // Sorry but you need more practice
+
+
+
+
