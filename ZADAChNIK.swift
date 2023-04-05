@@ -1710,5 +1710,158 @@ getJob.resultOfInterview(bob, true) // The pass the interview
 getJob.resultOfInterview(timur, false) // Sorry but you need more practice
 
 
+/*
+14. Индексы
+1) Создайте класс Карта. Задайте ему набор координат. Задайте каждой координате название. 
+К примеру: горы, река, замок, пустошь, неизвестная местность.
+2) Задайте каждой координате окраску. 
+
+*/
+
+
+class Map {
+    var coordinate: Double
+    var name: String
+    var color: String
+
+    init(coordinate: Double, name: String, color: String) {
+        self.coordinate = coordinate
+        self.name = name
+        self.color = color
+    }
+}
+
+class NewMap {
+    var map = [Map]()
+
+    func addMap(_ newMap: Map) {
+         map.append(newMap)
+    }
+}
+
+let firstPlace = Map(coordinate: 23.3, name: "River", color: "Blue")
+let secondPlace = Map(coordinate: 67.0, name: "Mountain", color: "Gray")
+let thirdPlace = Map(coordinate: 0.8, name: "Castle", color: "Brown")
+let fourthPlace = Map(coordinate: 96.3, name: "Dead Pass", color: "Yellow")
+let fifthPlace = Map(coordinate: 10.4, name: "Unknown", color: "Red")
+let sixthPlace = Map(coordinate: 45.6, name: "Forest", color: "Green")
+
+let newMapAddToArray = NewMap()
+newMapAddToArray.addMap(firstPlace)
+newMapAddToArray.addMap(secondPlace)
+newMapAddToArray.addMap(thirdPlace)
+newMapAddToArray.addMap(fourthPlace)
+newMapAddToArray.addMap(sixthPlace)
+
+for i in newMapAddToArray.map {
+    print("According to these coordinates \(i.coordinate) is \(i.color) \(i.name) ")
+}
+/*
+According to these coordinates 23.3 is Blue River 
+According to these coordinates 67.0 is Gray Mountain 
+According to these coordinates 0.8 is Brown Castle 
+According to these coordinates 96.3 is Yellow Dead Pass 
+According to these coordinates 45.6 is Green Forest
+*/
+
+/*
+3) Создайте класс персонажа, который будет двигаться по координатам.
+4) Создайте проверку: если персонаж попал, к примеру, в красные горы, то выводите 
+сообщение на консоль.
+*/
+
+class Character {
+    var name: String
+    var characterCoordinate: Double
+
+    init(name: String, characterCoordinate: Double){
+        self.name = name
+        self.characterCoordinate = characterCoordinate
+    }
+
+    func move(_ map: Map) {
+        if characterCoordinate == map.coordinate {
+            print("\(name) was near \(map.color) \(map.name)")
+        }
+    }
+}
+
+let jim = Character(name: "Jim", characterCoordinate: 67.0)
+
+jim.move(secondPlace) // Jim was near Gray Mountain
+
+/*
+ПРОДВИНУТЫЙ УРОВЕНЬ.
+1) Создайте своё войско, которые будут располагаться каждый на определённой координате. 
+2) Создайте наблюдателей, которые будут отслеживать: если персонаж перешёл на клетку, 
+которая занята другим персонажем — выводите сообщение, например: «Орки объявили войну 
+Эльфам».
+3) Добавьте алгоритм, который отслеживает чтобы нельзя было занять чужую координату.
+*/
+
+
+
+class Alliance {
+    var race: String
+    var coor: Int
+
+    init(race: String, coor: Int) {
+        self.race = race
+        self.coor = coor
+    }
+
+    
+}
+
+
+class Alliances {
+    var alliance = [Alliance]()
+
+    func war(_ alli: Alliance, _ defeat: Alliance) {
+        if alli.coor == defeat.coor {
+            print("\(alli.race) have declared war on \(defeat.race)")
+        } else {
+            print("There is no war")
+        }
+    }
+
+    func newland(wantToTake aggressiveRace: Alliance, peacefulКace: Alliance) {
+        if aggressiveRace.coor == peacefulКace.coor {
+            print("It is forbidden to take other people's lands, for attacking neighbors you will go to null lands")
+            aggressiveRace.coor = 0
+        } else {
+            print("And they lived happily ever after")
+        }
+    }
+
+    
+}
+
+let orc = Alliance(race: "Orc", coor: 2)
+let human = Alliance(race: "Human", coor: 5)
+let elf = Alliance(race: "Elf", coor: 8)
+let ghom = Alliance(race: "Ghom", coor: 4)
+
+let allRace = Alliances()
+allRace.alliance.append(orc)
+allRace.alliance.append(human)
+allRace.alliance.append(elf)
+allRace.alliance.append(ghom)
+
+allRace.war(orc, ghom) // There is no war
+orc.coor = 4
+allRace.war(orc, ghom) // Orc have declared war on Ghom
+
+allRace.newland(wantToTake: elf, peacefulКace: human) // And they lived happily ever after
+allRace.newland(wantToTake: orc, peacefulКace: ghom) // It is forbidden to take other people's lands, for attacking neighbors you will go to null lands
+print(orc.coor) // 0
+
+
+
+
+
+
+
+
 
 
