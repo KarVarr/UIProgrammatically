@@ -1857,6 +1857,147 @@ allRace.newland(wantToTake: orc, peacefulКace: ghom) // It is forbidden to take
 print(orc.coor) // 0
 
 
+/*
+15. ARC
+1) Создайте класс Охранник. Задайте ему свойство: посетитель. Создайте несколько 
+экземпляров, которые не имеют ссылок на класс Охранник.
+2) Вызовите у Охранника конструктор (init) и получите сообщение в консоль о том, что 
+посетитель по имени «Иван» пришёл.
+3) Сделайте так, чтобы посетитель ушёл, вызвав деконструктор(deinit).
+4) Есть Компания, у неё есть директор, зам.директора и менеджеры по продажам.
+*/
+
+class Guard {
+    var client: String
+
+    init(client: String){
+        self.client = client
+        if client == "Ivan" {
+            print("Ivan is arrived")
+        }
+    }
+
+    deinit {
+        if client == "Ivan" {
+            print("Ivan left")
+        }
+    }
+}
+
+_ = Guard(client: "Bob")
+_ = Guard(client: "Jack")
+_ = Guard(client: "Ivan") // Ivan is arrived, Ivan left
+
+
+/*
+4) Есть Компания, у неё есть директор, зам.директора и менеджеры по продажам.
+Пояснение: Директор — родительский класс, зам.директора его наследник, менеджеры —
+наследники зам.директора. 
+5) Менеджеры по продажам должны посылать друг другу сообщения. Вроде: «как продажи?» 
+или «Передай мне отчет».
+6) Реализуйте возможность у Менеджеров спрашивать Зам. директора про зарплату.
+7) Реализуйте Зам. директору возможность отправлять отчет Директору.
+*/
+
+class Director {
+    var name: String
+    var age: Int
+    var raport: String = ""
+
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+}
+
+class DeputyOfDirector: Director {
+    func raport(_ rap: inout String, _ newString: String) {
+        rap = newString
+        print("Here is raport: \(newString)")
+    }
+}
+
+class Manager1: DeputyOfDirector {
+
+    
+    func message(_ nameOfManage: String) {
+        print("\(nameOfManage) рow are the sales?")
+    }
+
+    func salary(_ nameOfDeputy: String) {
+        print("\(nameOfDeputy) when will you raise your salary?")
+    }
+}
+
+class Manager2: Manager1 {
+
+}
+
+var director = Director(name: "Bob", age: 42)
+var deputyOfDirector = DeputyOfDirector(name: "Steven", age: 39)
+var manager1 = Manager1(name: "Sam", age: 30)
+var manager2 = Manager2(name: "Rem", age: 31)
+
+manager1.message(manager2.name) // Rem рow are the sales?
+manager2.salary(deputyOfDirector.name) // Steven when will you raise your salary?
+deputyOfDirector.raport(&director.raport, "sales increased tenfold") // Here is raport: sales increased tenfold
+print(director.raport) // sales increased tenfold
+
+
+/*
+ПРОДВИНУТЫЙ УРОВЕНЬ.
+1) Компания может выводить в консоль список всех сотрудников. 
+2) Директор может обращаться к Компании и получить список всех сотрудников.
+3) Реализуйте возможность уволить сотрудника (см.deinit)
+*/
+
+class Company {
+    var employees = [Employee]()
+   
+    var count: Int  {
+        return employees.count
+    }
+
+}
+
+class Employee {
+    var name: String
+    var age: Int
+    weak var company: Company?
+
+    init(name: String, age: Int, company: Company) {
+        self.name = name
+        self.age = age
+        self.company = company
+        company.employees.append(self)
+    }
+
+    deinit {
+        print("\(name) has been fired.")
+        company?.employees.removeAll { $0 === self }
+    }
+}
+
+class CompanyDirector {
+    func allEmployeesCount(_ numOfEmployees: Int) {
+        print("There are \(numOfEmployees) employees")
+    }
+}
+
+let apple = Company()
+let directorOfApple = CompanyDirector()
+let employee1 = Employee(name: "Bob", age: 34, company: apple)
+let employee2 = Employee(name: "Jack", age: 23, company: apple)
+let employee3 = Employee(name: "Mark", age: 18, company: apple)
+let employee4 = Employee(name: "Stive", age: 51, company: apple)
+
+
+print(apple.employees)
+print(apple.count) // 4
+directorOfApple.allEmployeesCount(apple.count) // There are 4 employees
+
+employee2.company = nil
+print(apple.employees)
 
 
 
