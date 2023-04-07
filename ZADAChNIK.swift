@@ -2000,6 +2000,169 @@ employee2.company = nil
 print(apple.employees)
 
 
+/*
+16. ООП Парадигма
+1) Создайте класс IT-компания. У него есть свойства: имя, должность, опыт, зарплата. И метод: 
+workHard. 
+Соответственно, экземпляры вашего класса должны каждый делать что-то своё: программист 
+кодит, дизайнер создаёт дизайны, тестировщик — тестирует, проект-менеджер общается с 
+клиентами.
+Создайте методы writeCode, testABug, createAdesign,CallToClients.
+Сообщаем их действия в консоль. 
+2) Создайте классу свойство bugs типа Int. Создайте методы СatchBugs, FixBugs. 
+3) Тестировщик вызывает метод СatchBugs, который прибавляет 1 к свойству bugs.
+4) Программист вызывает метод CreateBugs, который отнимает от bugs 1 каждый раз при 
+вызове.
+5) Отследите момент, когда багов стало больше и пусть тестировщик скажет: отправил на 
+исправление.
+6) Отследите момент когда багов стало меньше и сделайте соответствующее объявление от 
+программиста.
+*/
+
+
+
+class ItCompany {
+    var name: String
+    var position: String
+    var experience: Int 
+    var salary: Int 
+
+    var bugs: Int = 0 {
+        didSet {
+            if bugs > 6 {
+                print("Tester: Sent to correction!")
+            } else if bugs > 3 && bugs < 6{
+                print("Programmer: Now I can work again!")
+            }
+        }
+    }
+
+    init(name: String, position: String, experience: Int, salary: Int) {
+        self.name = name 
+        self.position = position
+        self.experience = experience
+        self.salary = salary
+    }
+
+    func workHard() {
+        print("\(position) \(name) is working hard!")
+    }
+}
+
+class Programmer: ItCompany {
+    func writeCode(_ arrayOfDesigns: inout  [String]) {
+        
+        if !arrayOfDesigns.isEmpty {
+            arrayOfDesigns.removeFirst()
+        } else {
+            print("Hi! I'am \(position) \(name) and I'm writing code!")
+            print("The project is ready. I send to the tester")
+        }
+    }
+
+    
+    func fixBugs(_ bug: Int) {
+        print("I fixed it!")
+        bugs -= 1
+    }
+}
+
+class Designer: ItCompany {
+    var names = ["Bob", "Alice", "Charlie", "David", "Emily", "Frank", "Gina", "Harry", "Isabelle", "Jack"]
+
+    
+    func createAdesign() {
+        print("Hi! I'am \(position) \(name) and I'm creating a design!")
+    }
+
+   override init(name: String, position: String, experience: Int, salary: Int) {
+       super.init(name: name, position: position, experience: experience, salary: salary)
+       self.name = names.randomElement() ?? "My Secret Name"
+   }
+}
+
+class Tester: ItCompany {
+    func testABug() {
+        print("Hi! I'am \(position) \(name) and I'm testing code!")
+    }
+
+    func catchBugs() {
+        print("I catch it!")
+        bugs += 1
+    }
+}
+
+class ProjectManager: ItCompany {
+    func callToClients() {
+        print("Hi! I'am \(position) \(name) and I'm calling to clients!")
+    }
+}
+
+
+let programmer1 = Programmer(name: "John", position: "Programmer", experience: 3, salary: 3000)
+let tester1 = Tester(name: "Mary", position: "Tester", experience: 2, salary: 2500)
+let designer1 = Designer(name: "Lisa", position: "Designer", experience: 1, salary: 2000)
+let projectManager1 = ProjectManager(name: "Bob", position: "Project Manager", experience: 5, salary: 4000)
+tester1.catchBugs() // I catch it!
+
+/* 
+7) Создайте класс-наследник IT-компании.Назовите его Designers. Создайте ему ему массив 
+prototypes. Сделать проверку: если он пустой, добавлять туда значения. В методе 
+createAdesign.
+8) Если в prototypes значений стало больше чем 10 — сделать сообщение: «Дизайн 
+готов.Передаю в работу программисту».
+9) Каждый раз, когда вызывается метод writeCode — количество значений в массиве prototypes 
+уменьшается на 1.
+10) После того, как из prototypes уберёте все значения — программист выводит сообщение: 
+«Проект готов. Отправляю тестировщику».
+11) Добавьте дизайнеру следующее: когда пытаетесь присвоить ему имя, он его постоянно 
+меняет на какое-то своё.
+*/
+
+
+class Designers: ItCompany {
+    var prototypes: [String] = [String]()
+
+    func create(_ newPrototype: String) {
+        if prototypes.count < 9{
+            prototypes.append(newPrototype)
+        } else {
+            print("The design is ready. Handing over to a programmer")
+        }
+    }
+}
+
+
+let designers = Designers(name: "Group of designers", position: "Designers", experience: 10, salary: 100000) 
+designers.create("UI")
+designers.create("UX")
+designers.create("Color")
+designers.create("Font")
+designers.create("Style")
+designers.create("Mobile")
+designers.create("Web")
+designers.create("B&W")
+designers.create("Responsive")
+designers.create("Best")
+designers.create("Fast")
+
+print(designers.prototypes.count) // 9
+programmer1.writeCode(&designers.prototypes)
+print(designers.prototypes.count) // 8
+programmer1.writeCode(&designers.prototypes)
+programmer1.writeCode(&designers.prototypes)
+programmer1.writeCode(&designers.prototypes)
+programmer1.writeCode(&designers.prototypes)
+programmer1.writeCode(&designers.prototypes)
+programmer1.writeCode(&designers.prototypes)
+programmer1.writeCode(&designers.prototypes)
+programmer1.writeCode(&designers.prototypes)
+print(designers.prototypes.count) // 0
+programmer1.writeCode(&designers.prototypes) // The project is ready. I send to the tester
+
+
+print(designer1.name) // Isabelle
+print(designer1.name) // Harry etc.
 
 
 
