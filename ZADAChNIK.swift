@@ -2164,7 +2164,170 @@ programmer1.writeCode(&designers.prototypes) // The project is ready. I send to 
 print(designer1.name) // Isabelle
 print(designer1.name) // Harry etc.
 
+/*
+17. Опциональные цепочки
+1) Создать класс Животное. Ему назначьте свойства: собака, кошка, свинья, корова, курица, 
+лев, ягуар и т.п. 
+Пусть их будет не меньше 20.
+2) Каждому животному задайте тип: домашнее, дикое, опасное. 
+3) Создайте метод, который фильтрует животных по типу и добавляет их в определённый 
+массив
+*/
 
+class Animal {
+    var kind: String
+    var type: String
+    
+
+    init(kind: String, type: String) {
+        self.kind = kind
+        self.type = type
+    }
+
+    
+    
+}
+
+class FilteredTypes {
+    var homemade = [String]()
+    var wild = [String]()   
+    var dangerous = [String]()
+
+    func filter(_ kind: String ,ofType type: String) {
+        if type == "homemade" {
+            homemade.append(kind)
+        } else if type == "wild" {
+            wild.append(kind)
+        } else {
+            dangerous.append(kind)
+        }
+    }
+}
+
+let filterOfType = FilteredTypes()
+let dog = Animal(kind: "Dog", type: "homemade")
+let cat = Animal(kind: "Cat", type: "homemade")
+let pig = Animal(kind: "Pig", type: "homemade")
+let cow = Animal(kind: "Cow", type: "homemade")
+let lion = Animal(kind: "Lion", type: "dangerous")
+let jaguar = Animal(kind: "Jaguar", type: "dangerous")
+let parrot = Animal(kind: "Parrot", type: "wild")
+let eagle = Animal(kind: "Eagle", type: "dangerous")
+let monkey = Animal(kind: "Monkey", type: "wild")
+let kangaroo = Animal(kind: "Kangaroo", type: "wild")
+filterOfType.filter(dog.kind ,ofType: dog.type)
+filterOfType.filter(cow.kind ,ofType: cow.type)
+filterOfType.filter(parrot.kind ,ofType: parrot.type)
+filterOfType.filter(eagle.kind ,ofType: eagle.type)
+filterOfType.filter(kangaroo.kind ,ofType: kangaroo.type)
+print(filterOfType.homemade) // ["Dog", "Cow"]
+print(filterOfType.wild) // ["Parrot", "Kangaroo"]
+print(filterOfType.dangerous) // ["Parrot", "Kangaroo"]
+
+
+
+/*
+4) Создайте класс Фермер. Ему назначьте свойства: имя, должность, зарплата.
+5) Создайте 10-20 фермеров. Каждому назначьте разные имена, должности и зарплаты.
+Посчитайте, кто из них получает наибольшую зарплату.
+*/
+
+enum Gender {
+    case male
+    case femail
+}
+
+class Farmer {
+    var name: String
+    var post: String
+    var salary: Double
+    var sex: Gender
+
+    
+
+    init(name: String, post: String, salary: Double, sex: Gender) {
+        self.name = name
+        self.post = post
+        self.salary = salary
+        self.sex = sex
+    }
+
+    func hardWork() {
+        print("I work into field")
+    }
+
+    func homeWork() {
+        print("i work into house")
+    }
+}
+
+
+
+let farmer1 = Farmer(name: "John", post: "Farm Manager", salary: 54.000, sex: .male)
+let farmer2 = Farmer(name: "Mary", post: "Dairy Manager", salary: 51.000, sex: .femail)
+let farmer3 = Farmer(name: "Steve", post: "Crop Manager", salary: 45.000, sex: .male)
+let farmer4 = Farmer(name: "Emma", post: "Poultry Manager", salary: 39.000, sex: .femail)
+let farmer5 = Farmer(name: "David", post: "Horticulturist", salary: 65.000, sex: .male)
+let farmer6 = Farmer(name: "Jessica", post: "Animal Husbandry Specialist", salary: 62.000, sex: .femail)
+let farmer7 = Farmer(name: "Michael", post: "Farm Equipment Technician", salary: 57.000, sex: .male)
+let farmer8 = Farmer(name: "Samantha", post: "Greenhouse Manager", salary: 48.000, sex: .femail)
+let farmer9 = Farmer(name: "Brian", post: "Agribusiness Consultant", salary: 77.000, sex: .male)
+let farmer10 = Farmer(name: "Emily", post: "Sustainable Agriculture Advocate", salary: 75.000, sex: .femail)
+
+var allSalaries = [Farmer]()
+
+allSalaries.append(farmer1)
+allSalaries.append(farmer2)
+allSalaries.append(farmer3)
+allSalaries.append(farmer4)
+allSalaries.append(farmer5)
+allSalaries.append(farmer6)
+allSalaries.append(farmer7)
+allSalaries.append(farmer8)
+allSalaries.append(farmer9)
+allSalaries.append(farmer10)
+
+var maxSalaryFarmer: Farmer? = nil
+for farmer in allSalaries {
+    if maxSalaryFarmer == nil || farmer.salary > maxSalaryFarmer!.salary {
+        maxSalaryFarmer = farmer
+    }
+}
+
+if let maxSalaryFarmer = maxSalaryFarmer {
+    print("\(maxSalaryFarmer.name) has max salary: $\(maxSalaryFarmer.salary)") // Brian has max salary: $77.0
+}
+
+/*
+6) С помощью перечислений распределите их по половому признаку. Создайте метод, который 
+фильтрует женщин и мужчин и добавляет в разные массивы.
+Массивы распечатать в консоль.
+7) У мужчин вызывать метод hardWork, у женщин — homeWork.
+HardWork будет просто говорить: «работаю в поле», homeWork - «Убираю в доме».
+*/
+
+
+var maleFarmers = [Farmer]()
+var femaleFarmers = [Farmer]()
+
+for fermer in allSalaries {
+    if fermer.sex == .male {
+        maleFarmers.append(fermer)
+    } else {
+        femaleFarmers.append(fermer)
+    }
+}
+
+
+for man in maleFarmers {
+    print("This men work: \(man.name)")
+    man.hardWork()
+}
+
+for woman in femaleFarmers {
+    print("This woman work at home: \(woman.name)")
+    woman.homeWork()
+}
 
 
 
