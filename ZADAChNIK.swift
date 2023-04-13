@@ -2385,5 +2385,47 @@ print("Hunter \(hunterJack.name) and his speciality \(hunterJack.speciality)") /
 print("Hunter \(hunterMark.name) and his speciality \(hunterMark.speciality)") // Hunter Mark and his speciality Bird hunter
 print("Hunter \(hunterSenna.name) and his speciality \(hunterSenna.speciality)") // Hunter Senna and his speciality Widl animal hunter
 
+/*
+18. Обработка ошибок
+1) Создайте класс Системный Администратор. 
+Задайте ему свойства: Вирус, Нет сети, ddos-атака
+2) Создайте метод, который будет ловить ошибки. Сделайте так, чтобы был выход из метода 
+раньше, чем будут «пойманы» ошибки.
+3) Сделайте запрет на передачу ошибок.
+*/
 
+class SystemAdmin {
+    var hasVirus = false
+    var noNetwork = true
+    var ddosAttack = false
+    
+    func catchErrors() throws {
+        guard !hasVirus else {
+            throw SystemAdminError.hasVirus
+        }
+        
+        guard !noNetwork else {
+            throw SystemAdminError.noNetwork
+        }
+        
+        guard !ddosAttack else {
+            throw SystemAdminError.ddosAttack
+        }
+        
+        print("No errors found")
+    }
+}
+
+enum SystemAdminError: Error {
+    case hasVirus
+    case noNetwork
+    case ddosAttack
+}
+
+do {
+    let admin = SystemAdmin()
+    try admin.catchErrors()
+} catch {
+    print("Error caught: \(error)") // Error caught: noNetwork
+}
 
