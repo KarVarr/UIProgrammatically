@@ -2329,6 +2329,61 @@ for woman in femaleFarmers {
     woman.homeWork()
 }
 
+/*
+ПРОДВИНУТЫЙ УРОВЕНЬ.
+8) Создайте класс Охотник. У него создайте метод, который будет искать опасных и диких 
+животных (см. Задание 1.2) и «убивать» их. 
+Результат в консоли: «Охотник убил змею».Соответственно, количество элементов массива 
+сокращается.
+9) Отследите: если массив с дикими животными больше не содержит значений, добавляйте в 
+массив с опасными животными новые значения.
+*/
+
+class Hunter {
+    var name: String
+    var speciality: String
+
+
+    var animals = ["lion", "tiger", "bufallo", "rabit", "deer", "eagle", "bear"]
+
+    init(name: String, speciality: String) {
+        self.name = name
+        self.speciality = speciality
+
+        if animals.count == 0 {
+            animals = ["dragon", "rino", "rat", "loin", "human", "sealion"]
+        }
+    }
+
+    func hunt(findSome animal: String)  {
+        if animals.contains(animal) {
+            print("You killed the \(animal)")
+            animals = animals.filter{$0 != animal}
+        } else {
+            print("There is no \(animal)")
+        } 
+        
+    }
+}
+
+
+let hunterBob = Hunter(name: "Bob", speciality: "Animal hunter")
+print(hunterBob.animals) // ["lion", "tiger", "bufallo", "rabit", "deer", "eagle", "bear"]
+hunterBob.hunt(findSome: "tiger") // You killed the tiger
+print(hunterBob.animals) // ["lion", "bufallo", "rabit", "deer", "eagle", "bear"]
+
+/*
+10) Создайте Охотнику свойства: имя и специальность. К примеру, змеелов. Создайте 5-7 
+таких охотников, разных специальностей. Распечатайте в консоль.
+*/
+
+let hunterJack = Hunter(name: "Jack", speciality: "Fish hunter")
+let hunterMark = Hunter(name: "Mark", speciality: "Bird hunter")
+let hunterSenna = Hunter(name: "Senna", speciality: "Widl animal hunter")
+print("Hunter \(hunterBob.name) and his speciality \(hunterBob.speciality)") //Hunter Bob and his speciality Animal hunter
+print("Hunter \(hunterJack.name) and his speciality \(hunterJack.speciality)") // Hunter Jack and his speciality Fish hunter
+print("Hunter \(hunterMark.name) and his speciality \(hunterMark.speciality)") // Hunter Mark and his speciality Bird hunter
+print("Hunter \(hunterSenna.name) and his speciality \(hunterSenna.speciality)") // Hunter Senna and his speciality Widl animal hunter
 
 
 
