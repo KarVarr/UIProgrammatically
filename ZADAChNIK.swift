@@ -2429,3 +2429,124 @@ do {
     print("Error caught: \(error)") // Error caught: noNetwork
 }
 
+/*
+19. Проверка и приведение типов
+1) Создайте класс Планета. Задайте ему 3 свойства: название, размер, цвет.
+2) Создайте класс Марс. Сделайте его наследников класса Планета. Скройте(инкапсулируйте) 
+его цвет и добавьте новое свойство: население.
+3) Марсу сделайте метод changeSize. С таким условием, что каждый раз когда этот метод 
+вызывается — размер Марса увеличивается в 2 раза.
+*/
+
+class Planet {
+    var name: String
+    var size: Int
+    private var color: String
+
+    init(name: String, size: Int, color: String) {
+        self.name = name
+        self.size = size
+        self.color = color
+    }
+
+}
+
+class Mars: Planet {
+    var population: Int
+
+    init(population: Int,name: String, size: Int, color: String) {
+        self.population = population
+        super.init(name: name, size: size, color: color)
+    }
+
+    func changeSize() {
+            size *= 2
+    }
+}
+
+let mars = Mars(population: 0, name:"Mars", size: 4, color: "Red" )
+print(mars.size) // 4
+mars.changeSize()
+print(mars.size) // 8
+
+/*
+4) Создайте класс Сатурн. Добавьте ему свойство Кольца типа Bool. Выполните условие: когда 
+размер планеты превышает 30, кольца видны, если меньше 10 — кольца не видны.
+*/
+
+
+class Saturn: Planet {
+    var rings: Bool {
+        if size >= 30 {
+            print("You can see the rings")
+            return true
+        } else { 
+            print("You can't see the rings!")
+            return false
+        }
+    }
+
+
+}
+
+let saturn = Saturn(name: "Saturn", size: 31, color: "Orange")
+
+print(saturn.rings) //You can see the rings
+
+/*
+5) Создайте 5-6 экземпляров каждого класса. Добавьте их в массив и проверьте: какого типа 
+все эти экземпляра.
+*/
+
+var planerArray: [Planet] = [mars, saturn] // type of: Array<Planet>
+
+print(type(of: planerArray[0])) //  Mars
+print(type(of: planerArray[1])) //  Saturn
+
+
+/*
+ПРОДВИНУТЫЙ УРОВЕНЬ.
+1) Создайте класс Темная планета. Сделайте так, чтобы он уничтожал все другие планеты.
+Примечание: вспоминаем ARC
+*/
+
+class DarkPlanet: Planet {
+
+     func destroyAll(_ planets: inout  [Planet]) {
+            planets = []
+        }
+    
+}
+
+print(planerArray) // [a.Mars, a.Saturn]
+let darkPlanet = DarkPlanet(name: "Dark Planet", size: 100, color: "Black")
+darkPlanet.destroyAll(&planerArray)
+print(planerArray) // []
+
+
+/*
+2) Создайте класс Марсианин. Сделайте его наследником класса Марс. Создайте ему 
+свойство humanoid.
+3) Сделайте проверку типа: если он принадлежит классу Марс, то прибавьте к humanoid 1 и 
+добавьте в массив
+*/
+
+class Martian: Mars {
+    var humanoid: Int
+
+    init(humanoid: Int,population: Int,name: String, size: Int, color: String) {
+        self.humanoid = humanoid
+        super.init(population: population, name: name, size: size, color: color)
+    }
+}
+
+let martian = Martian(humanoid: 0,population: 0, name: "Mars", size: 4, color: "red")
+print(type(of: martian)) // Martian
+
+if martian is Mars {
+    martian.humanoid += 1
+} else {
+    print("there is no humanoids on the Mars")
+}
+
+print(martian.humanoid) // 1
