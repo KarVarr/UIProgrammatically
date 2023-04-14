@@ -2550,3 +2550,65 @@ if martian is Mars {
 }
 
 print(martian.humanoid) // 1
+
+
+/*
+21. Протоколы
+1) Создайте протокол Собеседование. У него есть свойство: фамилия. И методы: 
+successOfinterview и failureOfInterview.
+2) Создайте класс Программист. У него задайте свойства: skill типа String и inSearchOfJob типа 
+Bool. Сделайте их опциональными. Программисту подключите протокол Собеседование.
+3) Добавьте 2 массива, в которые будете добавлять программистов. Вроде okArray и failArray.
+4) В методе successOfinterview сделайте проверку свойства inSearchOfJob. Если true —
+выводите сообщение «Подходит» и добавляйте имя в массив + сортируйте его по алфавиту.
+5) В методе failureOfInterview просто выводите сообщение: «Не подходит»
+*/
+
+protocol Interview {
+    var lastName: String { get set }
+
+    func successOfInterview(_ arr: inout [String]) 
+
+    func failureOfInterview() 
+}
+
+class Programmer: Interview {
+    var lastName: String
+
+    var skill: String?
+    var inSearchOfJob: Bool?
+
+    init(lastName:String) {
+        self.lastName = lastName
+    }
+
+    func successOfInterview(_ arr: inout [String]) {
+        if inSearchOfJob ?? true {
+            print("Подходит")
+            arr.append(lastName)
+        } 
+    }
+
+    func failureOfInterview() {
+        if inSearchOfJob == false {
+            print("Не подходит")
+        }
+    }
+}
+
+var okArray: [String] = [String]()
+var failArray: [String] = [String]()
+
+let backend = Programmer(lastName: "Blackback")
+backend.skill = "JS"
+backend.inSearchOfJob = true
+backend.successOfInterview(&okArray) // Подходит
+backend.failureOfInterview() // -
+
+let frontend = Programmer(lastName: "Frontend")
+frontend.skill = "JS"
+frontend.inSearchOfJob = false
+frontend.successOfInterview(&okArray) // 
+frontend.failureOfInterview() // - Не подходит
+
+print(okArray) // ["Blackback"]
