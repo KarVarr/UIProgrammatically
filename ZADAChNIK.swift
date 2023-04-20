@@ -2604,11 +2604,98 @@ backend.skill = "JS"
 backend.inSearchOfJob = true
 backend.successOfInterview(&okArray) // Подходит
 backend.failureOfInterview() // -
-
 let frontend = Programmer(lastName: "Frontend")
 frontend.skill = "JS"
 frontend.inSearchOfJob = false
 frontend.successOfInterview(&okArray) // 
 frontend.failureOfInterview() // - Не подходит
-
 print(okArray) // ["Blackback"]
+
+
+/*
+6) Добавьте наблюдателя, который будет отслеживать как добавляются подходящие 
+программисты.
+7) Добавьте протокол Техническое собеседование (наследник Собеседования). Добавьте ему
+свойство isSuitable типа Bool и методы: successTechnicalOfinterview и failureTechnicalOfInterview. 
+8) successTechnicalOfinterview проверяет inSearchOfJob и skill: если inSearchOfJob == true, а
+skill == «ios», то добавляет этого программиста в массив okArray. И выводит сообщение об 
+успешно пройденном собеседовании. «Вы нам подходите. Ждите оффер».
+9) failureTechnicalOfInterview просто выводит сообщение «Нам жаль, но программист(имя) не 
+прошёл собеседование».
+10) Создайте класс Тестировщик. Подключите ему протоколы Собеседование, Техническое 
+собеседование. Также добавьте свойство exp(опыт) типа Int и имя типа String.
+11) Сделайте простую проверку: если опыт больше 3 лет — вызвать метод successOfinterview, 
+который распечатает в консоль: «Тестировщик Егор допущен к техническому собеседованию».
+А если меньше 3 лет - в методе failureOfInterview просто выводите сообщение: «Егор не 
+подходит»
+*/
+
+protocol TechnicalInterview: Interview {
+    var isSuitable: Bool {get set}
+
+    func successTechnicalOfinterview(_ searchJob: Bool, _ skills: String)
+    func failureTechnicalOfInterview()
+}
+
+class QA: TechnicalInterview {
+    var lastName: String
+    var isSuitable: Bool
+    var skill: String?
+    var inSearchOfJob: Bool?
+    var exp: Int = 0
+
+    init(lastName: String, isSuitable: Bool) {
+        self.lastName = lastName
+        self.isSuitable = isSuitable
+    }
+
+    func successOfInterview(_ arr: inout [String]) {
+        if inSearchOfJob ?? true {
+            print("Подходит")
+            arr.append(lastName)
+        } else {
+            failureOfInterview()
+        }
+    }
+
+    func failureOfInterview() {
+        print("Не подходит")
+    }
+
+    
+
+    func successTechnicalOfinterview(_ searchJob: Bool, _ skills: String) {
+        if searchJob == true && skills == "iOS" {
+            print("Вы нам подходите. Ждите оффер")
+            okArray.append(lastName)
+        } else {
+            failureTechnicalOfInterview()
+        }
+    }
+
+    func failureTechnicalOfInterview() {
+        print("Нам жаль, но программист \(lastName) не прошёл собеседование")
+    }
+
+    func exp(_ exp: Int) {
+        if exp >= 3 {
+            successOfInterview(&okArray)
+            print("Тестировщик \(lastName) допущен к техническому собеседованию")
+        } else {
+            failureOfInterview()
+            print("\(lastName) не подходит")
+        }
+    }
+
+}
+
+let qa = QA(lastName: "Qashnicov", isSuitable: true)
+
+qa.successTechnicalOfinterview(true, "iOS") //Вы нам подходите. Ждите оффер
+qa.exp(4) // Тестировщик Qashnicov допущен к техническому собеседованию
+
+
+let qa2 = QA(lastName: "Qabyian", isSuitable: false)
+
+qa2.successTechnicalOfinterview(false, "JS") // Нам жаль, но программист Qabyian не прошёл собеседование
+qa2.exp(2) // Qabyian не подходит
