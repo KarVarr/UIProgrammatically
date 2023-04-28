@@ -2699,3 +2699,139 @@ let qa2 = QA(lastName: "Qabyian", isSuitable: false)
 
 qa2.successTechnicalOfinterview(false, "JS") // Нам жаль, но программист Qabyian не прошёл собеседование
 qa2.exp(2) // Qabyian не подходит
+
+/*
+22. Дженерики
+1) Создать 5 функций, каждая - с входящими параметрами универсальных типов.
+Преобразовать их параметры в Int, Double, Float, String, Character. Параметры внутри тела 
+функции добавить параметры в массив и отсортировать.
+Вывести результаты в консоль.
+*/
+
+let sum = [44,23,65,23,767,23,54,1,5,6757,]
+
+func first<T>(_ input: T) -> [Int] {
+    var array = [Int]()
+    if let num = Int("\(input)") {
+        array.append(num)
+    } 
+    
+    return array.sorted()
+}
+
+print(first(45)) // [45]
+print(first("45"))  // [45]
+print(first("num")) // []
+
+func second<T> (_ input: T) -> String {
+    var str = ""
+    if let string = input as? String {
+        str = string
+    } else {
+        str = "No string input"
+    }
+
+    return str
+}
+
+print(second("hello")) // hello
+print(second(45)) // No string input
+
+
+// 2) Создать класс, структуру, перечисление универсального типа — для тренировки
+
+
+class Box<T> {
+    var value: T
+
+    init(value: T) {
+        self.value = value
+    }
+}
+
+let box = Box(value: "Hello, box")
+print(box.value) // Hello, box
+
+let boxInt = Box(value: 45)
+print(boxInt.value) // 45
+
+
+struct Test<T> {
+    let value: T
+}
+
+let test = Test(value: 45)
+print(test.value) //45
+
+let testString = Test(value: "Hello, test")
+print(testString.value) //Hello, test
+
+struct Lego<T, U> {
+    let legoBox: T
+    let legoWheel: U
+}
+
+let lego = Lego(legoBox: 3, legoWheel: "Wood")
+print(lego.legoBox, lego.legoWheel) // 3 Wood
+
+
+enum Resoult <T> {
+    case success(T)
+    case error(T)
+}
+
+let result = Resoult.success("Success")
+print(result) // success("Success")
+
+
+// 3) Создать протокол Стрелять. У него создать метод shoot.
+
+
+protocol Fire {
+    func shoot () 
+}
+
+/*
+4) Создать класс Солдат. Ему задайте имя и звание. Подключите к классу протокол Стрелять.
+Класс должен быть с универсальным шаблоном. Вызовите у него метод протокола. Метод 
+должен называть имя, звание
+*/
+
+class Soldier<T, U>: Fire {
+    let name: T
+    let rank: U
+
+    init(name: T, rank: U) {
+        self.name = name 
+        self.rank = rank
+    }
+
+     func shoot() {
+         print("Your name is: \(name) and your rank is: \(rank)")
+    }
+}
+
+let bob = Soldier(name: "Bob", rank: "private")
+
+bob.shoot() // Your name is: Bob and your rank is: private
+
+
+/*
+5) Сделайте расширение класса Солдат. Добавьте свойство срок службы и наблюдайте за 
+ним. Если срок службы больше 10 — прилетает сообщение «А вот и дембель!»,а если меньше 
+— пусть чистит картошку.
+*/
+
+extension Soldier {
+    var serviceYears: Int {
+        didSet {
+            if serviceYears >= 10 {
+                print("А вот и дембель!")
+            } else {
+                print("\(name) (\(rank)) should peel potatoes.")
+            }
+        }
+    }
+}
+
+let mask = Soldier(name: "Mask", rank: "Colonel")
