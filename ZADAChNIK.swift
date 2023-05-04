@@ -2835,3 +2835,82 @@ extension Soldier {
 }
 
 let mask = Soldier(name: "Mask", rank: "Colonel")
+
+
+/*
+БОНУС. Продвинутые операторы
+1) Создайте числа 1, 4, 15, 230, 65 — с помощью битовых чисел и преобразуйте в Int и Uint
+*/
+
+
+let number1 = 0b1 //1
+let number4 = 0b100  //4
+let number15 = 0b1111  //15
+let number230 = 0b11100110 //230
+let number65 = 0b1000001 //65
+
+Int(number1)//1
+Int(number4) //4
+Int(number15)//15
+Int(number230) //230 
+Int(number65) //65
+
+// 2) Инвертируйте числа с помощью NOT.
+
+~number1 //2
+~number4 //5
+~number15 //16
+~number230 //231
+~number65 // 66
+
+// 3) Cоздайте целое число 17 из двух бит двух чисел с помощью оператора AND
+
+let a = 0b1001 // 9
+let b = 0b1110 // 14
+
+let maskA = 0b1000 // маска для извлечения 4-го бита числа a
+let maskB = 0b0010 // маска для извлечения 2-го бита числа b
+
+let bitA = a & maskA // 8
+let bitB = b & maskB // 2
+
+let result = bitA | bitB // 17
+
+//  Создайте 2 целых числа. Создайте новое число с помощью OR.
+
+
+let number1 = 0b1100 // 12
+let number2 = 0b1010 // 10
+
+let result = number1 | number2 // 14
+
+// 5) Создайте класс Home, у него задайте свойства типа Int. Высота и ширина. Перегрузите 
+//операторы +,-,*,/(плюс, минус, умножить, делить).
+
+
+
+class Home {
+    var height: Int
+    var width: Int
+    
+    init(height: Int, width: Int) {
+        self.height = height
+        self.width = width
+    }
+    
+    static func +(lhs: Home, rhs: Home) -> Home {
+        return Home(height: lhs.height + rhs.height, width: lhs.width + rhs.width)
+    }
+    
+    static func -(lhs: Home, rhs: Home) -> Home {
+        return Home(height: lhs.height - rhs.height, width: lhs.width - rhs.width)
+    }
+    
+    static func *(lhs: Home, rhs: Home) -> Home {
+        return Home(height: lhs.height * rhs.height, width: lhs.width * rhs.width)
+    }
+    
+    static func /(lhs: Home, rhs: Home) -> Home {
+        return Home(height: lhs.height / rhs.height, width: lhs.width / rhs.width)
+    }
+}
