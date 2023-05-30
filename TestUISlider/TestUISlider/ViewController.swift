@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     let slider = Slider()
+    
     let box: UIView = {
         let box = UIView()
         box.translatesAutoresizingMaskIntoConstraints = false
