@@ -15,7 +15,16 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-           
+            Button(action: {
+                viewModel.toggleVibration()
+            }) {
+                Text(viewModel.buttonText)
+                    .font(.title)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
 
         }
         .padding()
