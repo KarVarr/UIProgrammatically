@@ -13,6 +13,9 @@
 		173F02382A37CA7200782653 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173F02372A37CA7200782653 /* WeatherData.swift */; };
 		173F023A2A37D30400782653 /* APIManager .swift in Sources */ = {isa = PBXBuildFile; fileRef = 173F02392A37D30400782653 /* APIManager .swift */; };
 		173F023C2A387C6200782653 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173F023B2A387C6100782653 /* APIKeys.swift */; };
+		173F023E2A3881CB00782653 /* GeocodingCityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173F023D2A3881CB00782653 /* GeocodingCityData.swift */; };
+		173F02402A38906C00782653 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173F023F2A38906C00782653 /* CustomLabel.swift */; };
+		173F02422A3892AB00782653 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173F02412A3892AB00782653 /* CustomStackView.swift */; };
 		17E4925B29AFC9D900DE5E8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E4925A29AFC9D900DE5E8A /* AppDelegate.swift */; };
 		17E4925D29AFC9D900DE5E8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E4925C29AFC9D900DE5E8A /* SceneDelegate.swift */; };
 		17E4926429AFC9DB00DE5E8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E4926329AFC9DB00DE5E8A /* Assets.xcassets */; };
@@ -26,6 +29,9 @@
 		173F02372A37CA7200782653 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		173F02392A37D30400782653 /* APIManager .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIManager .swift"; sourceTree = "<group>"; };
 		173F023B2A387C6100782653 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		173F023D2A3881CB00782653 /* GeocodingCityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingCityData.swift; sourceTree = "<group>"; };
+		173F023F2A38906C00782653 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		173F02412A3892AB00782653 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		17E4925729AFC9D900DE5E8A /* WeatherTestTaskJunior.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTestTaskJunior.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E4925A29AFC9D900DE5E8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17E4925C29AFC9D900DE5E8A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +55,8 @@
 			isa = PBXGroup;
 			children = (
 				173F02322A37C71A00782653 /* WeatherTableViewCell.swift */,
+				173F023F2A38906C00782653 /* CustomLabel.swift */,
+				173F02412A3892AB00782653 /* CustomStackView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -58,6 +66,7 @@
 			children = (
 				173F02372A37CA7200782653 /* WeatherData.swift */,
 				173F02392A37D30400782653 /* APIManager .swift */,
+				173F023D2A3881CB00782653 /* GeocodingCityData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,12 +207,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				17E4925B29AFC9D900DE5E8A /* AppDelegate.swift in Sources */,
+				173F02402A38906C00782653 /* CustomLabel.swift in Sources */,
 				173F02312A37C65B00782653 /* HomeTableViewController.swift in Sources */,
 				173F02362A37C7E100782653 /* Helper.swift in Sources */,
+				173F02422A3892AB00782653 /* CustomStackView.swift in Sources */,
 				173F02332A37C71A00782653 /* WeatherTableViewCell.swift in Sources */,
 				173F023C2A387C6200782653 /* APIKeys.swift in Sources */,
 				173F023A2A37D30400782653 /* APIManager .swift in Sources */,
 				173F02382A37CA7200782653 /* WeatherData.swift in Sources */,
+				173F023E2A3881CB00782653 /* GeocodingCityData.swift in Sources */,
 				17E4925D29AFC9D900DE5E8A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
