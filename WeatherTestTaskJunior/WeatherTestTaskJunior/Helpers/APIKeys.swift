@@ -8,5 +8,5 @@
 import Foundation
 
 struct APIKeys {
-    static let openWeatherAPI = "aed181e6001b18bf65079ed785ac0dfe"
+    static let openWeatherAPI = "78ffa1f4e4d841f8b52184100231306"
 }

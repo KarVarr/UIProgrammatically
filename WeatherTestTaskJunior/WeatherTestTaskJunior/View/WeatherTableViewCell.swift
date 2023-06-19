@@ -62,4 +62,10 @@ class WeatherTableViewCell: UITableViewCell {
         ])
     }
     
+    func configure(with city: WeatherDatum) {
+        cityNameLabel.label.text = city.location.name
+        tempLabel.label.text = "\(city.current.tempC) °C"
+        weatherDescriptionLabel.label.text = city.current.condition.text
+    }
+    
 }

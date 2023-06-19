@@ -8,28 +8,38 @@
 import SwiftUI
 
 
-
 struct ContentView: View {
-    
-    @StateObject private var viewModel = MassageViewModel()
+    @State private var intensity: Float = 0.5
+    let hapticManager = HapticManager()
     
     var body: some View {
         VStack {
+            Slider(value: $intensity, in: 0...1, step: 0.1)
+                .padding()
+            
             Button(action: {
-                viewModel.toggleVibration()
+                hapticManager.playHaptic(intensity: intensity)
             }) {
-                Text(viewModel.buttonText)
-                    .font(.title)
+                Text("Play Haptic")
                     .padding()
                     .background(Color.blue)
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
-
+            
+            Button(action: {
+                hapticManager.stopHaptic()
+            }) {
+                Text("Stop Haptic")
+                    .padding()
+                    .background(Color.red)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
         }
-        .padding()
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
