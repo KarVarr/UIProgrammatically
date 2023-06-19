@@ -21,7 +21,6 @@ class WeatherTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -60,12 +59,6 @@ class WeatherTableViewCell: UITableViewCell {
             temp.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
             
         ])
-    }
-    
-    func configure(with city: WeatherDatum) {
-        cityNameLabel.label.text = city.location.name
-        tempLabel.label.text = "\(city.current.tempC) °C"
-        weatherDescriptionLabel.label.text = city.current.condition.text
     }
     
 }

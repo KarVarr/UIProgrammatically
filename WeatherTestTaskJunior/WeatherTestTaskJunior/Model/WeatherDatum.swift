@@ -1,5 +1,5 @@
 //
-//  WeatherData.swift
+//  WeatherDatum.swift
 //  WeatherTestTaskJunior
 //
 //  Created by Karen Vardanian on 13.06.2023.

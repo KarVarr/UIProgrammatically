@@ -8,7 +8,8 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
-    private let apiService = APIManager()
+    private let apiService = APIService()
+    private var weatherDatum: [WeatherDatum] = []
     
     let searchController = UISearchController(searchResultsController: nil)
     var selectedCity: String?
@@ -25,7 +26,17 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, UISea
         settings()
         layout()
         
-        
+        apiService.fetchWeatherData { [weak self] result in
+            switch result {
+            case .success(let weatherData):
+                self?.weatherDatum = weatherData
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            case .failure(let error):
+                print("Error fetching weather data:", error.localizedDescription)
+            }
+        }
         
     }
     
@@ -51,10 +62,9 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, UISea
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text {
-            apiService.fetchWeather(searchText)
-            
-        }
+        //        if let searchText = searchController.searchBar.text {
+        //
+        //        }
     }
     
     // MARK: - Table view data source
@@ -69,7 +79,7 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, UISea
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return weatherDatum.count
     }
     
     
@@ -77,7 +87,10 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, UISea
         let cell = tableView.dequeueReusableCell(withIdentifier: Helper.String.cellKey, for: indexPath) as! WeatherTableViewCell
         cell.accessoryType = .disclosureIndicator
         
-       
+        let weather = weatherDatum[indexPath.row]
+        cell.cityNameLabel.label.text = weather.location.name
+        cell.tempLabel.label.text = "\(weather.current.tempC) °C"
+        cell.weatherDescriptionLabel.label.text = weather.current.condition.text
         
         return cell
     }
