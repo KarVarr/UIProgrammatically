@@ -8,6 +8,9 @@
 import UIKit
 
 class Helper {
+    enum Keys {
+        static let collectionCellKey = "Cell"
+    }
     //MARK: - Strings
     enum Strings {
         static let navTitle = "Профиль"
@@ -21,18 +24,18 @@ class Helper {
     }
     
     //MARK: - Fonts
-        enum Fonts {
-            static func helveticaRegular(with size: CGFloat) -> UIFont {
-                UIFont(name: "Helvetica", size: size) ?? UIFont()
-            }
-            static func helveticaMedium(with size: CGFloat) -> UIFont {
-                UIFont(name: "HelveticaNeue-Medium", size: size) ?? UIFont()
-            }
-            static func helveticaBold(with size: CGFloat) -> UIFont {
-                UIFont(name: "HelveticaNeue-Bold", size: size) ?? UIFont()
-            }
-            
+    enum Fonts {
+        static func SFProTextRegular(with size: CGFloat) -> UIFont {
+            UIFont(name: "SFProDisplay-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
         }
+        static func SFProTextMedium(with size: CGFloat) -> UIFont {
+            UIFont(name: "SFProDisplay-Medium", size: size) ?? UIFont.systemFont(ofSize: size)
+        }
+        static func SFProTextBold(with size: CGFloat) -> UIFont {
+            UIFont(name: "SFProDisplay-Bold", size: size) ?? UIFont.boldSystemFont(ofSize: size)
+        }
+    }
+
     
     //MARK: - Colors
     enum Colors {

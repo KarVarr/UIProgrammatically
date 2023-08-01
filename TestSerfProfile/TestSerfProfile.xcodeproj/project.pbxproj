@@ -22,6 +22,11 @@
 		173D2DDE2A7901A4001BC3FD /* UILabel + Ext .swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DDD2A7901A4001BC3FD /* UILabel + Ext .swift */; };
 		173D2DE02A7913C1001BC3FD /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DDF2A7913C1001BC3FD /* CustomButtonView.swift */; };
 		173D2DE22A79245E001BC3FD /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DE12A79245E001BC3FD /* CustomScrollView.swift */; };
+		173D2DE52A7931D2001BC3FD /* VC + AddViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DE42A7931D2001BC3FD /* VC + AddViews.swift */; };
+		173D2DE72A7932AF001BC3FD /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DE62A7932AF001BC3FD /* CollectionView.swift */; };
+		173D2DE92A79376B001BC3FD /* VC + Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DE82A79376B001BC3FD /* VC + Collection.swift */; };
+		173D2DEC2A793873001BC3FD /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DEB2A793873001BC3FD /* CustomCollectionViewCell.swift */; };
+		173D2DEE2A795029001BC3FD /* CustomViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DED2A795029001BC3FD /* CustomViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +47,14 @@
 		173D2DDD2A7901A4001BC3FD /* UILabel + Ext .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Ext .swift"; sourceTree = "<group>"; };
 		173D2DDF2A7913C1001BC3FD /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		173D2DE12A79245E001BC3FD /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
+		173D2DE42A7931D2001BC3FD /* VC + AddViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC + AddViews.swift"; sourceTree = "<group>"; };
+		173D2DE62A7932AF001BC3FD /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		173D2DE82A79376B001BC3FD /* VC + Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC + Collection.swift"; sourceTree = "<group>"; };
+		173D2DEB2A793873001BC3FD /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		173D2DED2A795029001BC3FD /* CustomViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewFlowLayout.swift; sourceTree = "<group>"; };
+		173D2DF02A7955A7001BC3FD /* SF-Pro-Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.ttf"; sourceTree = "<group>"; };
+		173D2DF12A7955B3001BC3FD /* SF-Pro-Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.ttf"; sourceTree = "<group>"; };
+		173D2DF22A7955BF001BC3FD /* SF-Pro-Display-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +119,7 @@
 		173D2DCA2A78EB17001BC3FD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				173D2DE32A7931BD001BC3FD /* ExtentionsVC */,
 				173D2DB82A78EA86001BC3FD /* ViewController.swift */,
 			);
 			path = Controller;
@@ -120,6 +134,7 @@
 				173D2DDB2A78F9E9001BC3FD /* CustomUIView.swift */,
 				173D2DDF2A7913C1001BC3FD /* CustomButtonView.swift */,
 				173D2DE12A79245E001BC3FD /* CustomScrollView.swift */,
+				173D2DEA2A79384C001BC3FD /* Collection */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -134,8 +149,9 @@
 		173D2DCD2A78EC1E001BC3FD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				173D2DD62A78F3C1001BC3FD /* Extentions */,
+				173D2DEF2A795578001BC3FD /* Fonts */,
 				173D2DCE2A78EC2F001BC3FD /* Helper.swift */,
+				173D2DD62A78F3C1001BC3FD /* Extentions */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -148,6 +164,35 @@
 				173D2DDD2A7901A4001BC3FD /* UILabel + Ext .swift */,
 			);
 			path = Extentions;
+			sourceTree = "<group>";
+		};
+		173D2DE32A7931BD001BC3FD /* ExtentionsVC */ = {
+			isa = PBXGroup;
+			children = (
+				173D2DE42A7931D2001BC3FD /* VC + AddViews.swift */,
+				173D2DE82A79376B001BC3FD /* VC + Collection.swift */,
+			);
+			path = ExtentionsVC;
+			sourceTree = "<group>";
+		};
+		173D2DEA2A79384C001BC3FD /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				173D2DE62A7932AF001BC3FD /* CollectionView.swift */,
+				173D2DEB2A793873001BC3FD /* CustomCollectionViewCell.swift */,
+				173D2DED2A795029001BC3FD /* CustomViewFlowLayout.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		173D2DEF2A795578001BC3FD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				173D2DF22A7955BF001BC3FD /* SF-Pro-Display-Regular.ttf */,
+				173D2DF12A7955B3001BC3FD /* SF-Pro-Display-Medium.ttf */,
+				173D2DF02A7955A7001BC3FD /* SF-Pro-Display-Bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,11 +265,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				173D2DE92A79376B001BC3FD /* VC + Collection.swift in Sources */,
 				173D2DD32A78EF5E001BC3FD /* CustomStackView.swift in Sources */,
+				173D2DE52A7931D2001BC3FD /* VC + AddViews.swift in Sources */,
 				173D2DDC2A78F9E9001BC3FD /* CustomUIView.swift in Sources */,
 				173D2DD52A78F111001BC3FD /* CustomLabelView.swift in Sources */,
 				173D2DE02A7913C1001BC3FD /* CustomButtonView.swift in Sources */,
 				173D2DE22A79245E001BC3FD /* CustomScrollView.swift in Sources */,
+				173D2DE72A7932AF001BC3FD /* CollectionView.swift in Sources */,
+				173D2DEC2A793873001BC3FD /* CustomCollectionViewCell.swift in Sources */,
 				173D2DB92A78EA86001BC3FD /* ViewController.swift in Sources */,
 				173D2DB52A78EA86001BC3FD /* AppDelegate.swift in Sources */,
 				173D2DB72A78EA86001BC3FD /* SceneDelegate.swift in Sources */,
@@ -233,6 +282,7 @@
 				173D2DDE2A7901A4001BC3FD /* UILabel + Ext .swift in Sources */,
 				173D2DD82A78F3D7001BC3FD /* UIColor + Ext.swift in Sources */,
 				173D2DDA2A78F5C2001BC3FD /* UIImage + Ext.swift in Sources */,
+				173D2DEE2A795029001BC3FD /* CustomViewFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
