@@ -20,6 +20,8 @@
 		173D2DDA2A78F5C2001BC3FD /* UIImage + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DD92A78F5C1001BC3FD /* UIImage + Ext.swift */; };
 		173D2DDC2A78F9E9001BC3FD /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DDB2A78F9E9001BC3FD /* CustomUIView.swift */; };
 		173D2DDE2A7901A4001BC3FD /* UILabel + Ext .swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DDD2A7901A4001BC3FD /* UILabel + Ext .swift */; };
+		173D2DE02A7913C1001BC3FD /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DDF2A7913C1001BC3FD /* CustomButtonView.swift */; };
+		173D2DE22A79245E001BC3FD /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DE12A79245E001BC3FD /* CustomScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		173D2DD92A78F5C1001BC3FD /* UIImage + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Ext.swift"; sourceTree = "<group>"; };
 		173D2DDB2A78F9E9001BC3FD /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		173D2DDD2A7901A4001BC3FD /* UILabel + Ext .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Ext .swift"; sourceTree = "<group>"; };
+		173D2DDF2A7913C1001BC3FD /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		173D2DE12A79245E001BC3FD /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 				173D2DD22A78EF5E001BC3FD /* CustomStackView.swift */,
 				173D2DD42A78F111001BC3FD /* CustomLabelView.swift */,
 				173D2DDB2A78F9E9001BC3FD /* CustomUIView.swift */,
+				173D2DDF2A7913C1001BC3FD /* CustomButtonView.swift */,
+				173D2DE12A79245E001BC3FD /* CustomScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -217,6 +223,8 @@
 				173D2DD32A78EF5E001BC3FD /* CustomStackView.swift in Sources */,
 				173D2DDC2A78F9E9001BC3FD /* CustomUIView.swift in Sources */,
 				173D2DD52A78F111001BC3FD /* CustomLabelView.swift in Sources */,
+				173D2DE02A7913C1001BC3FD /* CustomButtonView.swift in Sources */,
+				173D2DE22A79245E001BC3FD /* CustomScrollView.swift in Sources */,
 				173D2DB92A78EA86001BC3FD /* ViewController.swift in Sources */,
 				173D2DB52A78EA86001BC3FD /* AppDelegate.swift in Sources */,
 				173D2DB72A78EA86001BC3FD /* SceneDelegate.swift in Sources */,
