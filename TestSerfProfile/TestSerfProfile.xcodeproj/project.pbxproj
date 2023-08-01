@@ -14,6 +14,12 @@
 		173D2DC12A78EA87001BC3FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 173D2DBF2A78EA87001BC3FD /* LaunchScreen.storyboard */; };
 		173D2DCF2A78EC2F001BC3FD /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DCE2A78EC2F001BC3FD /* Helper.swift */; };
 		173D2DD12A78ECCA001BC3FD /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DD02A78ECCA001BC3FD /* CustomImageView.swift */; };
+		173D2DD32A78EF5E001BC3FD /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DD22A78EF5E001BC3FD /* CustomStackView.swift */; };
+		173D2DD52A78F111001BC3FD /* CustomLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DD42A78F111001BC3FD /* CustomLabelView.swift */; };
+		173D2DD82A78F3D7001BC3FD /* UIColor + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DD72A78F3D7001BC3FD /* UIColor + Ext.swift */; };
+		173D2DDA2A78F5C2001BC3FD /* UIImage + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DD92A78F5C1001BC3FD /* UIImage + Ext.swift */; };
+		173D2DDC2A78F9E9001BC3FD /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DDB2A78F9E9001BC3FD /* CustomUIView.swift */; };
+		173D2DDE2A7901A4001BC3FD /* UILabel + Ext .swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DDD2A7901A4001BC3FD /* UILabel + Ext .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		173D2DC22A78EA87001BC3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		173D2DCE2A78EC2F001BC3FD /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		173D2DD02A78ECCA001BC3FD /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		173D2DD22A78EF5E001BC3FD /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
+		173D2DD42A78F111001BC3FD /* CustomLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelView.swift; sourceTree = "<group>"; };
+		173D2DD72A78F3D7001BC3FD /* UIColor + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Ext.swift"; sourceTree = "<group>"; };
+		173D2DD92A78F5C1001BC3FD /* UIImage + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Ext.swift"; sourceTree = "<group>"; };
+		173D2DDB2A78F9E9001BC3FD /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
+		173D2DDD2A7901A4001BC3FD /* UILabel + Ext .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Ext .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				173D2DD02A78ECCA001BC3FD /* CustomImageView.swift */,
+				173D2DD22A78EF5E001BC3FD /* CustomStackView.swift */,
+				173D2DD42A78F111001BC3FD /* CustomLabelView.swift */,
+				173D2DDB2A78F9E9001BC3FD /* CustomUIView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -113,9 +128,20 @@
 		173D2DCD2A78EC1E001BC3FD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				173D2DD62A78F3C1001BC3FD /* Extentions */,
 				173D2DCE2A78EC2F001BC3FD /* Helper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		173D2DD62A78F3C1001BC3FD /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				173D2DD72A78F3D7001BC3FD /* UIColor + Ext.swift */,
+				173D2DD92A78F5C1001BC3FD /* UIImage + Ext.swift */,
+				173D2DDD2A7901A4001BC3FD /* UILabel + Ext .swift */,
+			);
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,11 +214,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				173D2DD32A78EF5E001BC3FD /* CustomStackView.swift in Sources */,
+				173D2DDC2A78F9E9001BC3FD /* CustomUIView.swift in Sources */,
+				173D2DD52A78F111001BC3FD /* CustomLabelView.swift in Sources */,
 				173D2DB92A78EA86001BC3FD /* ViewController.swift in Sources */,
 				173D2DB52A78EA86001BC3FD /* AppDelegate.swift in Sources */,
 				173D2DB72A78EA86001BC3FD /* SceneDelegate.swift in Sources */,
 				173D2DCF2A78EC2F001BC3FD /* Helper.swift in Sources */,
 				173D2DD12A78ECCA001BC3FD /* CustomImageView.swift in Sources */,
+				173D2DDE2A7901A4001BC3FD /* UILabel + Ext .swift in Sources */,
+				173D2DD82A78F3D7001BC3FD /* UIColor + Ext.swift in Sources */,
+				173D2DDA2A78F5C2001BC3FD /* UIImage + Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
