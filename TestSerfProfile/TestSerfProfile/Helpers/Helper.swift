@@ -20,7 +20,7 @@ class Helper {
         static let cityLabel = "Ереван"
         static let myExpLabel = "Мои навыки"
         static let aboutMySelfTitleLabel = "О себе"
-        static let aboutMySelfTextLabel = "Experienced software engineer skilled in developing scalable and maintainable systems"
+        static let aboutMySelfTextLabel = "Учусь iOS разработке самостоятельно по различным курсам и книгам."
         
         enum StringForAlert {
             static let title = "Добавление навыка"
