@@ -8,6 +8,7 @@
 import UIKit
 
 class Helper {
+    //MARK: - Keys
     enum Keys {
         static let collectionCellKey = "Cell"
     }
@@ -21,6 +22,13 @@ class Helper {
         static let aboutMySelfTitleLabel = "О себе"
         static let aboutMySelfTextLabel = "Experienced software engineer skilled in developing scalable and maintainable systems"
         
+        enum StringForAlert {
+            static let title = "Добавление навыка"
+            static let message = "Введите название навыка которым вы владеете"
+            static let placeholder = "Введите название"
+            static let add = "Добавить"
+            static let cancel = "Отменить"
+        }
     }
     
     //MARK: - Fonts
@@ -36,7 +44,6 @@ class Helper {
         }
     }
 
-    
     //MARK: - Colors
     enum Colors {
         static let whiteColor = UIColor(hexString: "#FFFFFF")

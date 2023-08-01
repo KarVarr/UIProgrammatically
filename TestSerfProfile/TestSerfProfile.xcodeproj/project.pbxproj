@@ -27,6 +27,12 @@
 		173D2DE92A79376B001BC3FD /* VC + Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DE82A79376B001BC3FD /* VC + Collection.swift */; };
 		173D2DEC2A793873001BC3FD /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DEB2A793873001BC3FD /* CustomCollectionViewCell.swift */; };
 		173D2DEE2A795029001BC3FD /* CustomViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DED2A795029001BC3FD /* CustomViewFlowLayout.swift */; };
+		173D2DF72A79611D001BC3FD /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DF62A79611D001BC3FD /* Tags.swift */; };
+		173D2DF92A796FC6001BC3FD /* VC + Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DF82A796FC6001BC3FD /* VC + Layout.swift */; };
+		173D2DFB2A797062001BC3FD /* VC + Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DFA2A797062001BC3FD /* VC + Labels.swift */; };
+		173D2DFD2A7970BD001BC3FD /* VC + StackViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DFC2A7970BD001BC3FD /* VC + StackViews.swift */; };
+		173D2DFF2A79710C001BC3FD /* VC + Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2DFE2A79710C001BC3FD /* VC + Buttons.swift */; };
+		173D2E012A79714A001BC3FD /* VC + Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D2E002A79714A001BC3FD /* VC + Images.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +61,12 @@
 		173D2DF02A7955A7001BC3FD /* SF-Pro-Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.ttf"; sourceTree = "<group>"; };
 		173D2DF12A7955B3001BC3FD /* SF-Pro-Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.ttf"; sourceTree = "<group>"; };
 		173D2DF22A7955BF001BC3FD /* SF-Pro-Display-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.ttf"; sourceTree = "<group>"; };
+		173D2DF62A79611D001BC3FD /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		173D2DF82A796FC6001BC3FD /* VC + Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC + Layout.swift"; sourceTree = "<group>"; };
+		173D2DFA2A797062001BC3FD /* VC + Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC + Labels.swift"; sourceTree = "<group>"; };
+		173D2DFC2A7970BD001BC3FD /* VC + StackViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC + StackViews.swift"; sourceTree = "<group>"; };
+		173D2DFE2A79710C001BC3FD /* VC + Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC + Buttons.swift"; sourceTree = "<group>"; };
+		173D2E002A79714A001BC3FD /* VC + Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC + Images.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +154,7 @@
 		173D2DCC2A78EBB2001BC3FD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				173D2DF62A79611D001BC3FD /* Tags.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,8 +182,13 @@
 		173D2DE32A7931BD001BC3FD /* ExtentionsVC */ = {
 			isa = PBXGroup;
 			children = (
-				173D2DE42A7931D2001BC3FD /* VC + AddViews.swift */,
 				173D2DE82A79376B001BC3FD /* VC + Collection.swift */,
+				173D2DE42A7931D2001BC3FD /* VC + AddViews.swift */,
+				173D2DF82A796FC6001BC3FD /* VC + Layout.swift */,
+				173D2DFA2A797062001BC3FD /* VC + Labels.swift */,
+				173D2DFC2A7970BD001BC3FD /* VC + StackViews.swift */,
+				173D2DFE2A79710C001BC3FD /* VC + Buttons.swift */,
+				173D2E002A79714A001BC3FD /* VC + Images.swift */,
 			);
 			path = ExtentionsVC;
 			sourceTree = "<group>";
@@ -265,23 +283,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				173D2DFF2A79710C001BC3FD /* VC + Buttons.swift in Sources */,
 				173D2DE92A79376B001BC3FD /* VC + Collection.swift in Sources */,
 				173D2DD32A78EF5E001BC3FD /* CustomStackView.swift in Sources */,
 				173D2DE52A7931D2001BC3FD /* VC + AddViews.swift in Sources */,
 				173D2DDC2A78F9E9001BC3FD /* CustomUIView.swift in Sources */,
 				173D2DD52A78F111001BC3FD /* CustomLabelView.swift in Sources */,
+				173D2DF72A79611D001BC3FD /* Tags.swift in Sources */,
 				173D2DE02A7913C1001BC3FD /* CustomButtonView.swift in Sources */,
+				173D2DFB2A797062001BC3FD /* VC + Labels.swift in Sources */,
 				173D2DE22A79245E001BC3FD /* CustomScrollView.swift in Sources */,
 				173D2DE72A7932AF001BC3FD /* CollectionView.swift in Sources */,
 				173D2DEC2A793873001BC3FD /* CustomCollectionViewCell.swift in Sources */,
 				173D2DB92A78EA86001BC3FD /* ViewController.swift in Sources */,
 				173D2DB52A78EA86001BC3FD /* AppDelegate.swift in Sources */,
+				173D2E012A79714A001BC3FD /* VC + Images.swift in Sources */,
 				173D2DB72A78EA86001BC3FD /* SceneDelegate.swift in Sources */,
+				173D2DFD2A7970BD001BC3FD /* VC + StackViews.swift in Sources */,
 				173D2DCF2A78EC2F001BC3FD /* Helper.swift in Sources */,
 				173D2DD12A78ECCA001BC3FD /* CustomImageView.swift in Sources */,
 				173D2DDE2A7901A4001BC3FD /* UILabel + Ext .swift in Sources */,
 				173D2DD82A78F3D7001BC3FD /* UIColor + Ext.swift in Sources */,
 				173D2DDA2A78F5C2001BC3FD /* UIImage + Ext.swift in Sources */,
+				173D2DF92A796FC6001BC3FD /* VC + Layout.swift in Sources */,
 				173D2DEE2A795029001BC3FD /* CustomViewFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

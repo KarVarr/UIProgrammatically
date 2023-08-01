@@ -28,16 +28,18 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     private func settings() {
         skill.labelView.font = Helper.Fonts.SFProTextRegular(with: 14)
+        
     }
     
     private func layout() {
+        let skill = skill.labelView
+        
         NSLayoutConstraint.activate([
-//            skill.labelView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-//            skill.labelView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            skill.labelView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            skill.labelView.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 12),
-            skill.labelView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            skill.labelView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+            skill.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            skill.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 12),
+            skill.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            skill.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+            
         ])
     }
     
