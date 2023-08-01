@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class CustomCollectionViewCell: UICollectionViewCell {
     let skill = CustomLabelView()
     
@@ -28,11 +30,15 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     private func settings() {
         skill.labelView.font = Helper.Fonts.SFProTextRegular(with: 14)
-        
+        skill.labelView.lineBreakMode = .byTruncatingTail
+        skill.labelView.numberOfLines = 1
+        skill.labelView.preferredMaxLayoutWidth = 32
+        skill.labelView.sizeToFit()
     }
     
     private func layout() {
         let skill = skill.labelView
+        
         
         NSLayoutConstraint.activate([
             skill.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),

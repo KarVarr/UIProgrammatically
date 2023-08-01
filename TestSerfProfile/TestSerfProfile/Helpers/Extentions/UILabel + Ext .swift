@@ -29,4 +29,31 @@ extension UILabel {
         
         self.attributedText = attributedString
     }
+    
+    func setTruncatedTextIfNeeded(_ text: String) {
+            self.text = text
+            let maxSize = CGSize(width: bounds.width, height: .greatestFiniteMagnitude)
+            let actualSize = sizeThatFits(maxSize)
+
+            if actualSize.width > bounds.width {
+                let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font ?? UIFont.systemFont(ofSize: 17)]
+                let attributedText = NSAttributedString(string: text, attributes: attributes)
+                let ellipsis = NSAttributedString(string: "...", attributes: attributes)
+                var truncatedText = attributedText
+
+                for i in (1..<text.count).reversed() {
+                    truncatedText = attributedText.attributedSubstring(from: NSRange(location: 0, length: i))
+                    let truncatedSize = truncatedText.size()
+                    if truncatedSize.width + ellipsis.size().width <= bounds.width {
+                        break
+                    }
+                }
+
+                let mutableTruncatedText = NSMutableAttributedString(attributedString: truncatedText)
+                mutableTruncatedText.append(ellipsis)
+                self.attributedText = mutableTruncatedText
+            } else {
+                self.attributedText = NSAttributedString(string: text)
+            }
+        }
 }
