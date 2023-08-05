@@ -109,8 +109,17 @@ import UIKit
 
 
 class Human {
+    static let species: String = "homo sapiens"
     var weight: Double
-    var height: Double
+    var height: Double {
+        willSet {
+            weight += 1
+            print("this is WILLSET \(newValue)")
+        }
+        didSet {
+            print("this is DIDSET \(oldValue)")
+        }
+    }
     
     var iq: Double {
         get{
@@ -137,9 +146,21 @@ class Human {
     
 }
 
+func foo(f: inout Double){
+    print("call func")
+}
+
 let bob = Human(weight: 80, height: 180)
 bob.height
 bob.weight
 bob.lose(weight: 5.5)
 print(bob.iq)
 bob.iq = 100
+bob.height = 176
+
+foo(f: &bob.weight)
+bob.weight
+foo(f: &bob.weight)
+bob.weight
+
+Human.species
