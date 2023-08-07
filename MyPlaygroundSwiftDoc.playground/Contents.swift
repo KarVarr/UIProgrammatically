@@ -166,20 +166,20 @@ import UIKit
 //Human.species
 
 
-let str = "Hello Boss"
-
-if true {
-    let str = "Goodbye"
-    
-    print(str)
-}
-
-print(str)
-
-
-let sumStr: (String, String) -> String = {$0 + $1}
-
-sumStr("hello ", "Bob")
+//let str = "Hello Boss"
+//
+//if true {
+//    let str = "Goodbye"
+//
+//    print(str)
+//}
+//
+//print(str)
+//
+//
+//let sumStr: (String, String) -> String = {$0 + $1}
+//
+//sumStr("hello ", "Bob")
 
 
 //let testStr: String? = "hello"
@@ -192,30 +192,120 @@ sumStr("hello ", "Bob")
 //dictionary - key value
 
 
-var arr = ["bananas", "apples", "peach"]
-print(arr, arr.count)
-arr.insert("strawberry", at: 3)
-print(arr, arr.count)
-let delete = arr.remove(at: 0)
-print(delete)
-print(arr)
+//var arr = ["bananas", "apples", "peach"]
+//print(arr, arr.count)
+//arr.insert("strawberry", at: 3)
+//print(arr, arr.count)
+//let delete = arr.remove(at: 0)
+//print(delete)
+//print(arr)
+//
+//var array: Array<Int> = Array()
+//array.append(444)
+//array.append(444)
+//array.append(444)
+//var arrya2: [Int] = []
+//arr.insert("strawberry", at: 3)
+//arr.insert("strawberry", at: 4)
+//arr.insert("strawberry", at: 5)
+//arr.insert("strawberry", at: 6)
+//print(arr.capacity)
+//print(array.capacity)
+//
+//
+//let set = Set<Int>()
+//let countOfAnimal: Set = [1,3,5,6,7,4,6,7,3,5]
+//print(countOfAnimal.sorted())
+//
+//let dict: [String: String] = [:]
+//let dict1 = [String: String]()
+//
+//var dict2 = [ "name": "Bob", "age": "54", "newId": "1", "id": "2"]
+//
+//struct User {
+//    var name: String
+//    var age: Int
+//}
+//
+//let bob: User? = User(name: "Bob", age: 32)
 
-var array: Array<Int> = Array()
-array.append(444)
-array.append(444)
-array.append(444)
-var arrya2: [Int] = []
-arr.insert("strawberry", at: 3)
-arr.insert("strawberry", at: 4)
-arr.insert("strawberry", at: 5)
-arr.insert("strawberry", at: 6)
-print(arr.capacity)
-print(array.capacity)
+//if let name = bob.name {
+//    print(name)
+//}
+//bob?.name
 
 
-let set = Set<Int>()
-let countOfAnimal: Set = [1,3,5,6,7,4,6,7,3,5]
-print(countOfAnimal.sorted())
+let size = 8
+var chessboard = [[Int]]()
 
-let dict: [String: String] = [:]
-let dict1 = [String: String]()
+for i in 0..<size {
+    var row = [Int]()
+    for j in 0..<size {
+        if (i % 2 == 0 && j % 2 == 0) || (i % 2 != 0 && j % 2 != 0) {
+            row.append(1)
+        } else {
+            row.append(0)
+        }
+    }
+    chessboard.append(row)
+    
+}
+//
+//for i in chessboard {
+//    print(i)
+//}
+
+func sum(num1: Int, num2: Int) -> Int {
+    return num1 + num2
+}
+
+sum(num1: 4, num2: 5)
+
+
+func subtract(_ num1: Int, _ num2: Int) -> Int {
+    return num1 - num2
+}
+
+subtract(10, 40)
+
+func numbers(of sum: Int...) {
+    print(sum)
+}
+
+numbers(of: 1)
+numbers(of: 1,2,4,5,6,7,8)
+
+var str = "New str"
+
+func newStr(from string: inout String){
+    string += " "
+    string += "I'm new str also"
+}
+
+newStr(from: &str)
+
+print(str)
+
+var countForFunc = 5
+
+func funcForRecursion() {
+    print("recursion")
+    while countForFunc > 0 {
+        countForFunc -= 1
+        funcForRecursion()
+    }
+}
+
+funcForRecursion()
+
+func fact(num: Int) -> Int {
+    if num == 1 {
+        return 1
+    } else {
+        
+        return num * fact(num: num - 1)
+        
+    }
+}
+
+print(fact(num: 5))
