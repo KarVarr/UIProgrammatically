@@ -235,77 +235,288 @@ import UIKit
 //bob?.name
 
 
-let size = 8
-var chessboard = [[Int]]()
-
-for i in 0..<size {
-    var row = [Int]()
-    for j in 0..<size {
-        if (i % 2 == 0 && j % 2 == 0) || (i % 2 != 0 && j % 2 != 0) {
-            row.append(1)
-        } else {
-            row.append(0)
-        }
-    }
-    chessboard.append(row)
-    
-}
+//let size = 8
+//var chessboard = [[Int]]()
 //
-//for i in chessboard {
-//    print(i)
+//for i in 0..<size {
+//    var row = [Int]()
+//    for j in 0..<size {
+//        if (i % 2 == 0 && j % 2 == 0) || (i % 2 != 0 && j % 2 != 0) {
+//            row.append(1)
+//        } else {
+//            row.append(0)
+//        }
+//    }
+//    chessboard.append(row)
+//
+//}
+////
+////for i in chessboard {
+////    print(i)
+////}
+//
+//func sum(num1: Int, num2: Int) -> Int {
+//    return num1 + num2
+//}
+//
+//sum(num1: 4, num2: 5)
+//
+//
+//func subtract(_ num1: Int, _ num2: Int) -> Int {
+//    return num1 - num2
+//}
+//
+//subtract(10, 40)
+//
+//func numbers(of sum: Int...) {
+//    print(sum)
+//}
+//
+//numbers(of: 1)
+//numbers(of: 1,2,4,5,6,7,8)
+//
+//var str = "New str"
+//
+//func newStr(from string: inout String){
+//    string += " "
+//    string += "I'm new str also"
+//}
+//
+//newStr(from: &str)
+//
+//print(str)
+//
+//var countForFunc = 5
+//
+//func funcForRecursion() {
+//    print("recursion")
+//    while countForFunc > 0 {
+//        countForFunc -= 1
+//        funcForRecursion()
+//    }
+//}
+//
+//funcForRecursion()
+//
+//func fact(num: Int) -> Int {
+//    if num == 1 {
+//        return 1
+//    } else {
+//
+//        return num * fact(num: num - 1)
+//
+//    }
+//}
+//
+//print(fact(num: 5))
+//
+//func sum(num num1: Int,num num2: Int) -> Int {
+//    num1 + num2
+//}
+//
+//func arithmeticMean(int: Int..., sumForDouble numbers: Double...) -> Double {
+//    var total: Double = 0
+//    for number in numbers {
+//        total += number
+//    }
+//    return total / Double(numbers.count)
+//}
+//
+//arithmeticMean(int: 2,3,4,5,6, sumForDouble: 12.2, 12.5, 56.4, 64.4)
+//
+//
+//var a = 3
+//var b = 6
+//
+//a = a + b
+//b = a - b
+//a = a - b
+//
+//let range = 0...10
+//range.contains(a)
+//range ~= a
+//range ~= 12
+//
+//let word = "hello"
+//word.contains("ll")
+//word ~= "w"
+//word ~= "ll"
+//
+//let coordinate = ("x", "y")
+//
+//switch coordinate {
+//case(_, "z"): print("Z is here")
+//case(_,  "y"): print("Z and Y is here")
+//case( "y", "z"): print("X and Y and Z is here")
+//default: break
 //}
 
-func sum(num1: Int, num2: Int) -> Int {
-    return num1 + num2
-}
 
-sum(num1: 4, num2: 5)
+//let arr = [1,2,3,4,5,6,7,8,9,0]
+//
+//for i in arr {
+//    if i % 2 == 0 {
+//        print(i)
+//    } else if i % 3 == 0 {
+//        print("\(i): hui %3")
+////        break
+//        print("\(i): %3")
+//    }
+//
+//}
+
+let (x, y) = (1,2)
+x
+y
+
+//let arr = ["Alex", "Bob", "Jack", "Anna"]
+//
+//for i in arr[0...] {
+//    print(i)
+//}
+//
+//let num = 5
+//
+//switch num {
+//case 5:
+//    print("win")
+//    fallthrough
+//case 10: print("loss")
+//case 54: print("loss")
+//
+//default: break
+//}
+
+//let finalSquare = 25
+//var board = [Int](repeating: 0, count: finalSquare + 1)
 
 
-func subtract(_ num1: Int, _ num2: Int) -> Int {
-    return num1 - num2
-}
+//let puzzleInput = "great minds think alike"
+//var puzzleOutput = ""
+//let charactersToRemove: [Character] = ["a", "e", "i", "o", "u"]
+//for character in puzzleInput {
+//    if charactersToRemove.contains(character) {
+//        print(character)
+//        continue
+//    } else {
+//        puzzleOutput.append(character)
+//    }
+//}
+//
+//print(puzzleOutput)
 
-subtract(10, 40)
+//MARK: - OOP
 
-func numbers(of sum: Int...) {
-    print(sum)
-}
+//инкапсуляция
 
-numbers(of: 1)
-numbers(of: 1,2,4,5,6,7,8)
+struct User {
+    private var name: String
+    private var lastName: String
 
-var str = "New str"
-
-func newStr(from string: inout String){
-    string += " "
-    string += "I'm new str also"
-}
-
-newStr(from: &str)
-
-print(str)
-
-var countForFunc = 5
-
-func funcForRecursion() {
-    print("recursion")
-    while countForFunc > 0 {
-        countForFunc -= 1
-        funcForRecursion()
+    init(name: String, lastName: String) {
+        self.name = name
+        self.lastName = lastName
+    }
+    
+    public func fullName(){
+        print(name + " " + lastName)
     }
 }
 
-funcForRecursion()
+var bob = User(name: "Bob", lastName: "Gray")
+bob.fullName()
 
-func fact(num: Int) -> Int {
-    if num == 1 {
-        return 1
-    } else {
-        
-        return num * fact(num: num - 1)
-        
+//полиморфизм
+
+class Laptop {
+    var screen: String
+    var keyboard: String
+    var touchpad: Bool
+    
+    init(screen: String, keyboard: String, touchpad: Bool) {
+        self.screen = screen
+        self.keyboard = keyboard
+        self.touchpad = touchpad
+    }
+    
+    func powerOn() {
+        print("On")
+    }
+    func powerOff() {
+        print("Off")
     }
 }
 
-print(fact(num: 5))
+class MacBook: Laptop {
+    let magicSafe: Bool
+    
+    init(magicSafe: Bool) {
+        self.magicSafe = magicSafe
+        super.init(screen: "4k hdr", keyboard: "qwerty", touchpad: true)
+    }
+}
+
+class Surface: Laptop {
+    
+}
+
+let air = MacBook(magicSafe: true)
+
+let surface = Surface(screen: "2k", keyboard: "Qwerty", touchpad: true)
+
+//наследование
+
+class Human {
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int){
+        self.name = name
+        self.age = age
+    }
+    
+}
+
+class Bob: Human {
+    var iPhone: Bool = true
+}
+
+class Jack: Human {
+    var pet: Bool = false
+}
+
+let jack = Jack(name: "Jack", age: 33)
+jack.name
+jack.age
+jack.pet
+
+
+
+struct Point {
+   var x = 0.0
+   var y = 0.0
+    
+    mutating func moveBy(x deltaX: Double, y deltaY: Double) {
+      x += deltaX
+      y += deltaY
+   }
+}
+
+class Point2 {
+   var x = 0.0
+   var y = 0.0
+    
+   func moveBy(x deltaX: Double, y deltaY: Double) {
+      x += deltaX
+      y += deltaY
+   }
+}
+
+class SomeClass {
+    class func someTypeMethod(){
+        print("class for metod static")
+    }
+}
+
+
+SomeClass.someTypeMethod()
