@@ -409,114 +409,177 @@ y
 
 //инкапсуляция
 
-struct User {
-    private var name: String
-    private var lastName: String
+//struct User {
+//    private var name: String
+//    private var lastName: String
+//
+//    init(name: String, lastName: String) {
+//        self.name = name
+//        self.lastName = lastName
+//    }
+//
+//    public func fullName(){
+//        print(name + " " + lastName)
+//    }
+//}
+//
+//var bob = User(name: "Bob", lastName: "Gray")
+//bob.fullName()
+//
+////полиморфизм
+//
+//class Laptop {
+//    var screen: String
+//    var keyboard: String
+//    var touchpad: Bool
+//
+//    init(screen: String, keyboard: String, touchpad: Bool) {
+//        self.screen = screen
+//        self.keyboard = keyboard
+//        self.touchpad = touchpad
+//    }
+//
+//    func powerOn() {
+//        print("On")
+//    }
+//    func powerOff() {
+//        print("Off")
+//    }
+//}
+//
+//class MacBook: Laptop {
+//    let magicSafe: Bool
+//
+//    init(magicSafe: Bool) {
+//        self.magicSafe = magicSafe
+//        super.init(screen: "4k hdr", keyboard: "qwerty", touchpad: true)
+//    }
+//}
+//
+//class Surface: Laptop {
+//
+//}
+//
+//let air = MacBook(magicSafe: true)
+//
+//let surface = Surface(screen: "2k", keyboard: "Qwerty", touchpad: true)
+//
+////наследование
+//
+//class Human {
+//    var name: String
+//    var age: Int
+//
+//    init(name: String, age: Int){
+//        self.name = name
+//        self.age = age
+//    }
+//
+//}
+//
+//class Bob: Human {
+//    var iPhone: Bool = true
+//}
+//
+//class Jack: Human {
+//    var pet: Bool = false
+//}
+//
+//let jack = Jack(name: "Jack", age: 33)
+//jack.name
+//jack.age
+//jack.pet
+//
+//
+//
+//struct Point {
+//   var x = 0.0
+//   var y = 0.0
+//
+//    mutating func moveBy(x deltaX: Double, y deltaY: Double) {
+//      x += deltaX
+//      y += deltaY
+//   }
+//}
+//
+//class Point2 {
+//   var x = 0.0
+//   var y = 0.0
+//
+//   func moveBy(x deltaX: Double, y deltaY: Double) {
+//      x += deltaX
+//      y += deltaY
+//   }
+//}
+//
+//class SomeClass {
+//    class func someTypeMethod(){
+//        print("class for metod static")
+//    }
+//}
+//
+//
+//SomeClass.someTypeMethod()
 
-    init(name: String, lastName: String) {
-        self.name = name
-        self.lastName = lastName
+
+//MARK: - Наследование
+
+class Vehicle {
+    var currentSpeed = 0.0
+    var description: String {
+        let str = "движется на скорости \(currentSpeed) миль в час"
+        return str
     }
     
-    public func fullName(){
-        print(name + " " + lastName)
+    func makeNoise() {
+        print("There is no noise")
     }
 }
 
-var bob = User(name: "Bob", lastName: "Gray")
-bob.fullName()
-
-//полиморфизм
-
-class Laptop {
-    var screen: String
-    var keyboard: String
-    var touchpad: Bool
-    
-    init(screen: String, keyboard: String, touchpad: Bool) {
-        self.screen = screen
-        self.keyboard = keyboard
-        self.touchpad = touchpad
+class Bicycle: Vehicle {
+    var basket: Bool = false
+    override var currentSpeed: Double {
+        willSet {
+            print("willset \(newValue)")
+        }
+        didSet {
+            print("didSet \(oldValue)")
+        }
     }
     
-    func powerOn() {
-        print("On")
-    }
-    func powerOff() {
-        print("Off")
-    }
-}
-
-class MacBook: Laptop {
-    let magicSafe: Bool
-    
-    init(magicSafe: Bool) {
-        self.magicSafe = magicSafe
-        super.init(screen: "4k hdr", keyboard: "qwerty", touchpad: true)
-    }
-}
-
-class Surface: Laptop {
-    
-}
-
-let air = MacBook(magicSafe: true)
-
-let surface = Surface(screen: "2k", keyboard: "Qwerty", touchpad: true)
-
-//наследование
-
-class Human {
-    var name: String
-    var age: Int
-    
-    init(name: String, age: Int){
-        self.name = name
-        self.age = age
+    override func makeNoise() {
+        print("bicycle ovverride")
     }
     
-}
-
-class Bob: Human {
-    var iPhone: Bool = true
-}
-
-class Jack: Human {
-    var pet: Bool = false
-}
-
-let jack = Jack(name: "Jack", age: 33)
-jack.name
-jack.age
-jack.pet
-
-
-
-struct Point {
-   var x = 0.0
-   var y = 0.0
     
-    mutating func moveBy(x deltaX: Double, y deltaY: Double) {
-      x += deltaX
-      y += deltaY
-   }
 }
 
-class Point2 {
-   var x = 0.0
-   var y = 0.0
+let vehicle = Vehicle()
+vehicle.currentSpeed
+vehicle.description
+
+let bicycle = Bicycle()
+bicycle.currentSpeed = 10
+bicycle.currentSpeed
+bicycle.description
+bicycle.basket
+
+class Train: Bicycle {
+    override var description: String {
+        print(super.description)
+        let newStr = "speed equal to \(currentSpeed) km/h"
+        return newStr
+    }
     
-   func moveBy(x deltaX: Double, y deltaY: Double) {
-      x += deltaX
-      y += deltaY
-   }
-}
-
-class SomeClass {
-    class func someTypeMethod(){
-        print("class for metod static")
+    override func makeNoise() {
+        super.makeNoise()
+        print("A train make very loud noise!!!")
     }
 }
 
 
-SomeClass.someTypeMethod()
+let train = Train()
+train.currentSpeed = 80
+print(train.description)
+train.makeNoise()
+
