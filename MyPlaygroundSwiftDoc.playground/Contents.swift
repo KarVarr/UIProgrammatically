@@ -594,10 +594,64 @@ y
 //privateClass.age
 
 
- enum CompassPoint {
+enum CompassPoint {
     static private var north = "north"
     case south
     case east
     case west
 }
+
+//MARK: - Приведение типов
+
+var age: Any = 10
+age = 15.9
+
+age = "16"
+
+class Test {
+    
+}
+
+var any: AnyObject = Test()
+
+var things = [Any]()
+
+class MediaItem {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class Movie: MediaItem {
+    var director: String
+    init(name: String, director: String) {
+        self.director = director
+        super.init(name: name)
+    }
+}
+
+class Song: MediaItem {
+    var artist: String
+    init(name: String, artist: String) {
+        self.artist = artist
+        super.init(name: name)
+    }
+}
+
+things.append(0)
+things.append(0.0)
+things.append(42)
+things.append(3.14159)
+things.append("hello")
+things.append((3.0, 5.0))
+things.append(Movie(name: "Ghostbusters", director: "Ivan Reitman"))
+things.append({ (name: String) -> String in "Hello, \(name)" })
+
+let optionalNumber: Int? = 3
+let optStr: String? = "test optional string"
+things.append(optionalNumber)
+things.append(optionalNumber as Any)
+things.append(optStr as Any)
+
 
