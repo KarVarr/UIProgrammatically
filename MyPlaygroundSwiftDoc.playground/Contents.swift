@@ -523,63 +523,81 @@ y
 
 
 //MARK: - Наследование
+//
+//class Vehicle {
+//    var currentSpeed = 0.0
+//    var description: String {
+//        let str = "движется на скорости \(currentSpeed) миль в час"
+//        return str
+//    }
+//
+//    func makeNoise() {
+//        print("There is no noise")
+//    }
+//}
+//
+//class Bicycle: Vehicle {
+//    var basket: Bool = false
+//    override var currentSpeed: Double {
+//        willSet {
+//            print("willset \(newValue)")
+//        }
+//        didSet {
+//            print("didSet \(oldValue)")
+//        }
+//    }
+//
+//    override func makeNoise() {
+//        print("bicycle ovverride")
+//    }
+//
+//
+//}
+//
+//let vehicle = Vehicle()
+//vehicle.currentSpeed
+//vehicle.description
+//
+//let bicycle = Bicycle()
+//bicycle.currentSpeed = 10
+//bicycle.currentSpeed
+//bicycle.description
+//bicycle.basket
+//
+//class Train: Bicycle {
+//    override var description: String {
+//        print(super.description)
+//        let newStr = "speed equal to \(currentSpeed) km/h"
+//        return newStr
+//    }
+//
+//    override func makeNoise() {
+//        super.makeNoise()
+//        print("A train make very loud noise!!!")
+//    }
+//}
+//
+//
+//let train = Train()
+//train.currentSpeed = 80
+//print(train.description)
+//train.makeNoise()
+//
 
-class Vehicle {
-    var currentSpeed = 0.0
-    var description: String {
-        let str = "движется на скорости \(currentSpeed) миль в час"
-        return str
-    }
-    
-    func makeNoise() {
-        print("There is no noise")
-    }
+//MARK: - Контроль доступа
+//
+//fileprivate class PrivateClass {
+//    var age: Int = 10
+//}
+//
+//private let privateClass = PrivateClass()
+//privateClass.age
+
+
+ enum CompassPoint {
+    static private var north = "north"
+    case south
+    case east
+    case west
 }
-
-class Bicycle: Vehicle {
-    var basket: Bool = false
-    override var currentSpeed: Double {
-        willSet {
-            print("willset \(newValue)")
-        }
-        didSet {
-            print("didSet \(oldValue)")
-        }
-    }
-    
-    override func makeNoise() {
-        print("bicycle ovverride")
-    }
-    
-    
-}
-
-let vehicle = Vehicle()
-vehicle.currentSpeed
-vehicle.description
-
-let bicycle = Bicycle()
-bicycle.currentSpeed = 10
-bicycle.currentSpeed
-bicycle.description
-bicycle.basket
-
-class Train: Bicycle {
-    override var description: String {
-        print(super.description)
-        let newStr = "speed equal to \(currentSpeed) km/h"
-        return newStr
-    }
-    
-    override func makeNoise() {
-        super.makeNoise()
-        print("A train make very loud noise!!!")
-    }
-}
-
-
-let train = Train()
-train.currentSpeed = 80
-print(train.description)
-train.makeNoise()
 
