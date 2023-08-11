@@ -675,7 +675,7 @@ class Human {
     }
     
     convenience init(name: String, salaryInARM: Double) {
-        self.init(name: name, salary: salaryInARM / 3.85)
+        self.init(name: name, salary: salaryInARM * 385)
         self.name += "!"
     }
     
@@ -693,3 +693,67 @@ bob.salary
 let ashot = Human(name: "Ashot", salaryInARM: 500)
 ashot.name
 ashot.salary
+
+class Programmer: Human {
+    var language: String
+    
+    init(language: String = "Swift") {
+        self.language = language
+        super.init(name: "UNKNOWN", salary: 100)
+        addSalary()
+    }
+    
+    func addSalary() {
+        print("You salary was increased to: \(salary * 2)")
+    }
+    
+}
+
+let iOSProgrammer = Programmer()
+iOSProgrammer.addSalary()
+
+struct User {
+    var name: String = "unknown album"
+    var salary: Double
+    
+    init() {
+        self.salary = 500.0
+    }
+    
+    init(name: String, salary: Double) {
+        self.name = name
+        self.salary = salary
+    }
+    
+    init(name: String, salaryInRUB: Double) {
+        self.name = name
+        self.salary = salaryInRUB * 98.4
+    }
+    
+    init(name: String, salaryInARM: Double) {
+        self.init(name: name, salary: salaryInARM * 385)
+        self.name += "!"
+    }
+    
+}
+
+
+enum Planets {
+    case mars
+    case earth
+    case jupiter
+    case saturn
+    
+    init?(number: Int) {
+        switch number {
+        case 1: self = .earth
+        case 2: self = .mars
+        case 3: self = .saturn
+        case 4: self = .jupiter
+        default: return nil
+        }
+    }
+}
+
+
+let planet = Planets(number: 2)
