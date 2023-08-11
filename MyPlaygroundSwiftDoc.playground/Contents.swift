@@ -656,104 +656,158 @@ y
 
 //MARK: - Инициализация Init
 
-class Human {
-    var name: String = "[UNKNOWN]"
-    var salary: Double
+//class Human {
+//    var name: String = "[UNKNOWN]"
+//    var salary: Double
+//
+//    init() {
+//        self.salary = 500.0
+//    }
+//
+//    init(name: String, salary: Double) {
+//        self.name = name
+//        self.salary = salary
+//    }
+//
+//    init(name: String, salaryInRUB: Double) {
+//        self.name = name
+//        self.salary = salaryInRUB * 98.4
+//    }
+//
+//    convenience init(name: String, salaryInARM: Double) {
+//        self.init(name: name, salary: salaryInARM * 385)
+//        self.name += "!"
+//    }
+//
+//}
+//
+//
+//let jack = Human(name: "Jack", salary: 1000)
+//jack.name
+//jack.salary
+//
+//let bob = Human(name: "Bob", salaryInRUB: 900)
+//bob.name
+//bob.salary
+//
+//let ashot = Human(name: "Ashot", salaryInARM: 500)
+//ashot.name
+//ashot.salary
+//
+//class Programmer: Human {
+//    var language: String
+//
+//    init(language: String = "Swift") {
+//        self.language = language
+//        super.init(name: "UNKNOWN", salary: 100)
+//        addSalary()
+//    }
+//
+//    func addSalary() {
+//        print("You salary was increased to: \(salary * 2)")
+//    }
+//
+//}
+//
+//let iOSProgrammer = Programmer()
+//iOSProgrammer.addSalary()
+//
+//struct User {
+//    var name: String = "unknown album"
+//    var salary: Double
+//
+//    init() {
+//        self.salary = 500.0
+//    }
+//
+//    init(name: String, salary: Double) {
+//        self.name = name
+//        self.salary = salary
+//    }
+//
+//    init(name: String, salaryInRUB: Double) {
+//        self.name = name
+//        self.salary = salaryInRUB * 98.4
+//    }
+//
+//    init(name: String, salaryInARM: Double) {
+//        self.init(name: name, salary: salaryInARM * 385)
+//        self.name += "!"
+//    }
+//
+//}
+//
+//
+//enum Planets {
+//    case mars
+//    case earth
+//    case jupiter
+//    case saturn
+//
+//    init?(number: Int) {
+//        switch number {
+//        case 1: self = .earth
+//        case 2: self = .mars
+//        case 3: self = .saturn
+//        case 4: self = .jupiter
+//        default: return nil
+//        }
+//    }
+//}
+//
+//
+//let planet = Planets(number: 2)
+
+
+struct Fahrenheit {
+    var temperature: Double
     
+}
+
+let f = Fahrenheit(temperature: 32)
+
+struct Fahrenheit2 {
+    var temperature: Double
+   
     init() {
-        self.salary = 500.0
-    }
-    
-    init(name: String, salary: Double) {
-        self.name = name
-        self.salary = salary
-    }
-    
-    init(name: String, salaryInRUB: Double) {
-        self.name = name
-        self.salary = salaryInRUB * 98.4
-    }
-    
-    convenience init(name: String, salaryInARM: Double) {
-        self.init(name: name, salary: salaryInARM * 385)
-        self.name += "!"
-    }
-    
-}
-
-
-let jack = Human(name: "Jack", salary: 1000)
-jack.name
-jack.salary
-
-let bob = Human(name: "Bob", salaryInRUB: 900)
-bob.name
-bob.salary
-
-let ashot = Human(name: "Ashot", salaryInARM: 500)
-ashot.name
-ashot.salary
-
-class Programmer: Human {
-    var language: String
-    
-    init(language: String = "Swift") {
-        self.language = language
-        super.init(name: "UNKNOWN", salary: 100)
-        addSalary()
-    }
-    
-    func addSalary() {
-        print("You salary was increased to: \(salary * 2)")
-    }
-    
-}
-
-let iOSProgrammer = Programmer()
-iOSProgrammer.addSalary()
-
-struct User {
-    var name: String = "unknown album"
-    var salary: Double
-    
-    init() {
-        self.salary = 500.0
-    }
-    
-    init(name: String, salary: Double) {
-        self.name = name
-        self.salary = salary
-    }
-    
-    init(name: String, salaryInRUB: Double) {
-        self.name = name
-        self.salary = salaryInRUB * 98.4
-    }
-    
-    init(name: String, salaryInARM: Double) {
-        self.init(name: name, salary: salaryInARM * 385)
-        self.name += "!"
-    }
-    
-}
-
-
-enum Planets {
-    case mars
-    case earth
-    case jupiter
-    case saturn
-    
-    init?(number: Int) {
-        switch number {
-        case 1: self = .earth
-        case 2: self = .mars
-        case 3: self = .saturn
-        case 4: self = .jupiter
-        default: return nil
-        }
+        temperature = 32.0
     }
 }
 
+let f2 = Fahrenheit2()
+print("The weather is \(f2.temperature)")
 
-let planet = Planets(number: 2)
+struct Celcius {
+    var tempInCelsius: Double
+    
+    init(fromFahrenheit fahrenheit: Double) {
+        tempInCelsius = (fahrenheit - 32.0) / 1.8
+    }
+    
+    init(fromKelvin kelvin: Double) {
+        tempInCelsius = kelvin - 273.15
+    }
+}
+
+let celciusFromFahrenheit = Celcius(fromFahrenheit: 40)
+celciusFromFahrenheit.tempInCelsius
+
+let celciusFromKevin = Celcius(fromKelvin: 28)
+celciusFromKevin.tempInCelsius
+
+
+class Mall {
+    var mallName: String
+    
+    init(mallName: String) {
+        self.mallName = mallName
+    }
+}
+
+class ShoppingListItem: Mall {
+    var name: String?
+    var quantity = 1
+    var purchased = false
+    
+}
+var item = ShoppingListItem(mallName: "Cosco")
