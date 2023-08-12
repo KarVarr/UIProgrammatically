@@ -878,38 +878,216 @@ y
 //    }
 //}
 
-
-class Human {
-    var name: String
-    var lastName: String
-    var age: Int
-    var fullName: String {
-        get {
-            return name + " " + lastName
-        }
-        set {
-            name = "Bob"
-            lastName = "Black"
-        }
-    }
-    
-    init(name: String, lastName: String, age: Int) {
-        self.name = name
-        self.lastName = lastName
-        self.age = age
-//        self.fullName = fullName
-    }
-    
-    func drive() {
-        print("I'm a driver")
-    }
-    
-}
-
-let driver = Human(name: "Jack", lastName: "White", age: 33)
-driver.age
-driver.name
-driver.lastName
-driver.fullName
+//
+//class Human {
+//    var name: String
+//    var lastName: String
+//    var age: Int
+//    var fullName: String {
+//        get {
+//            return name + " " + lastName
+//        }
+//        set {
+//            name = "Bob"
+//            lastName = "Black"
+//        }
+//    }
+//
+//    init(name: String, lastName: String, age: Int) {
+//        self.name = name
+//        self.lastName = lastName
+//        self.age = age
+////        self.fullName = fullName
+//    }
+//
+//    func drive() {
+//        print("I'm a driver")
+//    }
+//
+//}
+//
+//let driver = Human(name: "Jack", lastName: "White", age: 33)
+//driver.age
+//driver.name
+//driver.lastName
+//driver.fullName
 
 //let driver2 = Human()
+
+//MARK: - Protocol
+
+//protocol Human {
+//
+//    var name: String {get set}
+//    var lastName: String {get}
+//    var age: Int {get set}
+//}
+//
+//protocol Run: Human {
+//    func run()
+//}
+//
+//protocol Walk: Human {
+//    func walk()
+//}
+//
+//protocol Cry: Human {
+//    func cry(_ why: String)
+//}
+//
+//class User  {
+//    var id: Int = 0
+//    var _name: String = "test"
+//}
+//
+//extension User: Cry, Run, Walk {
+//
+//    var name: String {
+//        get {
+//            "Bobbu"
+//        }
+//        set {
+//            _name = newValue + "!!!"
+//        }
+//    }
+//
+//    var age: Int {
+//        get {
+//            34
+//        }
+//        set {
+//
+//        }
+//    }
+//
+//    var lastName: String {"Bubbo"}
+//
+//    func walk() {
+//        print("I walk")
+//    }
+//
+//    func run() {
+//        print("I run")
+//    }
+//
+//    func cry(_ why: String) {
+//        print("Cause of \(why)")
+//    }
+//
+//}
+//
+////var bob = User(name: "Bob", lastName: "Black", age: 34)
+//var bob = User()
+//bob.name
+//bob.lastName
+//bob.age
+//bob.run()
+//bob.walk()
+//bob.cry("you")
+//
+//bob.name = "Robert"
+//bob.name
+//bob.age = 12
+//bob.age
+////bob.lastName = "White"
+//bob.lastName
+////bob.lastName = "Pip"
+//bob.lastName
+//bob._name
+//
+//bob._name = "Dudu"
+//print(bob._name)
+//
+
+//
+//protocol Drive {
+//    var speed: Int { get }
+//    func drive()
+//}
+//
+//protocol Bicycle: Drive {
+//    var nameOfBicycle: String { get }
+//}
+//
+//extension Bicycle {
+//    var speed: Int { 59 }
+//    func drive() {
+//        print("drive ")
+//    }
+//
+//}
+//
+//class SomeClass {
+//
+//}
+//
+//class User: SomeClass, Drive {
+//    var speed: Int = 0
+//
+//    func drive() {
+//        print("hello")
+//    }
+//
+//
+//}
+
+//extension User: Bicycle {
+//    var nameOfBicycle: String {
+//
+//    }
+//}
+
+//var user = User()
+
+//user.drive()
+//user.nameOfBicycle
+//user.speed
+
+
+protocol Togglable {
+    mutating func toggle()
+}
+
+enum OnOffSwitch: Togglable {
+    case on, off
+    
+    mutating func toggle() {
+        switch self {
+        case .off: self = .on
+        case .on: self = .off
+        }
+    }
+}
+
+
+var switcher = OnOffSwitch.off
+switcher.toggle()
+switcher.toggle()
+switcher.toggle()
+switcher.toggle()
+
+
+protocol Named {
+    var name: String { get }
+}
+protocol Aged {
+    var age: Int { get }
+}
+struct Person: Named, Aged {
+    var name: String
+    var age: Int
+}
+func wishHappyBirthday(to celebrator: Named & Aged) {
+    print("С Днем Рождения, \(celebrator.name)! Тебе уже \(celebrator.age)!")
+}
+
+let user = Person(name: "Bob", age: 12)
+wishHappyBirthday(to: user)
+
+struct Human: Named {
+    var name: String
+}
+
+
+let user2 = Human(name: "Jack")
+//wishHappyBirthday(to: user2 as? Named) ошибка
