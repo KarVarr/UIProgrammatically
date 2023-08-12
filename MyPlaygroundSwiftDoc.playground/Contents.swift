@@ -814,66 +814,102 @@ y
 
 
 //MARK: - Extension
-
-extension Double {
-    var km: Double { return self * 1_000.0 }
-    var m: Double { return self }
-    var cm: Double { return self / 100.0 }
-    var mm: Double { return self / 1_000.0 }
-    var ft: Double { return self / 3.28084 }
-}
-
-
-let oneInch = 25.4.mm
-let aMarathon = 42.km + 195.m
-let ft = 1.78.ft
-
-
-extension Int {
-    func repeatNum(_ num: () -> Void) {
-        for _ in 0..<self {
-            num()
-        }
-    }
-}
-
-4.repeatNum {
-    print("Hello bob")
-}
-
-extension Int {
-    mutating func timesBySelf() {
-        self = self * self
-    }
-}
-
-var num = 4
-num.timesBySelf()
-
-struct User {
-    lazy var name: String = "Bob"
-    
-    
-//    lazy var bonus: Bool {
-//        if name != "" {
-//            return true
+//
+//extension Double {
+//    var km: Double { return self * 1_000.0 }
+//    var m: Double { return self }
+//    var cm: Double { return self / 100.0 }
+//    var mm: Double { return self / 1_000.0 }
+//    var ft: Double { return self / 3.28084 }
+//}
+//
+//
+//let oneInch = 25.4.mm
+//let aMarathon = 42.km + 195.m
+//let ft = 1.78.ft
+//
+//
+//extension Int {
+//    func repeatNum(_ num: () -> Void) {
+//        for _ in 0..<self {
+//            num()
 //        }
 //    }
-}
-extension User {
-    var age: Int {
-        return 4
+//}
+//
+//4.repeatNum {
+//    print("Hello bob")
+//}
+//
+//extension Int {
+//    mutating func timesBySelf() {
+//        self = self * self
+//    }
+//}
+//
+//var num = 4
+//num.timesBySelf()
+//
+//struct User {
+//    lazy var name: String = "Bob"
+//
+//
+////    lazy var bonus: Bool {
+////        if name != "" {
+////            return true
+////        }
+////    }
+//}
+//extension User {
+//    var age: Int {
+//        return 4
+//    }
+//
+//    var skills: String {
+//        "Swift"
+//    }
+//
+//
+//}
+//
+//class Human {
+//    class var lastName: String  {
+//        return "Black"
+//    }
+//}
+
+
+class Human {
+    var name: String
+    var lastName: String
+    var age: Int
+    var fullName: String {
+        get {
+            return name + " " + lastName
+        }
+        set {
+            name = "Bob"
+            lastName = "Black"
+        }
     }
     
-    var skills: String {
-        "Swift"
+    init(name: String, lastName: String, age: Int) {
+        self.name = name
+        self.lastName = lastName
+        self.age = age
+//        self.fullName = fullName
     }
     
+    func drive() {
+        print("I'm a driver")
+    }
     
 }
 
-class Human {
-    class var lastName: String  {
-        return "Black"
-    }
-}
+let driver = Human(name: "Jack", lastName: "White", age: 33)
+driver.age
+driver.name
+driver.lastName
+driver.fullName
+
+//let driver2 = Human()
