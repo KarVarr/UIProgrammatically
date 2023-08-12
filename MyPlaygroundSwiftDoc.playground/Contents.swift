@@ -759,55 +759,121 @@ y
 //let planet = Planets(number: 2)
 
 
-struct Fahrenheit {
-    var temperature: Double
-    
+//struct Fahrenheit {
+//    var temperature: Double
+//
+//}
+//
+//let f = Fahrenheit(temperature: 32)
+//
+//struct Fahrenheit2 {
+//    var temperature: Double
+//
+//    init() {
+//        temperature = 32.0
+//    }
+//}
+//
+//let f2 = Fahrenheit2()
+//print("The weather is \(f2.temperature)")
+//
+//struct Celcius {
+//    var tempInCelsius: Double
+//
+//    init(fromFahrenheit fahrenheit: Double) {
+//        tempInCelsius = (fahrenheit - 32.0) / 1.8
+//    }
+//
+//    init(fromKelvin kelvin: Double) {
+//        tempInCelsius = kelvin - 273.15
+//    }
+//}
+//
+//let celciusFromFahrenheit = Celcius(fromFahrenheit: 40)
+//celciusFromFahrenheit.tempInCelsius
+//
+//let celciusFromKevin = Celcius(fromKelvin: 28)
+//celciusFromKevin.tempInCelsius
+//
+//
+//class Mall {
+//    var mallName: String
+//
+//    init(mallName: String) {
+//        self.mallName = mallName
+//    }
+//}
+//
+//class ShoppingListItem: Mall {
+//    var name: String?
+//    var quantity = 1
+//    var purchased = false
+//
+//}
+//var item = ShoppingListItem(mallName: "Cosco")
+
+
+//MARK: - Extension
+
+extension Double {
+    var km: Double { return self * 1_000.0 }
+    var m: Double { return self }
+    var cm: Double { return self / 100.0 }
+    var mm: Double { return self / 1_000.0 }
+    var ft: Double { return self / 3.28084 }
 }
 
-let f = Fahrenheit(temperature: 32)
 
-struct Fahrenheit2 {
-    var temperature: Double
-   
-    init() {
-        temperature = 32.0
+let oneInch = 25.4.mm
+let aMarathon = 42.km + 195.m
+let ft = 1.78.ft
+
+
+extension Int {
+    func repeatNum(_ num: () -> Void) {
+        for _ in 0..<self {
+            num()
+        }
     }
 }
 
-let f2 = Fahrenheit2()
-print("The weather is \(f2.temperature)")
+4.repeatNum {
+    print("Hello bob")
+}
 
-struct Celcius {
-    var tempInCelsius: Double
-    
-    init(fromFahrenheit fahrenheit: Double) {
-        tempInCelsius = (fahrenheit - 32.0) / 1.8
-    }
-    
-    init(fromKelvin kelvin: Double) {
-        tempInCelsius = kelvin - 273.15
+extension Int {
+    mutating func timesBySelf() {
+        self = self * self
     }
 }
 
-let celciusFromFahrenheit = Celcius(fromFahrenheit: 40)
-celciusFromFahrenheit.tempInCelsius
+var num = 4
+num.timesBySelf()
 
-let celciusFromKevin = Celcius(fromKelvin: 28)
-celciusFromKevin.tempInCelsius
-
-
-class Mall {
-    var mallName: String
+struct User {
+    lazy var name: String = "Bob"
     
-    init(mallName: String) {
-        self.mallName = mallName
+    
+//    lazy var bonus: Bool {
+//        if name != "" {
+//            return true
+//        }
+//    }
+}
+extension User {
+    var age: Int {
+        return 4
+    }
+    
+    var skills: String {
+        "Swift"
+    }
+    
+    
+}
+
+class Human {
+    class var lastName: String  {
+        return "Black"
     }
 }
-
-class ShoppingListItem: Mall {
-    var name: String?
-    var quantity = 1
-    var purchased = false
-    
-}
-var item = ShoppingListItem(mallName: "Cosco")
