@@ -1044,50 +1044,78 @@ y
 //user.speed
 
 
-protocol Togglable {
-    mutating func toggle()
-}
+//protocol Togglable {
+//    mutating func toggle()
+//}
+//
+//enum OnOffSwitch: Togglable {
+//    case on, off
+//
+//    mutating func toggle() {
+//        switch self {
+//        case .off: self = .on
+//        case .on: self = .off
+//        }
+//    }
+//}
+//
+//
+//var switcher = OnOffSwitch.off
+//switcher.toggle()
+//switcher.toggle()
+//switcher.toggle()
+//switcher.toggle()
+//
+//
+//protocol Named {
+//    var name: String { get }
+//}
+//protocol Aged {
+//    var age: Int { get }
+//}
+//struct Person: Named, Aged {
+//    var name: String
+//    var age: Int
+//}
+//func wishHappyBirthday(to celebrator: Named & Aged) {
+//    print("С Днем Рождения, \(celebrator.name)! Тебе уже \(celebrator.age)!")
+//}
+//
+//let user = Person(name: "Bob", age: 12)
+//wishHappyBirthday(to: user)
+//
+//struct Human: Named {
+//    var name: String
+//}
+//
+//
+//let user2 = Human(name: "Jack")
+//wishHappyBirthday(to: user2 as? Named) ошибка
 
-enum OnOffSwitch: Togglable {
-    case on, off
-    
-    mutating func toggle() {
-        switch self {
-        case .off: self = .on
-        case .on: self = .off
-        }
+
+//MARK: - ARC
+
+
+class Person {
+    let name: String
+    init(name: String) {
+        self.name = name
+        print("\(name) инициализируется")
+    }
+    deinit {
+        print("\(name) деинициализируется")
     }
 }
 
+var reference1: Person?
+var reference2: Person?
+var reference3: Person?
 
-var switcher = OnOffSwitch.off
-switcher.toggle()
-switcher.toggle()
-switcher.toggle()
-switcher.toggle()
-
-
-protocol Named {
-    var name: String { get }
-}
-protocol Aged {
-    var age: Int { get }
-}
-struct Person: Named, Aged {
-    var name: String
-    var age: Int
-}
-func wishHappyBirthday(to celebrator: Named & Aged) {
-    print("С Днем Рождения, \(celebrator.name)! Тебе уже \(celebrator.age)!")
-}
-
-let user = Person(name: "Bob", age: 12)
-wishHappyBirthday(to: user)
-
-struct Human: Named {
-    var name: String
-}
-
-
-let user2 = Human(name: "Jack")
-//wishHappyBirthday(to: user2 as? Named) ошибка
+reference1 = Person(name: "John Appleseed")
+reference2 = reference1
+reference3 = reference1
+var ref: Person? = Person(name: "Test name")
+reference1 = nil
+reference2 = nil
+reference3 = nil
+ref = nil
