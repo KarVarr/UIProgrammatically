@@ -1094,28 +1094,28 @@ y
 
 
 //MARK: - ARC
-
-
-class Person {
-    let name: String
-    init(name: String) {
-        self.name = name
-        print("\(name) инициализируется")
-    }
-    deinit {
-        print("\(name) деинициализируется")
-    }
-}
-
-var reference1: Person?
-var reference2: Person?
-var reference3: Person?
-
-reference1 = Person(name: "John Appleseed")
-reference2 = reference1
-reference3 = reference1
-var ref: Person? = Person(name: "Test name")
-reference1 = nil
-reference2 = nil
-reference3 = nil
-ref = nil
+//
+//
+//class Person {
+//    let name: String
+//    init(name: String) {
+//        self.name = name
+//        print("\(name) инициализируется")
+//    }
+//    deinit {
+//        print("\(name) деинициализируется")
+//    }
+//}
+//
+//var reference1: Person?
+//var reference2: Person?
+//var reference3: Person?
+//
+//reference1 = Person(name: "John Appleseed")
+//reference2 = reference1
+//reference3 = reference1
+//var ref: Person? = Person(name: "Test name")
+//reference1 = nil
+//reference2 = nil
+//reference3 = nil
+//ref = nil
