@@ -1119,3 +1119,50 @@ y
 //reference2 = nil
 //reference3 = nil
 //ref = nil
+
+//MARK: - Дженерики
+
+func swapSomeTypes<T>(_ a: inout T, _ b: inout T) {
+    let tempA = a
+    a = b
+    b = tempA
+}
+
+var num1 = 20
+var num2 = 399
+
+swapSomeTypes(&num1, &num2)
+num1
+num2
+
+protocol Container {
+    associatedtype T
+    mutating func append(_ item: T)
+    var count: Int { get }
+    subscript(i: Int) -> T { get }
+}
+
+struct IntStack: Container {
+    mutating func append(_ item: Int) {
+        
+    }
+    
+    subscript(i: Int) -> Int {
+        return 0
+    }
+    
+    typealias T = Int
+    
+    var count: Int
+    
+    
+}
+
+enum MyOptional<T> {
+    case some(T)
+    case none
+}
+
+let newStr = MyOptional.some("Hello")
+let str = Optional.some("Hello again")
+
