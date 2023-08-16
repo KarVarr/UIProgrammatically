@@ -1233,18 +1233,57 @@ y
 //mark.age
 //
 //Test.shared.age
+//
+//
+//struct Test1: Equatable {
+//
+//}
+//
+//struct Test2: Equatable {
+//
+//
+//}
+//
+//
+//let test1 = Test1()
+//let test2 = Test2()
 
+//func reverse(string: String) -> String {
+//    var newString = [String]()
+//    var words = string.components(separatedBy: " ")
+//
+//    for word in words {
+//        newString.insert(word, at: 0)
+//    }
+//
+//    return newString.joined(separator: " ")
+//}
 
-struct Test1: Equatable {
+//func reverse(string: String) -> String {
+//    return string.components(separatedBy: " ").reversed().joined(separator: " ")
+//}
+
+func reverse(string: String) -> String {
+    var newString = [String]()
+    var words = string.components(separatedBy: " ")
+    
+    for word in words {
+        if !newString.contains(word) {
+            newString.insert(word, at: 0)
+        }
+    }
+    
+    return newString.joined(separator: " ")
     
 }
 
-struct Test2: Equatable {
-    
-    
-}
 
+let test1 = "Welcome to Sydney"
+let test2 = "Hi Siri how is the weather today"
+let test3 = "Welcome to Welcome Sydney"
+let test4 = "Hi Siri how how is the weather today"
 
-let test1 = Test1()
-let test2 = Test2()
-
+print(reverse(string: test1))
+print(reverse(string: test2))
+print(reverse(string: test3))
+print(reverse(string: test4))
