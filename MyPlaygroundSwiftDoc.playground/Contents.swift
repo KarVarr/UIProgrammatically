@@ -1122,47 +1122,102 @@ y
 
 //MARK: - Дженерики
 
-func swapSomeTypes<T>(_ a: inout T, _ b: inout T) {
-    let tempA = a
-    a = b
-    b = tempA
+//func swapSomeTypes<T>(_ a: inout T, _ b: inout T) {
+//    let tempA = a
+//    a = b
+//    b = tempA
+//}
+//
+//var num1 = 20
+//var num2 = 399
+//
+//swapSomeTypes(&num1, &num2)
+//num1
+//num2
+//
+//protocol Container {
+//    associatedtype T
+//    mutating func append(_ item: T)
+//    var count: Int { get }
+//    subscript(i: Int) -> T { get }
+//}
+//
+//struct IntStack: Container {
+//    mutating func append(_ item: Int) {
+//
+//    }
+//
+//    subscript(i: Int) -> Int {
+//        return 0
+//    }
+//
+//    typealias T = Int
+//
+//    var count: Int
+//
+//
+//}
+//
+//enum MyOptional<T> {
+//    case some(T)
+//    case none
+//}
+//
+//let newStr = MyOptional.some("Hello")
+//let str = Optional.some("Hello again")
+
+//MARK: - Try Do catch
+
+enum SpellCastError: Error {
+    case spellNotLearned
+    case notEnoughMana(needMore: Int)
+    case friendlyTarget
 }
 
-var num1 = 20
-var num2 = 399
-
-swapSomeTypes(&num1, &num2)
-num1
-num2
-
-protocol Container {
-    associatedtype T
-    mutating func append(_ item: T)
-    var count: Int { get }
-    subscript(i: Int) -> T { get }
+extension SpellCastError: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .spellNotLearned: return "Spell is not yet learned"
+        case .notEnoughMana(let mana): return  "You need \(mana) mana"
+        case .friendlyTarget: return  "You can't cast this spell on friendly target!"
+        }
+    }
 }
 
-struct IntStack: Container {
-    mutating func append(_ item: Int) {
+SpellCastError.notEnoughMana(needMore: 10).description
+SpellCastError.friendlyTarget.description
+SpellCastError.friendlyTarget
+
+protocol Target {}
+
+struct Enemy: Target {}
+struct Friend: Target {}
+
+class Mage {
+    
+    var mana = 0
+    var spells = ["fireball": 100]
+    
+    func fillMana() {
+        mana = 1000
+    }
+    
+    func castHarmSpell(onEnemy target: Target) throws {
+        if target is Friend {
+            throw SpellCastError.friendlyTarget
+        }
+        print("Cast fireball killed all enemies!")
+    }
+    
+    func fireball(onTarget target: Target) throws {
+        if mana < spells["fireball"]! {
+            throw SpellCastError.notEnoughMana(needMore: spells["fireball"]! - mana)
+        }
         
+        if !spells.keys.contains("fireball") {
+            throw SpellCastError.spellNotLearned
+        }
     }
-    
-    subscript(i: Int) -> Int {
-        return 0
-    }
-    
-    typealias T = Int
-    
-    var count: Int
-    
-    
 }
 
-enum MyOptional<T> {
-    case some(T)
-    case none
-}
-
-let newStr = MyOptional.some("Hello")
-let str = Optional.some("Hello again")
 
