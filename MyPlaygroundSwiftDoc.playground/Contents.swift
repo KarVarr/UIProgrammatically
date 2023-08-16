@@ -1168,56 +1168,83 @@ y
 
 //MARK: - Try Do catch
 
-enum SpellCastError: Error {
-    case spellNotLearned
-    case notEnoughMana(needMore: Int)
-    case friendlyTarget
+//enum SpellCastError: Error {
+//    case spellNotLearned
+//    case notEnoughMana(needMore: Int)
+//    case friendlyTarget
+//}
+//
+//extension SpellCastError: CustomStringConvertible {
+//    var description: String {
+//        switch self {
+//        case .spellNotLearned: return "Spell is not yet learned"
+//        case .notEnoughMana(let mana): return  "You need \(mana) mana"
+//        case .friendlyTarget: return  "You can't cast this spell on friendly target!"
+//        }
+//    }
+//}
+//
+//SpellCastError.notEnoughMana(needMore: 10).description
+//SpellCastError.friendlyTarget.description
+//SpellCastError.friendlyTarget
+//
+//protocol Target {}
+//
+//struct Enemy: Target {}
+//struct Friend: Target {}
+//
+//class Mage {
+//
+//    var mana = 0
+//    var spells = ["fireball": 100]
+//
+//    func fillMana() {
+//        mana = 1000
+//    }
+//
+//    func castHarmSpell(onEnemy target: Target) throws {
+//        if target is Friend {
+//            throw SpellCastError.friendlyTarget
+//        }
+//        print("Cast fireball killed all enemies!")
+//    }
+//
+//    func fireball(onTarget target: Target) throws {
+//        if mana < spells["fireball"]! {
+//            throw SpellCastError.notEnoughMana(needMore: spells["fireball"]! - mana)
+//        }
+//
+//        if !spells.keys.contains("fireball") {
+//            throw SpellCastError.spellNotLearned
+//        }
+//    }
+//}
+//
+//
+//class Test {
+//    static var shared = Test()
+//    var age: Int = 44
+//}
+//
+//let bob = Test()
+//bob.age
+//
+//let mark = Test()
+//mark.age
+//
+//Test.shared.age
+
+
+struct Test1: Equatable {
+    
 }
 
-extension SpellCastError: CustomStringConvertible {
-    var description: String {
-        switch self {
-        case .spellNotLearned: return "Spell is not yet learned"
-        case .notEnoughMana(let mana): return  "You need \(mana) mana"
-        case .friendlyTarget: return  "You can't cast this spell on friendly target!"
-        }
-    }
+struct Test2: Equatable {
+    
+    
 }
 
-SpellCastError.notEnoughMana(needMore: 10).description
-SpellCastError.friendlyTarget.description
-SpellCastError.friendlyTarget
 
-protocol Target {}
-
-struct Enemy: Target {}
-struct Friend: Target {}
-
-class Mage {
-    
-    var mana = 0
-    var spells = ["fireball": 100]
-    
-    func fillMana() {
-        mana = 1000
-    }
-    
-    func castHarmSpell(onEnemy target: Target) throws {
-        if target is Friend {
-            throw SpellCastError.friendlyTarget
-        }
-        print("Cast fireball killed all enemies!")
-    }
-    
-    func fireball(onTarget target: Target) throws {
-        if mana < spells["fireball"]! {
-            throw SpellCastError.notEnoughMana(needMore: spells["fireball"]! - mana)
-        }
-        
-        if !spells.keys.contains("fireball") {
-            throw SpellCastError.spellNotLearned
-        }
-    }
-}
-
+let test1 = Test1()
+let test2 = Test2()
 
