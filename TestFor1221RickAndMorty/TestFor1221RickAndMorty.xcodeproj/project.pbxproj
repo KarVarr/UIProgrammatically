@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17A65CC12A8EA9F000433015 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC02A8EA9F000433015 /* Helper.swift */; };
+		17A65CC42A8EABCB00433015 /* UIColor + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC32A8EABCB00433015 /* UIColor + Ext.swift */; };
 		17B226BF2A8EA2AA00DA1511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B226BE2A8EA2AA00DA1511 /* AppDelegate.swift */; };
 		17B226C12A8EA2AA00DA1511 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B226C02A8EA2AA00DA1511 /* SceneDelegate.swift */; };
 		17B226C32A8EA2AA00DA1511 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B226C22A8EA2AA00DA1511 /* ViewController.swift */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17A65CC02A8EA9F000433015 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		17A65CC32A8EABCB00433015 /* UIColor + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Ext.swift"; sourceTree = "<group>"; };
 		17B226BB2A8EA2AA00DA1511 /* TestFor1221RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestFor1221RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B226BE2A8EA2AA00DA1511 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17B226C02A8EA2AA00DA1511 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +39,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17A65CBC2A8EA99900433015 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				17B226C22A8EA2AA00DA1511 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		17A65CBD2A8EA9B000433015 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		17A65CBE2A8EA9BA00433015 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		17A65CBF2A8EA9DC00433015 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				17A65CC22A8EABAE00433015 /* Extentions */,
+				17A65CC02A8EA9F000433015 /* Helper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		17A65CC22A8EABAE00433015 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				17A65CC32A8EABCB00433015 /* UIColor + Ext.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		17B226B22A8EA2AA00DA1511 = {
 			isa = PBXGroup;
 			children = (
@@ -54,8 +97,11 @@
 		17B226BD2A8EA2AA00DA1511 /* TestFor1221RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				17A65CBF2A8EA9DC00433015 /* Helpers */,
 				17B226D22A8EA2E500DA1511 /* Application */,
-				17B226C22A8EA2AA00DA1511 /* ViewController.swift */,
+				17A65CBD2A8EA9B000433015 /* Model */,
+				17A65CBE2A8EA9BA00433015 /* View */,
+				17A65CBC2A8EA99900433015 /* Controller */,
 				17B226D32A8EA2F400DA1511 /* Resources */,
 			);
 			path = TestFor1221RickAndMorty;
@@ -152,7 +198,9 @@
 			files = (
 				17B226C32A8EA2AA00DA1511 /* ViewController.swift in Sources */,
 				17B226BF2A8EA2AA00DA1511 /* AppDelegate.swift in Sources */,
+				17A65CC42A8EABCB00433015 /* UIColor + Ext.swift in Sources */,
 				17B226C12A8EA2AA00DA1511 /* SceneDelegate.swift in Sources */,
+				17A65CC12A8EA9F000433015 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +344,7 @@
 				INFOPLIST_FILE = TestFor1221RickAndMorty/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -325,6 +374,7 @@
 				INFOPLIST_FILE = TestFor1221RickAndMorty/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
