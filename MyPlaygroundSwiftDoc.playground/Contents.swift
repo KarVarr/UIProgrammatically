@@ -1385,12 +1385,25 @@ import UIKit
 //let test1 = String()
 //test.isEmpty
 //test1.isEmpty
+//
+//var welcome = "Welcome"
+//welcome.append("!")
+//print(welcome)
+//
+//print("\u{d7}")
+//
+//print(welcome[welcome.startIndex])
+//print(welcome[welcome.index(before: welcome.endIndex)])
 
-var welcome = "Welcome"
-welcome.append("!")
-print(welcome)
 
-print("\u{d7}")
+//func name() async {
+//    print("BOB is async")
+//}
+//
+//func lName() {
+//    print("Black is not async")
+//}
+//
+//lName()
+//await name()
 
-print(welcome[welcome.startIndex])
-print(welcome[welcome.index(before: welcome.endIndex)])
