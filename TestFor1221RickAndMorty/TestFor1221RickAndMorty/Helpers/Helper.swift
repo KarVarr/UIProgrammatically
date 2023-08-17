@@ -13,6 +13,8 @@ enum Helper {
     }
     
     enum Colors {
+        static let whiteColor = UIColor(hexString: "#FFFFFF")
         static let mainBlackColor = UIColor(hexString: "#040C1E")
+        
     }
 }

@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    let networkManage = NetworkManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +17,8 @@ class ViewController: UIViewController {
         settingsForNav()
         settings()
         layout()
+        
+        networkManage.request()
     }
     
    
@@ -29,7 +32,7 @@ class ViewController: UIViewController {
         title = Helper.Strings.title
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.tintColor = Helper.Colors.whiteColor
           
     }
     
