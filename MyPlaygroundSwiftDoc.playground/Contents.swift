@@ -365,9 +365,9 @@ import UIKit
 //
 //}
 
-let (x, y) = (1,2)
-x
-y
+//let (x, y) = (1,2)
+//x
+//y
 
 //let arr = ["Alex", "Bob", "Jack", "Anna"]
 //
@@ -1263,27 +1263,84 @@ y
 //    return string.components(separatedBy: " ").reversed().joined(separator: " ")
 //}
 
-func reverse(string: String) -> String {
-    var newString = [String]()
-    var words = string.components(separatedBy: " ")
-    
-    for word in words {
-        if !newString.contains(word) {
-            newString.insert(word, at: 0)
-        }
-    }
-    
-    return newString.joined(separator: " ")
-    
+//func reverse(string: String) -> String {
+//    var newString = [String]()
+//    var words = string.components(separatedBy: " ")
+//
+//    for word in words {
+//        if !newString.contains(word) {
+//            newString.insert(word, at: 0)
+//        }
+//    }
+//
+//    return newString.joined(separator: " ")
+//
+//}
+//
+//
+//let test1 = "Welcome to Sydney"
+//let test2 = "Hi Siri how is the weather today"
+//let test3 = "Welcome to Welcome Sydney"
+//let test4 = "Hi Siri how how is the weather today"
+//
+//print(reverse(string: test1))
+//print(reverse(string: test2))
+//print(reverse(string: test3))
+//print(reverse(string: test4))
+
+
+//MARK: - General
+//
+//var x = 0.0, y = 5.5, q = 12.2, t = 5, i = "hello"
+//
+//var welcomeMessage: String
+//welcomeMessage = "Hi Bob"
+//
+//var red, blue, green, alpha: Double
+//red = 4.4
+//blue = 33.3
+//green = 0.0
+//alpha = 1.0
+//
+//let `var` = 44
+//print(welcomeMessage, terminator: " хуй ")
+//UInt8.max
+//UInt32.max
+//UInt16.max
+//Int32.max
+//
+//
+//let http404NotFound = (404, "Not found", 200.0, false)
+//print(type(of: http404NotFound))
+//let (statusInt, statusString, _, statusBool) = http404NotFound
+//statusInt
+//statusString
+//statusBool
+//print(http404NotFound.2)
+//let cort = (name: "Bob", age: 49)
+//cort.age
+//cort.name
+//
+//struct Name {
+//    var `func` = 10
+//}
+//
+//var num: Int?
+//
+//let assumedString: String! = "An implicitly unwrapped optional string."
+//let test = assumedString // optional
+//let test2: String = assumedString  //String. Not optional
+
+
+var age = 3
+
+//assert(age >= 1, "You are not born yet")
+//assert(age >= 0, "Возраст человека не может быть меньше нуля")
+
+if age > 10 {
+    print("Ты можешь покататься на американских горках и чертовом колесе.")
+} else if age > 0 {
+    print("Ты можешь покататься на чертовом колесе.")
+} else {
+    assertionFailure("Возраст человека не может быть отрицательным.")
 }
-
-
-let test1 = "Welcome to Sydney"
-let test2 = "Hi Siri how is the weather today"
-let test3 = "Welcome to Welcome Sydney"
-let test4 = "Hi Siri how how is the weather today"
-
-print(reverse(string: test1))
-print(reverse(string: test2))
-print(reverse(string: test3))
-print(reverse(string: test4))
