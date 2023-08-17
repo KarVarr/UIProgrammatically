@@ -1332,15 +1332,65 @@ import UIKit
 //let test2: String = assumedString  //String. Not optional
 
 
-var age = 3
+//var age = 3
 
 //assert(age >= 1, "You are not born yet")
 //assert(age >= 0, "Возраст человека не может быть меньше нуля")
+//
+//if age > 10 {
+//    print("Ты можешь покататься на американских горках и чертовом колесе.")
+//} else if age > 0 {
+//    print("Ты можешь покататься на чертовом колесе.")
+//} else {
+//    assertionFailure("Возраст человека не может быть отрицательным.")
+//}
 
-if age > 10 {
-    print("Ты можешь покататься на американских горках и чертовом колесе.")
-} else if age > 0 {
-    print("Ты можешь покататься на чертовом колесе.")
-} else {
-    assertionFailure("Возраст человека не может быть отрицательным.")
-}
+//let str = """
+//pipo is my wifi name.
+//Do you now that?
+//"""
+//
+//print(str)
+//
+//let lineBreaks = """
+//
+//   This string starts with a line break.
+//      It also ends with a line break.
+//
+//   """
+//
+//print(lineBreaks)
+//
+//let linesWithIndentation = """
+//    Эта строка начинается без пробелов в начале.
+//        Эта строка имеет 4 пробела.
+//    Эта строка так же начинается без пробелов.
+//    """
+//
+//print(linesWithIndentation)
+//let blackHeart = "\u{2668}"
+//print(blackHeart)
+
+//print(#"Line 1\nLine 2"#)
+//print("Line 1\nLine 2")
+//print(###"Line1\###nLine2"###)
+//
+//let threeMoreDoubleQuotationMarks = #"""
+//Here are three more double quotes: """
+//"""#
+//
+//print(threeMoreDoubleQuotationMarks)
+//
+//let test = ""
+//let test1 = String()
+//test.isEmpty
+//test1.isEmpty
+
+var welcome = "Welcome"
+welcome.append("!")
+print(welcome)
+
+print("\u{d7}")
+
+print(welcome[welcome.startIndex])
+print(welcome[welcome.index(before: welcome.endIndex)])
