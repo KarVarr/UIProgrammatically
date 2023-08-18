@@ -12,6 +12,11 @@
 		17A65CC62A8EB53B00433015 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC52A8EB53B00433015 /* NetworkManager.swift */; };
 		17A65CC82A8F63DA00433015 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC72A8F63DA00433015 /* Character.swift */; };
 		17A65CCA2A8F659D00433015 /* CharacterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC92A8F659D00433015 /* CharacterResponse.swift */; };
+		17A65CCE2A8F68A900433015 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CCD2A8F68A900433015 /* CollectionView.swift */; };
+		17A65CD22A8F6A3700433015 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CD12A8F6A3700433015 /* CustomCollectionViewCell.swift */; };
+		17A65CD42A8F6AA300433015 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CD32A8F6AA300433015 /* CustomImageView.swift */; };
+		17A65CD62A8F6B6000433015 /* CustomLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CD52A8F6B6000433015 /* CustomLabelView.swift */; };
+		17A65CD92A8F6EF600433015 /* VC + ExtCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CD82A8F6EF600433015 /* VC + ExtCollection.swift */; };
 		17B226BF2A8EA2AA00DA1511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B226BE2A8EA2AA00DA1511 /* AppDelegate.swift */; };
 		17B226C12A8EA2AA00DA1511 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B226C02A8EA2AA00DA1511 /* SceneDelegate.swift */; };
 		17B226C32A8EA2AA00DA1511 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B226C22A8EA2AA00DA1511 /* ViewController.swift */; };
@@ -25,6 +30,11 @@
 		17A65CC52A8EB53B00433015 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		17A65CC72A8F63DA00433015 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		17A65CC92A8F659D00433015 /* CharacterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponse.swift; sourceTree = "<group>"; };
+		17A65CCD2A8F68A900433015 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		17A65CD12A8F6A3700433015 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		17A65CD32A8F6AA300433015 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		17A65CD52A8F6B6000433015 /* CustomLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelView.swift; sourceTree = "<group>"; };
+		17A65CD82A8F6EF600433015 /* VC + ExtCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC + ExtCollection.swift"; sourceTree = "<group>"; };
 		17B226BB2A8EA2AA00DA1511 /* TestFor1221RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestFor1221RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B226BE2A8EA2AA00DA1511 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17B226C02A8EA2AA00DA1511 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +58,7 @@
 		17A65CBC2A8EA99900433015 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				17A65CD72A8F6ED100433015 /* VC + Ext */,
 				17B226C22A8EA2AA00DA1511 /* ViewController.swift */,
 			);
 			path = Controller;
@@ -56,7 +67,7 @@
 		17A65CBD2A8EA9B000433015 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				17A65CC52A8EB53B00433015 /* NetworkManager.swift */,
+				17A65CCB2A8F664E00433015 /* Network */,
 				17A65CC72A8F63DA00433015 /* Character.swift */,
 				17A65CC92A8F659D00433015 /* CharacterResponse.swift */,
 			);
@@ -66,6 +77,9 @@
 		17A65CBE2A8EA9BA00433015 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				17A65CCC2A8F688E00433015 /* Collection */,
+				17A65CD32A8F6AA300433015 /* CustomImageView.swift */,
+				17A65CD52A8F6B6000433015 /* CustomLabelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -85,6 +99,31 @@
 				17A65CC32A8EABCB00433015 /* UIColor + Ext.swift */,
 			);
 			path = Extentions;
+			sourceTree = "<group>";
+		};
+		17A65CCB2A8F664E00433015 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				17A65CC52A8EB53B00433015 /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		17A65CCC2A8F688E00433015 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				17A65CCD2A8F68A900433015 /* CollectionView.swift */,
+				17A65CD12A8F6A3700433015 /* CustomCollectionViewCell.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		17A65CD72A8F6ED100433015 /* VC + Ext */ = {
+			isa = PBXGroup;
+			children = (
+				17A65CD82A8F6EF600433015 /* VC + ExtCollection.swift */,
+			);
+			path = "VC + Ext";
 			sourceTree = "<group>";
 		};
 		17B226B22A8EA2AA00DA1511 = {
@@ -205,11 +244,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17A65CCE2A8F68A900433015 /* CollectionView.swift in Sources */,
+				17A65CD22A8F6A3700433015 /* CustomCollectionViewCell.swift in Sources */,
+				17A65CD62A8F6B6000433015 /* CustomLabelView.swift in Sources */,
 				17A65CC62A8EB53B00433015 /* NetworkManager.swift in Sources */,
+				17A65CD92A8F6EF600433015 /* VC + ExtCollection.swift in Sources */,
 				17B226C32A8EA2AA00DA1511 /* ViewController.swift in Sources */,
 				17B226BF2A8EA2AA00DA1511 /* AppDelegate.swift in Sources */,
 				17A65CC42A8EABCB00433015 /* UIColor + Ext.swift in Sources */,
 				17A65CC82A8F63DA00433015 /* Character.swift in Sources */,
+				17A65CD42A8F6AA300433015 /* CustomImageView.swift in Sources */,
 				17B226C12A8EA2AA00DA1511 /* SceneDelegate.swift in Sources */,
 				17A65CCA2A8F659D00433015 /* CharacterResponse.swift in Sources */,
 				17A65CC12A8EA9F000433015 /* Helper.swift in Sources */,

@@ -9,6 +9,9 @@ import Foundation
 
 
 class NetworkManager {
+    
+    var onCompletion: ((CharacterResponse) -> Void)?
+    
     func request() {
         let urlString = "https://rickandmortyapi.com/api/character"
         guard let url = URL(string: urlString) else { return }
@@ -24,10 +27,7 @@ class NetworkManager {
                 do {
                     let decoder = JSONDecoder()
                     let characters = try decoder.decode(CharacterResponse.self, from: data)
-//                    print(characters.results)
-                    for i in characters.results {
-                        print(i.id)
-                    }
+                    self.onCompletion?(characters)
                 } catch  {
                     print("JSON decoding error: \(error)")
                 }

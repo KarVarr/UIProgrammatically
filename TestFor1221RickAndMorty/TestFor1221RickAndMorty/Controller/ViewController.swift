@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     let networkManage = NetworkManager()
+    let collectionView = CollectionView()
+    var character: [Character] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,14 +20,22 @@ class ViewController: UIViewController {
         settings()
         layout()
         
+        collectionViewDelegates()
+        
+        networkManage.onCompletion = { characterResponse in
+            self.character = characterResponse.results
+            
+            DispatchQueue.main.async {
+                self.collectionView.collection.reloadData()
+            }
+        }
+        
         networkManage.request()
     }
     
    
-    
-    
     func addViews() {
-        
+        view.addSubview(collectionView.collection)
     }
     
     func settingsForNav() {
@@ -38,10 +48,19 @@ class ViewController: UIViewController {
     
     func settings() {
         view.backgroundColor = Helper.Colors.mainBlackColor
+        
+        
     }
     
     func layout() {
+        let collectionView = collectionView.collection
         
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
     }
     
     
