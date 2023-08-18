@@ -13,7 +13,7 @@ class CollectionView {
     let collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-//        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.minimumLineSpacing = 16
         layout.minimumInteritemSpacing = 16
         layout.itemSize = CGSize(width: 156, height: 202)

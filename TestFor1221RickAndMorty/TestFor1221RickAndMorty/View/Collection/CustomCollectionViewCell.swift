@@ -29,13 +29,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
     
     private func settings() {
-        characterImage.customImage.image = UIImage(systemName: "highlighter")
-        nameLabel.labelView.text = "Rick Sanchez"
+        characterImage.customImage.image = UIImage(systemName: "questionmark.app")
+        nameLabel.labelView.text = "Unknown"
         nameLabel.labelView.textColor = Helper.Colors.whiteColor
         nameLabel.labelView.font = Helper.Fonts.AppleSDGothicNeoBold(with: 17)
-        
-        characterImage.customImage.layer.borderWidth = 1
-        characterImage.customImage.layer.borderColor = UIColor.red.cgColor
+        nameLabel.labelView.numberOfLines = 1
+        nameLabel.labelView.lineBreakMode = .byTruncatingTail
         characterImage.customImage.layer.cornerRadius = 10
         
     }
@@ -53,8 +52,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
             
             name.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 16),
             name.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
-            
             name.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            name.widthAnchor.constraint(lessThanOrEqualToConstant: 130),
         ])
     }
 }

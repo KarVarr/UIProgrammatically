@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     let collectionView = CollectionView()
     var character: [Character] = []
     
+    let imageCache = NSCache<NSString, UIImage>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +26,6 @@ class ViewController: UIViewController {
         
         networkManage.onCompletion = { characterResponse in
             self.character = characterResponse.results
-            
             DispatchQueue.main.async {
                 self.collectionView.collection.reloadData()
             }

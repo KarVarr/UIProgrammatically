@@ -31,9 +31,35 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let char = character[indexPath.item]
         cell.nameLabel.labelView.text = char.name
+        
+        //        if let imageUrl = URL(string: char.image) {
+        //                DispatchQueue.global().async {
+        //                    if let imageData = try? Data(contentsOf: imageUrl),
+        //                       let image = UIImage(data: imageData) {
+        //                        DispatchQueue.main.async {
+        //                            cell.characterImage.customImage.image = image
+        //                        }
+        //                    }
+        //                }
+        //            }
+        
         if let imageUrl = URL(string: char.image) {
-            cell.characterImage.customImage.loa
+            if let cachedImage = imageCache.object(forKey: imageUrl.absoluteString as NSString) {
+                cell.characterImage.customImage.image = cachedImage
+            } else {
+                DispatchQueue.global().async {
+                    if let imageData = try? Data(contentsOf: imageUrl),
+                       let image = UIImage(data: imageData) {
+                        DispatchQueue.main.async { [unowned self] in
+                            cell.characterImage.customImage.image = image
+                            self.imageCache.setObject(image, forKey: imageUrl.absoluteString as NSString)
+                        }
+                    }
+                }
+            }
         }
+        
+        
         return cell
     }
     
