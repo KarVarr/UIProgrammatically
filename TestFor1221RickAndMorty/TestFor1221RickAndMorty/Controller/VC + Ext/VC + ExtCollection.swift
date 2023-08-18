@@ -16,7 +16,38 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         
+        let detailVC = DetailViewController()
+        navigationItem.backButtonTitle = ""
+        navigationController?.pushViewController(detailVC, animated: true)
+        
+        //        detailVC.charImage.customImage.image = character[indexPath.item].image
+        let char = character[indexPath.item]
+        
+        detailVC.characterName = char.name
+        switch char.status {
+        case .alive: detailVC.characterStatus = "Alive"
+        case .dead: detailVC.characterStatus = "Dead"
+        case .unknown: detailVC.characterStatus = "Unknown"
+        }
+        
+         
+        if let imageUrl = URL(string: char.image) {
+            if let cachedImage = imageCache.object(forKey: imageUrl.absoluteString as NSString) {
+                detailVC.characterImage = cachedImage
+            } else {
+                DispatchQueue.global().async {
+                    if let imageData = try? Data(contentsOf: imageUrl),
+                       let image = UIImage(data: imageData) {
+                        DispatchQueue.main.async { [unowned self] in
+                            detailVC.characterImage = image
+                            self.imageCache.setObject(image, forKey: imageUrl.absoluteString as NSString)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -32,16 +63,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let char = character[indexPath.item]
         cell.nameLabel.labelView.text = char.name
         
-        //        if let imageUrl = URL(string: char.image) {
-        //                DispatchQueue.global().async {
-        //                    if let imageData = try? Data(contentsOf: imageUrl),
-        //                       let image = UIImage(data: imageData) {
-        //                        DispatchQueue.main.async {
-        //                            cell.characterImage.customImage.image = image
-        //                        }
-        //                    }
-        //                }
-        //            }
         
         if let imageUrl = URL(string: char.image) {
             if let cachedImage = imageCache.object(forKey: imageUrl.absoluteString as NSString) {
@@ -59,10 +80,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             }
         }
         
-        
         return cell
     }
-    
-    
     
 }

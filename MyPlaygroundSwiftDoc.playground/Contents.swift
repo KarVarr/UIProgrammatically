@@ -1407,3 +1407,52 @@ import UIKit
 //lName()
 //await name()
 
+var size = 1
+
+func stepSize(_ number: inout Int) {
+    number += 1
+}
+
+stepSize(&size)
+
+
+let test1: UInt8 = 0b00001111
+let test2 = ~test1
+
+var arr = [1, 1, 1, 1, 4, 4, 4, 5, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8]
+var uniqueValue = 0
+
+for num in arr {
+    uniqueValue ^= num
+}
+uniqueValue
+
+
+var unsignedOverflow = UInt8.min
+unsignedOverflow = unsignedOverflow &- 3
+unsignedOverflow = unsignedOverflow &+ 10
+
+class MyFunctionality {
+    func method1() {
+        print("method 1 super class")
+    }
+    
+    func method2() {
+        print("method 2 super class")
+    }
+    
+    // ... множество других методов ...
+}
+
+class Subclass {
+    private let functionality = MyFunctionality()
+    
+    func method1() {
+        functionality.method1()
+    }
+    
+    // ... только нужные методы ...
+}
+
+let subclass = Subclass()
+subclass.method1()

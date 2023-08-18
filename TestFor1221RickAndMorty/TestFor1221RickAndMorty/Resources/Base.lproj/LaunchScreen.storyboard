@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="IuJ-C4-OIP">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="34" width="393" height="784"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -24,7 +24,6 @@
                         <constraints>
                             <constraint firstItem="IuJ-C4-OIP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Q6W-vg-qZx"/>
                             <constraint firstItem="IuJ-C4-OIP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Sl4-px-DoY"/>
-                            <constraint firstItem="IuJ-C4-OIP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bsV-1W-cGv"/>
                             <constraint firstItem="IuJ-C4-OIP" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="rXa-Fw-YhG"/>
                             <constraint firstItem="IuJ-C4-OIP" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="w77-A1-LTv"/>
                             <constraint firstItem="IuJ-C4-OIP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wkt-e2-WiV"/>

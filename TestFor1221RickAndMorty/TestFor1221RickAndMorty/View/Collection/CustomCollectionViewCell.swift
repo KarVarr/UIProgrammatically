@@ -11,6 +11,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     let characterImage = CustomImageView()
     let nameLabel = CustomLabelView()
     
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         
