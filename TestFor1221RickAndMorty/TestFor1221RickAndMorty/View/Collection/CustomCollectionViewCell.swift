@@ -10,8 +10,9 @@ import UIKit
 class CustomCollectionViewCell: UICollectionViewCell {
     let characterImage = CustomImageView()
     let nameLabel = CustomLabelView()
+    let loadingIndicator = LoadingIndicator()
     
-        
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -27,22 +28,24 @@ class CustomCollectionViewCell: UICollectionViewCell {
     private func addViews() {
         contentView.addSubview(characterImage.customImage)
         contentView.addSubview(nameLabel.labelView)
+        contentView.addSubview(loadingIndicator.indicator)
     }
     
     private func settings() {
-        characterImage.customImage.image = UIImage(systemName: "questionmark.app")
+        characterImage.customImage.layer.cornerRadius = 10
+        
         nameLabel.labelView.text = "Unknown"
         nameLabel.labelView.textColor = Helper.Colors.whiteColor
         nameLabel.labelView.font = Helper.Fonts.AppleSDGothicNeoBold(with: 17)
         nameLabel.labelView.numberOfLines = 1
         nameLabel.labelView.lineBreakMode = .byTruncatingTail
-        characterImage.customImage.layer.cornerRadius = 10
         
     }
     
     private func layout() {
         let image = characterImage.customImage
         let name = nameLabel.labelView
+        let indicator = loadingIndicator.indicator
         
         NSLayoutConstraint.activate([
             image.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
@@ -55,6 +58,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
             name.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
             name.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             name.widthAnchor.constraint(lessThanOrEqualToConstant: 130),
+            
+            indicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }
 }

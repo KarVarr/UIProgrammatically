@@ -70,7 +70,7 @@ class DetailViewController: UIViewController {
             image.heightAnchor.constraint(equalToConstant: 148),
             status.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 8),
             
-            tableView.topAnchor.constraint(equalTo: vStackView.bottomAnchor, constant: 24),
+            tableView.topAnchor.constraint(equalTo: vStackView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),

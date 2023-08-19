@@ -32,7 +32,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         case .unknown: detailVC.characterStatus = "Unknown"
         }
         
-         
+        
         if let imageUrl = URL(string: char.image) {
             if let cachedImage = imageCache.object(forKey: imageUrl.absoluteString as NSString) {
                 detailVC.characterImage = cachedImage
@@ -65,15 +65,27 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         
         if let imageUrl = URL(string: char.image) {
+            cell.loadingIndicator.indicator.startAnimating()
+            cell.characterImage.customImage.image = nil
+            
             if let cachedImage = imageCache.object(forKey: imageUrl.absoluteString as NSString) {
                 cell.characterImage.customImage.image = cachedImage
+                cell.loadingIndicator.indicator.stopAnimating()
             } else {
+                cell.loadingIndicator.indicator.startAnimating()
+                cell.characterImage.customImage.image = nil
+                
                 DispatchQueue.global().async {
                     if let imageData = try? Data(contentsOf: imageUrl),
                        let image = UIImage(data: imageData) {
                         DispatchQueue.main.async { [unowned self] in
-                            cell.characterImage.customImage.image = image
+                            if let currentIndexPath = collectionView.indexPath(for: cell),
+                               currentIndexPath == indexPath {
+                                cell.characterImage.customImage.image = image
+                            }
+                            
                             self.imageCache.setObject(image, forKey: imageUrl.absoluteString as NSString)
+                            cell.loadingIndicator.indicator.stopAnimating()
                         }
                     }
                 }

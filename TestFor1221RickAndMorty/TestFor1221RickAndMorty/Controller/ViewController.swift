@@ -49,8 +49,6 @@ class ViewController: UIViewController {
     
     func settings() {
         view.backgroundColor = Helper.Colors.mainBlackColor
-        
-        
     }
     
     func layout() {

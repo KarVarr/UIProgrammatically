@@ -12,6 +12,7 @@
 		173459A52A9122ED005F5C5A /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173459A42A9122ED005F5C5A /* CustomTableView.swift */; };
 		173459A72A912358005F5C5A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173459A62A912358005F5C5A /* CustomTableViewCell.swift */; };
 		173459A92A9125DA005F5C5A /* DVC + ExtTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173459A82A9125DA005F5C5A /* DVC + ExtTableView.swift */; };
+		173459AB2A9150B5005F5C5A /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173459AA2A9150B5005F5C5A /* LoadingIndicator.swift */; };
 		17A65CC12A8EA9F000433015 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC02A8EA9F000433015 /* Helper.swift */; };
 		17A65CC42A8EABCB00433015 /* UIColor + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC32A8EABCB00433015 /* UIColor + Ext.swift */; };
 		17A65CC62A8EB53B00433015 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC52A8EB53B00433015 /* NetworkManager.swift */; };
@@ -35,6 +36,7 @@
 		173459A42A9122ED005F5C5A /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		173459A62A912358005F5C5A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		173459A82A9125DA005F5C5A /* DVC + ExtTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DVC + ExtTableView.swift"; sourceTree = "<group>"; };
+		173459AA2A9150B5005F5C5A /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		17A65CC02A8EA9F000433015 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		17A65CC32A8EABCB00433015 /* UIColor + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Ext.swift"; sourceTree = "<group>"; };
 		17A65CC52A8EB53B00433015 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				17A65CD32A8F6AA300433015 /* CustomImageView.swift */,
 				17A65CD52A8F6B6000433015 /* CustomLabelView.swift */,
 				173459612A8FFCAC005F5C5A /* CustomStackView.swift */,
+				173459AA2A9150B5005F5C5A /* LoadingIndicator.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				17A65CC82A8F63DA00433015 /* Character.swift in Sources */,
 				17A65CD42A8F6AA300433015 /* CustomImageView.swift in Sources */,
 				17B226C12A8EA2AA00DA1511 /* SceneDelegate.swift in Sources */,
+				173459AB2A9150B5005F5C5A /* LoadingIndicator.swift in Sources */,
 				17A65CCA2A8F659D00433015 /* CharacterResponse.swift in Sources */,
 				17A65CC12A8EA9F000433015 /* Helper.swift in Sources */,
 				173459A92A9125DA005F5C5A /* DVC + ExtTableView.swift in Sources */,
