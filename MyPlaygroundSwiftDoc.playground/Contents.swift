@@ -1407,52 +1407,111 @@ import UIKit
 //lName()
 //await name()
 
-var size = 1
+//var size = 1
+//
+//func stepSize(_ number: inout Int) {
+//    number += 1
+//}
+//
+//stepSize(&size)
+//
+//
+//let test1: UInt8 = 0b00001111
+//let test2 = ~test1
+//
+//var arr = [1, 1, 1, 1, 4, 4, 4, 5, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8]
+//var uniqueValue = 0
+//
+//for num in arr {
+//    uniqueValue ^= num
+//}
+//uniqueValue
+//
+//
+//var unsignedOverflow = UInt8.min
+//unsignedOverflow = unsignedOverflow &- 3
+//unsignedOverflow = unsignedOverflow &+ 10
+//
+//class MyFunctionality {
+//    func method1() {
+//        print("method 1 super class")
+//    }
+//
+//    func method2() {
+//        print("method 2 super class")
+//    }
+//
+//    // ... множество других методов ...
+//}
+//
+//class Subclass {
+//    private let functionality = MyFunctionality()
+//
+//    func method1() {
+//        functionality.method1()
+//    }
+//
+//    // ... только нужные методы ...
+//}
+//
+//let subclass = Subclass()
+//subclass.method1()
+//
+//var emptyDictionary = Dictionary<String, Int>(minimumCapacity: 3)
+//print(emptyDictionary)
+//emptyDictionary["1"] = 10
+//emptyDictionary["2"] = 20
+//emptyDictionary["3"] = 30
+//print(emptyDictionary)
+//emptyDictionary["4"] = 40
 
-func stepSize(_ number: inout Int) {
-    number += 1
-}
+let str = "abc".hashValue
 
-stepSize(&size)
+// A E F B C D G
 
-
-let test1: UInt8 = 0b00001111
-let test2 = ~test1
-
-var arr = [1, 1, 1, 1, 4, 4, 4, 5, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8]
-var uniqueValue = 0
-
-for num in arr {
-    uniqueValue ^= num
-}
-uniqueValue
-
-
-var unsignedOverflow = UInt8.min
-unsignedOverflow = unsignedOverflow &- 3
-unsignedOverflow = unsignedOverflow &+ 10
-
-class MyFunctionality {
-    func method1() {
-        print("method 1 super class")
+func deferTest() -> String {
+    var currentString = ""
+    currentString += "A"
+    
+    defer {
+        currentString += "B"
     }
     
-    func method2() {
-        print("method 2 super class")
+    if true {
+        defer {
+            currentString += "C"
+        }
+        defer {
+            currentString += "D"
+        }
+        currentString += "E"
     }
     
-    // ... множество других методов ...
-}
-
-class Subclass {
-    private let functionality = MyFunctionality()
-    
-    func method1() {
-        functionality.method1()
+    currentString += "F"
+    defer {
+        currentString += "G"
     }
     
-    // ... только нужные методы ...
+    return currentString
 }
+let test = deferTest()
+print(test)
 
-let subclass = Subclass()
-subclass.method1()
+let number = 5
+var result = 0
+
+switch number {
+case 1...5:
+    result = 1
+    
+case 5:
+    result = 2
+    
+case 5:
+    result = 3
+    fallthrough
+default:
+    result = 4
+    
+}
+print(result)

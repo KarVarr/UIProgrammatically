@@ -18,9 +18,11 @@ enum Helper {
     }
     //MARK: - COLORS
     enum Colors {
-        static let whiteColor = UIColor(hexString: "#FFFFFF")
         static let mainBlackColor = UIColor(hexString: "#040C1E")
         static let cellBlackColor = UIColor(hexString: "#262A38")
+        static let grayColor = UIColor(hexString: "#C4C9CE")
+        static let lightGrayColor = UIColor(hexString: "#93989C")
+        static let whiteColor = UIColor(hexString: "#FFFFFF")
         static let greenColor = UIColor(hexString: "#47C60B")
         static let redColor = UIColor(hexString: "#FF0000")
         static let orangeColor = UIColor(hexString: "#FF8100")
