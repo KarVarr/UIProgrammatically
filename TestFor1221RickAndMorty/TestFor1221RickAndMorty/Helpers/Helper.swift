@@ -10,7 +10,8 @@ import UIKit
 enum Helper {
     //MARK: - KEYS
     enum Keys {
-        static let collectionCellKey = "Cell"
+        static let collectionCellKey = "CellForCollectionView"
+        static let tableCellKey = "CellForTableView"
     }
     //MARK: - STRINGS
     enum Strings {
