@@ -8,7 +8,10 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
+    let networkManage = NetworkManager()
+    var character: [Character] = []
+    var episodes: [EpisodeDetails] = []
+    var locations: [LocationDetails] = []
     
     var characterImage: UIImage?
     var characterName: String?
@@ -32,6 +35,31 @@ class DetailViewController: UIViewController {
         settingsForImages()
         layout()
         
+        networkManage.onCompletion = { characterResponse in
+            self.character = characterResponse.results
+            DispatchQueue.main.async {
+                self.tableVC.table.reloadData()
+            }
+        }
+        networkManage.requestCharacters()
+        
+        networkManage.onCompletionLocation = { locationResponse in
+            self.locations = locationResponse.results
+            DispatchQueue.main.async {
+                self.tableVC.table.reloadData()
+            }
+        }
+        networkManage.requestLocations()
+        
+        networkManage.onCompletionEpisodes = { episodeResponse in
+            self.episodes = episodeResponse.results
+            DispatchQueue.main.async {
+                self.tableVC.table.reloadData()
+            }
+        }
+        networkManage.requestEpisodes()
+        
+        
         
         if let image = characterImage {
             charImage.customImage.image = image
@@ -47,8 +75,25 @@ class DetailViewController: UIViewController {
         }
     }
     
-   
     
+    
+}
+
+
+
+
+
+
+
+
+
+//MARK: - Extension
+
+extension DetailViewController {
+    private func settings() {
+        view.backgroundColor = Helper.Colors.mainBlackColor
+        
+    }
     private func addViews() {
         view.addSubview(verticalSV.stack)
         verticalSV.stack.addArrangedSubview(charImage.customImage)
@@ -58,7 +103,23 @@ class DetailViewController: UIViewController {
         view.addSubview(tableVC.table)
     }
     
+    private func settingsForImages() {
+        charImage.customImage.image = UIImage(systemName: "plus")
+        charImage.customImage.layer.cornerRadius = 16
+    }
     
+    private func settingsForLabels() {
+        charName.labelView.font = Helper.Fonts.GillSansSemiBold(with: 22)
+        charName.labelView.textColor = Helper.Colors.whiteColor
+        
+        charStatus.labelView.font = Helper.Fonts.AppleSDGothicSemiBold(with: 16)
+    }
+    
+    private func settingsForStack() {
+        verticalSV.stack.axis = .vertical
+        verticalSV.stack.alignment = .center
+        verticalSV.stack.spacing = 24
+    }
     
     private func layout() {
         let vStackView = verticalSV.stack
@@ -80,34 +141,5 @@ class DetailViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
-    }
-    
-    
-}
-
-//MARK: - Extension
-
-extension DetailViewController {
-    private func settings() {
-        view.backgroundColor = Helper.Colors.mainBlackColor
-        
-    }
-    
-    private func settingsForImages() {
-        charImage.customImage.image = UIImage(systemName: "plus")
-        charImage.customImage.layer.cornerRadius = 16
-    }
-    
-    private func settingsForLabels() {
-        charName.labelView.font = Helper.Fonts.GillSansSemiBold(with: 22)
-        charName.labelView.textColor = Helper.Colors.whiteColor
-        
-        charStatus.labelView.font = Helper.Fonts.AppleSDGothicSemiBold(with: 16)
-    }
-    
-    private func settingsForStack() {
-        verticalSV.stack.axis = .vertical
-        verticalSV.stack.alignment = .center
-        verticalSV.stack.spacing = 24
     }
 }

@@ -13,8 +13,6 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         tableVC.table.register(CustomTableViewCell.self, forCellReuseIdentifier: "InfoCell")
         tableVC.table.register(CustomTableViewCell.self, forCellReuseIdentifier: "OriginCell")
         tableVC.table.register(CustomTableViewCell.self, forCellReuseIdentifier: "EpisodeCell")
-//        tableVC.table.register(CustomTableViewCell.self, forCellReuseIdentifier: Helper.Keys.tableCellKey)
-        
         tableVC.table.delegate = self
         tableVC.table.dataSource = self
     }
@@ -41,7 +39,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case 0: return 1
         case 1: return 1
-        case 2: return 11
+        case 2: return 50
         default: return 0
         }
     }
@@ -68,18 +66,31 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         
         
         switch indexPath.section {
-        case 0: break
-//            cell.infoSpecies.labelView.text = 
+        case 0:
+            let char = character[indexPath.row]
+            cell.infoType.labelView.text = char.typeNone
+             
+            switch char.gender {
+            case .female: cell.infoGender.labelView.text = "Female"
+            case .male: cell.infoGender.labelView.text = "Male"
+            case .unknown: cell.infoGender.labelView.text = "unknown"
+            }
+            switch char.species {
+            case .alien: cell.infoSpecies.labelView.text = "Alien"
+            case .human: cell.infoSpecies.labelView.text = "Human"
+            }
         case 1:
-            cell.originName.labelView.text = "Earth"
-            cell.originType.labelView.text = "Planet"
+            let location = locations[indexPath.row]
+            
+            cell.originName.labelView.text = location.newName
+            cell.originType.labelView.text = location.type
+            
             
         case 2:
-//                        cell.episodeName.labelView.text = episode.name
-//            cell.episodeDate.labelView.text = episode.air_date
-//            cell.episodeSeason.labelView.text = episode.formattedEpisode
-            
-            break
+            let episode = episodes[indexPath.row]
+            cell.episodeDate.labelView.text = episode.airDate
+            cell.episodeName.labelView.text = episode.name
+            cell.episodeSeason.labelView.text = episode.formattedEpisode
         default:
             break
         }

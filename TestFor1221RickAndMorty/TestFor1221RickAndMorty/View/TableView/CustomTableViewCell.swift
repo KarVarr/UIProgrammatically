@@ -133,11 +133,6 @@ class CustomTableViewCell: UITableViewCell {
         infoSpeciesLabel.labelView.text = "Species:"
         infoTypeLabel.labelView.text = "Type:"
         infoGenderLabel.labelView.text = "Gender:"
-        
-        infoSpecies.labelView.text = "Human"
-        infoType.labelView.text = "None"
-        infoGender.labelView.text = "Male"
-        
     }
     
     private func settingForImages() {

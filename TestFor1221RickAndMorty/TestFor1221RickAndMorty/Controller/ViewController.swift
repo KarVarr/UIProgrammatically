@@ -31,7 +31,7 @@ class ViewController: UIViewController {
             }
         }
         
-        networkManage.request()
+        networkManage.requestCharacters()
     }
     
    

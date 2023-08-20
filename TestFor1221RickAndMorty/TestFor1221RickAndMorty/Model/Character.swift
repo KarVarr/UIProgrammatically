@@ -19,6 +19,10 @@ struct Character: Codable {
     var episode: [String]
     let url: String
     let created: String
+    
+    var typeNone: String {
+        type == "" ? "None" : type
+    }
 }
 
 enum Gender: String, Codable {

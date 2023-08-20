@@ -11,7 +11,7 @@ import Foundation
 struct EpisodeDetails: Codable {
     let name: String
     let episode: String
-    let air_date: String
+    let airDate: String
     let characters: [String]
     
     var formattedEpisode: String {
@@ -31,5 +31,12 @@ struct EpisodeDetails: Codable {
             }
             
             return "Invalid Episode Format"
+        }
+    
+    enum CodingKeys: String, CodingKey {
+            case name
+            case episode
+            case airDate = "air_date"
+            case characters
         }
 }
