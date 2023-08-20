@@ -45,9 +45,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         detailVC.planetName = location.newName
         detailVC.planetType = location.type
         
-//        detailVC.episodeName = episode.name
-//        detailVC.episodeEpisode = episode.formattedEpisode
-//        detailVC.episodeAirDate = episode.airDate
         
         detailVC.episodeCount = char.episode.count
         

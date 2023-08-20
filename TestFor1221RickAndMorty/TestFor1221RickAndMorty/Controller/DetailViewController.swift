@@ -12,8 +12,6 @@ class DetailViewController: UIViewController {
     let networkManager = NetworkManager()
     var character: [Character] = []
     var episodes: [EpisodeDetails] = []
-//    var locations: [LocationDetails] = []
-    
     var characterImage: UIImage?
     var characterName: String?
     var characterStatus: String?
@@ -22,11 +20,8 @@ class DetailViewController: UIViewController {
     var infoSpecies: String?
     var infoType: String?
     var infoGender: String?
-//    var episodeName: String?
-//    var episodeEpisode: String?
-//    var episodeAirDate: String?
     var episodeCount: Int?
-
+    
     
     
     let tableVC = CustomTableView()
@@ -64,21 +59,15 @@ class DetailViewController: UIViewController {
     }
     
     func fetchData() {
-
+        
         networkManager.requestData(from: "https://rickandmortyapi.com/api/character", responseType: CharacterResponse.self) { [weak self] characterResponse in
             self?.character = characterResponse.results
             DispatchQueue.main.async {
                 self?.tableVC.table.reloadData()
             }
         }
-//
-//        networkManager.requestData(from: "https://rickandmortyapi.com/api/location", responseType: LocationDetailsResponse.self) { [weak self] locationResponse in
-//            self?.locations = locationResponse.results
-//            DispatchQueue.main.async {
-//                self?.tableVC.table.reloadData()
-//            }
-//        }
-
+        
+        
         networkManager.requestData(from: "https://rickandmortyapi.com/api/episode", responseType: EpisodeDetailsResponse.self) { [weak self] episodeResponse in
             self?.episodes = episodeResponse.results
             DispatchQueue.main.async {
@@ -106,7 +95,7 @@ extension DetailViewController {
         view.addSubview(tableVC.table)
     }
     
- 
+    
     private func settingsForImages() {
         charImage.customImage.image = UIImage(systemName: "plus")
         charImage.customImage.layer.cornerRadius = 16
@@ -145,5 +134,4 @@ extension DetailViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
-    
 }
