@@ -8,6 +8,10 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    var characters: [Character] = []
+    var episodes: [EpisodeDetails] = []
+    let networkManage = NetworkManager()
+    
     var characterImage: UIImage?
     var characterName: String?
     var characterStatus: String?
@@ -30,6 +34,16 @@ class DetailViewController: UIViewController {
         settingsForImages()
         layout()
         
+        networkManage.onCompletion = { [weak self] characterResponse in
+            self?.characters = characterResponse.results
+            // Fetch episodes for the first character (you can adjust this as needed)
+            if let firstCharacter = self?.characters.first {
+                self?.fetchEpisodeDetails(from: firstCharacter.episode)
+            }
+        }
+        networkManage.request()
+        
+        
         if let image = characterImage {
             charImage.customImage.image = image
         }
@@ -42,6 +56,50 @@ class DetailViewController: UIViewController {
         case "Unknown": charStatus.labelView.textColor = Helper.Colors.orangeColor
         default: break
         }
+    }
+    
+    private func fetchEpisodeDetails(from episodeURLs: [String]) {
+        let group = DispatchGroup()
+        
+        for url in episodeURLs {
+            group.enter()
+            fetchEpisodeDetail(url: url) { episodeDetail in
+                if let episodeDetail = episodeDetail {
+                    self.episodes.append(episodeDetail)
+                }
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.tableVC.table.reloadData()
+        }
+    }
+    
+    private func fetchEpisodeDetail(url: String, completion: @escaping (EpisodeDetails?) -> Void) {
+        guard let episodeURL = URL(string: url) else {
+            completion(nil)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: episodeURL) { data, response, error in
+            if let error = error {
+                print("Error fetching episode detail: \(error)")
+                completion(nil)
+                return
+            }
+            
+            if let data = data {
+                do {
+                    let decoder = JSONDecoder()
+                    let episodeDetail = try decoder.decode(EpisodeDetails.self, from: data)
+                    completion(episodeDetail)
+                } catch {
+                    print("JSON decoding error for episode detail: \(error)")
+                    completion(nil)
+                }
+            }
+        }.resume()
     }
     
     private func addViews() {
@@ -87,7 +145,7 @@ extension DetailViewController {
         view.backgroundColor = Helper.Colors.mainBlackColor
         
     }
-   
+    
     private func settingsForImages() {
         charImage.customImage.image = UIImage(systemName: "plus")
         charImage.customImage.layer.cornerRadius = 16

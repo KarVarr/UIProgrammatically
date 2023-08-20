@@ -22,7 +22,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         navigationItem.backButtonTitle = ""
         navigationController?.pushViewController(detailVC, animated: true)
         
-        //        detailVC.charImage.customImage.image = character[indexPath.item].image
         let char = character[indexPath.item]
         
         detailVC.characterName = char.name

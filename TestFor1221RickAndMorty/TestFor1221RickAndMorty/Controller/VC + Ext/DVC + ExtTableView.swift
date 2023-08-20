@@ -38,7 +38,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case 0: return 1
         case 1: return 1
-        case 2: return 10
+        case 2: return episodes.count
         default: return 0
         }
     }
@@ -56,12 +56,16 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         
         
         switch indexPath.section {
-        case 0: break
+        case 0: cell.textLabel?.text = "Episode: "
             
-        case 1: break
+        case 1: cell.textLabel?.text = "Episode:"
             
         case 2:
-            break
+            let episode = episodes[indexPath.row]
+            cell.episodeName.labelView.text = episode.name
+            cell.episodeDate.labelView.text = episode.air_date
+            cell.episodeSeason.labelView.text = episode.formattedEpisode
+            
             
         default:
             break
