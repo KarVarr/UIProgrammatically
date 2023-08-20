@@ -8,6 +8,8 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    let charM = ["Rick", "Motry", "Summer", "Beth", "Jerry"]
+    
     let networkManager = NetworkManager()
     var character: [Character] = []
     var episodes: [EpisodeDetails] = []
@@ -24,6 +26,8 @@ class DetailViewController: UIViewController {
     var charImage = CustomImageView()
     var charName = CustomLabelView()
     var charStatus = CustomLabelView()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,14 +64,14 @@ class DetailViewController: UIViewController {
                 self?.tableVC.table.reloadData()
             }
         }
-        
+
         networkManager.requestData(from: "https://rickandmortyapi.com/api/location", responseType: LocationDetailsResponse.self) { [weak self] locationResponse in
             self?.locations = locationResponse.results
             DispatchQueue.main.async {
                 self?.tableVC.table.reloadData()
             }
         }
-        
+
         networkManager.requestData(from: "https://rickandmortyapi.com/api/episode", responseType: EpisodeDetailsResponse.self) { [weak self] episodeResponse in
             self?.episodes = episodeResponse.results
             DispatchQueue.main.async {
@@ -75,8 +79,6 @@ class DetailViewController: UIViewController {
             }
         }
     }
-
-    
 }
 
 
