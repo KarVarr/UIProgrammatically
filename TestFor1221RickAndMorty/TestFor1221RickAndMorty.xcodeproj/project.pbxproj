@@ -15,6 +15,7 @@
 		173459AB2A9150B5005F5C5A /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173459AA2A9150B5005F5C5A /* LoadingIndicator.swift */; };
 		173459AD2A920D27005F5C5A /* EpisodeDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173459AC2A920D27005F5C5A /* EpisodeDetails.swift */; };
 		173459B02A92133E005F5C5A /* String + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173459AF2A92133E005F5C5A /* String + Ext.swift */; };
+		173459B22A9220B1005F5C5A /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173459B12A9220B1005F5C5A /* CustomUIView.swift */; };
 		17A65CC12A8EA9F000433015 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC02A8EA9F000433015 /* Helper.swift */; };
 		17A65CC42A8EABCB00433015 /* UIColor + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC32A8EABCB00433015 /* UIColor + Ext.swift */; };
 		17A65CC62A8EB53B00433015 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC52A8EB53B00433015 /* NetworkManager.swift */; };
@@ -41,6 +42,7 @@
 		173459AA2A9150B5005F5C5A /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		173459AC2A920D27005F5C5A /* EpisodeDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetails.swift; sourceTree = "<group>"; };
 		173459AF2A92133E005F5C5A /* String + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Ext.swift"; sourceTree = "<group>"; };
+		173459B12A9220B1005F5C5A /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		17A65CC02A8EA9F000433015 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		17A65CC32A8EABCB00433015 /* UIColor + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Ext.swift"; sourceTree = "<group>"; };
 		17A65CC52A8EB53B00433015 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				17A65CD52A8F6B6000433015 /* CustomLabelView.swift */,
 				173459612A8FFCAC005F5C5A /* CustomStackView.swift */,
 				173459AA2A9150B5005F5C5A /* LoadingIndicator.swift */,
+				173459B12A9220B1005F5C5A /* CustomUIView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				17B226C12A8EA2AA00DA1511 /* SceneDelegate.swift in Sources */,
 				173459AD2A920D27005F5C5A /* EpisodeDetails.swift in Sources */,
 				173459AB2A9150B5005F5C5A /* LoadingIndicator.swift in Sources */,
+				173459B22A9220B1005F5C5A /* CustomUIView.swift in Sources */,
 				17A65CCA2A8F659D00433015 /* CharacterResponse.swift in Sources */,
 				17A65CC12A8EA9F000433015 /* Helper.swift in Sources */,
 				173459A92A9125DA005F5C5A /* DVC + ExtTableView.swift in Sources */,

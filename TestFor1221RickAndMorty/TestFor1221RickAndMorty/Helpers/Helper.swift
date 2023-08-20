@@ -12,6 +12,9 @@ enum Helper {
     enum Keys {
         static let collectionCellKey = "CellForCollectionView"
         static let tableCellKey = "CellForTableView"
+        static let tableInfoCell = "InfoCell"
+        static let tableOriginCell = "OriginCell"
+        static let tableEpisodeCell = "EpisodeCell"
     }
     //MARK: - STRINGS
     enum Strings {
@@ -21,6 +24,7 @@ enum Helper {
     enum Colors {
         static let mainBlackColor = UIColor(hexString: "#040C1E")
         static let cellBlackColor = UIColor(hexString: "#262A38")
+        static let imageViewColor = UIColor(hexString: "#191C2A")
         static let grayColor = UIColor(hexString: "#C4C9CE")
         static let lightGrayColor = UIColor(hexString: "#93989C")
         static let whiteColor = UIColor(hexString: "#FFFFFF")
