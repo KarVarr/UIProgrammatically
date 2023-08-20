@@ -10,80 +10,27 @@ import Foundation
 
 class NetworkManager {
     
-    var onCompletion: ((CharacterResponse) -> Void)?
-    var onCompletionLocation: ((LocationDetailsResponse) -> Void)?
-    var onCompletionEpisodes: ((EpisodeDetailsResponse) -> Void)?
-    
-    func requestCharacters() {
-        let urlString = "https://rickandmortyapi.com/api/character"
-        guard let url = URL(string: urlString) else { return }
+    typealias CompletionHandler<T> = (T) -> Void
         
-        let session = URLSession.shared
-        session.dataTask(with: url) { data, response, error in
-            if let error = error {
-                print("Error: \(error)")
-                return
-            }
+        func requestData<T: Decodable>(from urlString: String, responseType: T.Type, completion: @escaping CompletionHandler<T>) {
+            guard let url = URL(string: urlString) else { return }
             
-            if let data = data {
-                do {
-                    let decoder = JSONDecoder()
-                    let characters = try decoder.decode(CharacterResponse.self, from: data)
-                    self.onCompletion?(characters)
-                } catch  {
-                    print("JSON decoding error: \(error)")
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let error = error {
+                    print("Error: \(error)")
+                    return
                 }
-            }
-            
-        }.resume()
-    }
-    
-    func requestLocations() {
-        let urlString = "https://rickandmortyapi.com/api/location"
-        guard let url = URL(string: urlString) else { return }
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) { data, response, error in
-            if let error = error {
-                print("Error: \(error)")
-                return
-            }
-            
-            if let data = data {
-                do {
-                    let decoder = JSONDecoder()
-                    let characters = try decoder.decode(LocationDetailsResponse.self, from: data)
-                    self.onCompletionLocation?(characters)
-                } catch  {
-                    print("JSON decoding error: \(error)")
+                
+                if let data = data {
+                    do {
+                        let decoder = JSONDecoder()
+                        let response = try decoder.decode(responseType, from: data)
+                        completion(response)
+                    } catch  {
+                        print("JSON decoding error: \(error)")
+                    }
                 }
-            }
-            
-        }.resume()
-    }
-    
-    func requestEpisodes() {
-        let urlString = "https://rickandmortyapi.com/api/episode"
-        guard let url = URL(string: urlString) else { return }
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) { data, response, error in
-            if let error = error {
-                print("Error: \(error)")
-                return
-            }
-            
-            if let data = data {
-                do {
-                    let decoder = JSONDecoder()
-                    let characters = try decoder.decode(EpisodeDetailsResponse.self, from: data)
-                    self.onCompletionEpisodes?(characters)
-                } catch  {
-                    print("JSON decoding error: \(error)")
-                }
-            }
-            
-        }.resume()
-    }
+            }.resume()
+        }
     
 }

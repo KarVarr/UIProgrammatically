@@ -8,15 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let networkManage = NetworkManager()
-    let collectionView = CollectionView()
+    let networkManager = NetworkManager()
     var character: [Character] = []
+    
+    let collectionView = CollectionView()
     
     let imageCache = NSCache<NSString, UIImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        fetchData()
         addViews()
         settingsForNav()
         settings()
@@ -24,17 +27,18 @@ class ViewController: UIViewController {
         
         collectionViewDelegates()
         
-        networkManage.onCompletion = { characterResponse in
-            self.character = characterResponse.results
-            DispatchQueue.main.async {
-                self.collectionView.collection.reloadData()
-            }
-        }
-        
-        networkManage.requestCharacters()
     }
     
-   
+    func fetchData() {
+        networkManager.requestData(from: "https://rickandmortyapi.com/api/character", responseType: CharacterResponse.self) { [weak self] characterResponse in
+            self?.character = characterResponse.results
+            DispatchQueue.main.async {
+                self?.collectionView.collection.reloadData()
+            }
+        }
+    }
+    
+    
     func addViews() {
         view.addSubview(collectionView.collection)
     }
@@ -44,7 +48,7 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.tintColor = Helper.Colors.whiteColor
-          
+        
     }
     
     func settings() {

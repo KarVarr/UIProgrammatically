@@ -8,10 +8,11 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    let networkManage = NetworkManager()
+    let networkManager = NetworkManager()
     var character: [Character] = []
     var episodes: [EpisodeDetails] = []
     var locations: [LocationDetails] = []
+    
     
     var characterImage: UIImage?
     var characterName: String?
@@ -34,32 +35,7 @@ class DetailViewController: UIViewController {
         settingsForLabels()
         settingsForImages()
         layout()
-        
-        networkManage.onCompletion = { characterResponse in
-            self.character = characterResponse.results
-            DispatchQueue.main.async {
-                self.tableVC.table.reloadData()
-            }
-        }
-        networkManage.requestCharacters()
-        
-        networkManage.onCompletionLocation = { locationResponse in
-            self.locations = locationResponse.results
-            DispatchQueue.main.async {
-                self.tableVC.table.reloadData()
-            }
-        }
-        networkManage.requestLocations()
-        
-        networkManage.onCompletionEpisodes = { episodeResponse in
-            self.episodes = episodeResponse.results
-            DispatchQueue.main.async {
-                self.tableVC.table.reloadData()
-            }
-        }
-        networkManage.requestEpisodes()
-        
-        
+        fetchData()
         
         if let image = characterImage {
             charImage.customImage.image = image
@@ -73,17 +49,35 @@ class DetailViewController: UIViewController {
         case "Unknown": charStatus.labelView.textColor = Helper.Colors.orangeColor
         default: break
         }
+        
     }
     
-    
+    func fetchData() {
+        
+        networkManager.requestData(from: "https://rickandmortyapi.com/api/character", responseType: CharacterResponse.self) { [weak self] characterResponse in
+            self?.character = characterResponse.results
+            DispatchQueue.main.async {
+                self?.tableVC.table.reloadData()
+            }
+        }
+        
+        networkManager.requestData(from: "https://rickandmortyapi.com/api/location", responseType: LocationDetailsResponse.self) { [weak self] locationResponse in
+            self?.locations = locationResponse.results
+            DispatchQueue.main.async {
+                self?.tableVC.table.reloadData()
+            }
+        }
+        
+        networkManager.requestData(from: "https://rickandmortyapi.com/api/episode", responseType: EpisodeDetailsResponse.self) { [weak self] episodeResponse in
+            self?.episodes = episodeResponse.results
+            DispatchQueue.main.async {
+                self?.tableVC.table.reloadData()
+            }
+        }
+    }
+
     
 }
-
-
-
-
-
-
 
 
 

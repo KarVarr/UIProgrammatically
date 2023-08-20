@@ -39,7 +39,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case 0: return 1
         case 1: return 1
-        case 2: return 50
+        case 2:
+            return character.map{$0.episode}.count
         default: return 0
         }
     }
@@ -65,35 +66,51 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         
         
         
+        //        switch indexPath.section {
+        //        case 0:
+        //            let char = character[indexPath.row]
+        //            cell.infoType.labelView.text = char.typeNone
+        //
+        //            switch char.gender {
+        //            case .female: cell.infoGender.labelView.text = "Female"
+        //            case .male: cell.infoGender.labelView.text = "Male"
+        //            case .unknown: cell.infoGender.labelView.text = "unknown"
+        //            }
+        //            switch char.species {
+        //            case .alien: cell.infoSpecies.labelView.text = "Alien"
+        //            case .human: cell.infoSpecies.labelView.text = "Human"
+        //            }
+        //        case 1:
+        //            let location = locations[indexPath.row]
+        //
+        //            cell.planetName = location.newName
+        //            cell.planetType = location.type
+        //
+        //        case 2:
+        //            let episode = episodes[indexPath.row]
+        //            cell.episodeDate.labelView.text = episode.airDate
+        //            cell.episodeName.labelView.text = episode.name
+        //            cell.episodeSeason.labelView.text = episode.formattedEpisode
+        //        default:
+        //            break
+        //        }
+        
         switch indexPath.section {
-        case 0:
-            let char = character[indexPath.row]
-            cell.infoType.labelView.text = char.typeNone
-             
-            switch char.gender {
-            case .female: cell.infoGender.labelView.text = "Female"
-            case .male: cell.infoGender.labelView.text = "Male"
-            case .unknown: cell.infoGender.labelView.text = "unknown"
+            case 0:
+                let char = character[indexPath.row]
+                cell.infoSpecies.labelView.text = char.name
+            case 1:
+                let location = locations[indexPath.row]
+                cell.planetName = location.newName
+                cell.planetType = location.type
+            case 2:
+                let episode = episodes[indexPath.row]
+                cell.episodeDate.labelView.text = episode.airDate
+                cell.episodeName.labelView.text = episode.name
+                cell.episodeSeason.labelView.text = episode.formattedEpisode
+            default:
+                break
             }
-            switch char.species {
-            case .alien: cell.infoSpecies.labelView.text = "Alien"
-            case .human: cell.infoSpecies.labelView.text = "Human"
-            }
-        case 1:
-            let location = locations[indexPath.row]
-            
-            cell.originName.labelView.text = location.newName
-            cell.originType.labelView.text = location.type
-            
-            
-        case 2:
-            let episode = episodes[indexPath.row]
-            cell.episodeDate.labelView.text = episode.airDate
-            cell.episodeName.labelView.text = episode.name
-            cell.episodeSeason.labelView.text = episode.formattedEpisode
-        default:
-            break
-        }
         
         
         return cell

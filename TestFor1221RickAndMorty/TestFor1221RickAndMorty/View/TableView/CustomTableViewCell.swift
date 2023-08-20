@@ -10,6 +10,11 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
     let spacingView = UIView()
     
+    var planetName: String?
+    var planetType: String?
+    
+   
+    
     let infoSpeciesLabel = CustomLabelView()
     let infoTypeLabel = CustomLabelView()
     let infoGenderLabel = CustomLabelView()
@@ -46,6 +51,7 @@ class CustomTableViewCell: UITableViewCell {
         settingsForLabels()
         settingForImages()
         
+        planetName = ""
         
         switch reuseIdentifier {
         case Helper.Keys.tableInfoCell:
