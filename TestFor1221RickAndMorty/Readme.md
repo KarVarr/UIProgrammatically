@@ -10,4 +10,4 @@ UIKit/programmatically
 --- 
 ## Фото приложения
 
- <img src="images/image.png" alt="image" width="1000" />
+ <img src="images/Image.png" alt="image" width="1000" />
