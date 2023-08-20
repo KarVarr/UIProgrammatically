@@ -8,17 +8,26 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    let charM = ["Rick", "Motry", "Summer", "Beth", "Jerry"]
     
     let networkManager = NetworkManager()
     var character: [Character] = []
     var episodes: [EpisodeDetails] = []
-    var locations: [LocationDetails] = []
-    
+//    var locations: [LocationDetails] = []
     
     var characterImage: UIImage?
     var characterName: String?
     var characterStatus: String?
+    var planetName: String?
+    var planetType: String?
+    var infoSpecies: String?
+    var infoType: String?
+    var infoGender: String?
+//    var episodeName: String?
+//    var episodeEpisode: String?
+//    var episodeAirDate: String?
+    var episodeCount: Int?
+
+    
     
     let tableVC = CustomTableView()
     
@@ -26,8 +35,6 @@ class DetailViewController: UIViewController {
     var charImage = CustomImageView()
     var charName = CustomLabelView()
     var charStatus = CustomLabelView()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,20 +64,20 @@ class DetailViewController: UIViewController {
     }
     
     func fetchData() {
-        
+
         networkManager.requestData(from: "https://rickandmortyapi.com/api/character", responseType: CharacterResponse.self) { [weak self] characterResponse in
             self?.character = characterResponse.results
             DispatchQueue.main.async {
                 self?.tableVC.table.reloadData()
             }
         }
-
-        networkManager.requestData(from: "https://rickandmortyapi.com/api/location", responseType: LocationDetailsResponse.self) { [weak self] locationResponse in
-            self?.locations = locationResponse.results
-            DispatchQueue.main.async {
-                self?.tableVC.table.reloadData()
-            }
-        }
+//
+//        networkManager.requestData(from: "https://rickandmortyapi.com/api/location", responseType: LocationDetailsResponse.self) { [weak self] locationResponse in
+//            self?.locations = locationResponse.results
+//            DispatchQueue.main.async {
+//                self?.tableVC.table.reloadData()
+//            }
+//        }
 
         networkManager.requestData(from: "https://rickandmortyapi.com/api/episode", responseType: EpisodeDetailsResponse.self) { [weak self] episodeResponse in
             self?.episodes = episodeResponse.results
@@ -99,6 +106,7 @@ extension DetailViewController {
         view.addSubview(tableVC.table)
     }
     
+ 
     private func settingsForImages() {
         charImage.customImage.image = UIImage(systemName: "plus")
         charImage.customImage.layer.cornerRadius = 16
@@ -122,7 +130,6 @@ extension DetailViewController {
         let image = charImage.customImage
         let name = charName.labelView
         let status = charStatus.labelView
-        
         let tableView = tableVC.table
         
         NSLayoutConstraint.activate([
@@ -138,4 +145,5 @@ extension DetailViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
+    
 }

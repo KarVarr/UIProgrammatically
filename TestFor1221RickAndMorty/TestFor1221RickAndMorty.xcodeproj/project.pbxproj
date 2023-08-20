@@ -19,6 +19,7 @@
 		173459B42A9241D5005F5C5A /* LocationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173459B32A9241D5005F5C5A /* LocationDetails.swift */; };
 		173459B62A9244F3005F5C5A /* EpisodeDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173459B52A9244F3005F5C5A /* EpisodeDetailsResponse.swift */; };
 		173459B82A924500005F5C5A /* LocationDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173459B72A924500005F5C5A /* LocationDetailsResponse.swift */; };
+		173459BA2A927B54005F5C5A /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173459B92A927B54005F5C5A /* CustomScrollView.swift */; };
 		17A65CC12A8EA9F000433015 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC02A8EA9F000433015 /* Helper.swift */; };
 		17A65CC42A8EABCB00433015 /* UIColor + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC32A8EABCB00433015 /* UIColor + Ext.swift */; };
 		17A65CC62A8EB53B00433015 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A65CC52A8EB53B00433015 /* NetworkManager.swift */; };
@@ -49,6 +50,7 @@
 		173459B32A9241D5005F5C5A /* LocationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetails.swift; sourceTree = "<group>"; };
 		173459B52A9244F3005F5C5A /* EpisodeDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsResponse.swift; sourceTree = "<group>"; };
 		173459B72A924500005F5C5A /* LocationDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsResponse.swift; sourceTree = "<group>"; };
+		173459B92A927B54005F5C5A /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		17A65CC02A8EA9F000433015 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		17A65CC32A8EABCB00433015 /* UIColor + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Ext.swift"; sourceTree = "<group>"; };
 		17A65CC52A8EB53B00433015 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				173459612A8FFCAC005F5C5A /* CustomStackView.swift */,
 				173459AA2A9150B5005F5C5A /* LoadingIndicator.swift */,
 				173459B12A9220B1005F5C5A /* CustomUIView.swift */,
+				173459B92A927B54005F5C5A /* CustomScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				17A65CCE2A8F68A900433015 /* CollectionView.swift in Sources */,
 				17A65CD22A8F6A3700433015 /* CustomCollectionViewCell.swift in Sources */,
 				17A65CD62A8F6B6000433015 /* CustomLabelView.swift in Sources */,
+				173459BA2A927B54005F5C5A /* CustomScrollView.swift in Sources */,
 				17A65CC62A8EB53B00433015 /* NetworkManager.swift in Sources */,
 				17A65CD92A8F6EF600433015 /* VC + ExtCollection.swift in Sources */,
 				17B226C32A8EA2AA00DA1511 /* ViewController.swift in Sources */,

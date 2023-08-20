@@ -19,6 +19,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -37,9 +39,10 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return character.count
-        case 1: return locations.count
-        case 2: return episodes.count
+        case 0: return 1
+        case 1: return 1
+        case 2: return episodeCount ?? 0
+            
         default: return 0
         }
     }
@@ -63,40 +66,28 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.selectionStyle = .none
         
-    
+        
         switch indexPath.section {
         case 0:
-            let char = character[indexPath.row]
             
-            cell.infoType.labelView.text = char.typeNone
-            
-            switch char.gender {
-            case .female: cell.infoGender.labelView.text = "Female"
-            case .male: cell.infoGender.labelView.text = "Male"
-            case .unknown: cell.infoGender.labelView.text = "unknown"
-            }
-            
-            switch char.species {
-            case .alien: cell.infoSpecies.labelView.text = "Alien"
-            case .human: cell.infoSpecies.labelView.text = "Human"
-            }
+            cell.infoType.labelView.text = infoType
+            cell.infoGender.labelView.text = infoGender
+            cell.infoSpecies.labelView.text = infoSpecies
+
             
         case 1:
-            let location = locations[indexPath.row]
-            
-            cell.originName.labelView.text = location.newName
-            cell.originType.labelView.text = location.type
-            
+            cell.originName.labelView.text = planetName
+            cell.originType.labelView.text = planetType
+//
         case 2:
             let episode = episodes[indexPath.row]
             cell.episodeDate.labelView.text = episode.airDate
             cell.episodeName.labelView.text = episode.name
             cell.episodeSeason.labelView.text = episode.formattedEpisode
+            
         default:
             break
         }
-        
-        
         
         
         return cell

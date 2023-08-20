@@ -19,12 +19,10 @@ class CollectionView {
         layout.itemSize = CGSize(width: 156, height: 202)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: Helper.Keys.collectionCellKey)
         collectionView.backgroundColor = Helper.Colors.mainBlackColor
         collectionView.contentInset = UIEdgeInsets(top: 31, left: 20, bottom: 0, right: 20)
-        
         return collectionView
     }()
 }

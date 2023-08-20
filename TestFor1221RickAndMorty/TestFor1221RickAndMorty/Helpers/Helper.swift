@@ -11,6 +11,7 @@ enum Helper {
     //MARK: - KEYS
     enum Keys {
         static let collectionCellKey = "CellForCollectionView"
+        static let detailCollectionCellKey = "DetailCellForCollectionView"
         static let tableCellKey = "CellForTableView"
         static let tableInfoCell = "InfoCell"
         static let tableOriginCell = "OriginCell"

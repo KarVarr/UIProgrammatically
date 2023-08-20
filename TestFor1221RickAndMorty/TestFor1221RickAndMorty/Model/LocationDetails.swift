@@ -12,6 +12,6 @@ struct LocationDetails: Codable {
     let id: Int
     let name, type, dimension: String
     var newName: String {
-        return name ==  "Earth (C-137)" ? "Earth" : name
+        return name.hasPrefix("Earth") ? "Earth" : name
     }
 }

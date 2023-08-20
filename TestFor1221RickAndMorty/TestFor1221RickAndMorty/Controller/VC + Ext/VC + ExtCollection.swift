@@ -23,6 +23,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         navigationController?.pushViewController(detailVC, animated: true)
         
         let char = character[indexPath.item]
+        let location = locations[indexPath.item]
         
         detailVC.characterName = char.name
         switch char.status {
@@ -31,6 +32,24 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         case .unknown: detailVC.characterStatus = "Unknown"
         }
         
+        switch char.species {
+        case .alien: detailVC.infoSpecies = "Alien"
+        case .human: detailVC.infoSpecies = "Human"
+        }
+        switch char.gender {
+        case .female: detailVC.infoGender = "Female"
+        case .male: detailVC.infoGender = "Male"
+        case .unknown: detailVC.infoGender = "unknown"
+        }
+        detailVC.infoType = char.typeNone
+        detailVC.planetName = location.newName
+        detailVC.planetType = location.type
+        
+//        detailVC.episodeName = episode.name
+//        detailVC.episodeEpisode = episode.formattedEpisode
+//        detailVC.episodeAirDate = episode.airDate
+        
+        detailVC.episodeCount = char.episode.count
         
         if let imageUrl = URL(string: char.image) {
             if let cachedImage = imageCache.object(forKey: imageUrl.absoluteString as NSString) {

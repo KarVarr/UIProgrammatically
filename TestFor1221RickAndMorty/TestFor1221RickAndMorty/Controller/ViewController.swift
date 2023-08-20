@@ -10,6 +10,8 @@ import UIKit
 class ViewController: UIViewController {
     let networkManager = NetworkManager()
     var character: [Character] = []
+    var episodes: [EpisodeDetails] = []
+    var locations: [LocationDetails] = []
     
     let collectionView = CollectionView()
     
@@ -30,15 +32,29 @@ class ViewController: UIViewController {
     }
     
     func fetchData() {
+
         networkManager.requestData(from: "https://rickandmortyapi.com/api/character", responseType: CharacterResponse.self) { [weak self] characterResponse in
             self?.character = characterResponse.results
             DispatchQueue.main.async {
                 self?.collectionView.collection.reloadData()
             }
         }
+
+        networkManager.requestData(from: "https://rickandmortyapi.com/api/location", responseType: LocationDetailsResponse.self) { [weak self] locationResponse in
+            self?.locations = locationResponse.results
+            DispatchQueue.main.async {
+                self?.collectionView.collection.reloadData()
+            }
+        }
+
+        networkManager.requestData(from: "https://rickandmortyapi.com/api/episode", responseType: EpisodeDetailsResponse.self) { [weak self] episodeResponse in
+            self?.episodes = episodeResponse.results
+            DispatchQueue.main.async {
+                self?.collectionView.collection.reloadData()
+            }
+        }
     }
-    
-    
+
     func addViews() {
         view.addSubview(collectionView.collection)
     }
@@ -48,7 +64,6 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.tintColor = Helper.Colors.whiteColor
-        
     }
     
     func settings() {
