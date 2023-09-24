@@ -22,6 +22,10 @@ class Creature {
         
     }
     
+    func buyPotion(inAmount pieces: Int) {
+        
+    }
+    
     func attack(target: Creature) {
         print("\(nameOfCreature) начинает атаку! 🗡️")
         let modifier = max(abs(self.attack - target.defense) + 1, 1)
@@ -53,9 +57,11 @@ class Creature {
 
 class Player: Creature {
     var maxHealth: Int
+    var coins: Double
     var countOfHealing = 4
     
-    init(nameOfCreature: String, attack: Int, defense: Int, maxHealth: Int, damageRange: ClosedRange<Int>) {
+    init(nameOfCreature: String, coins: Double, attack: Int, defense: Int, maxHealth: Int, damageRange: ClosedRange<Int>) {
+        self.coins = coins
         self.maxHealth = maxHealth
         super.init(nameOfCreature: nameOfCreature, attack: attack, defense: defense, health: maxHealth, damageRange: damageRange)
     }
@@ -77,15 +83,37 @@ class Player: Creature {
             }
         }
     }
+    
+    override func buyPotion(inAmount pieces: Int) {
+        if coins < Double(pieces) * 4.99 {
+            print("У Вас не хватает монет 💰")
+        } else {
+            countOfHealing += pieces
+            var message = ""
+            
+            switch pieces {
+            case 1:
+                message = "Вы купили \(pieces) зелье за 4.99 $"
+            case 2...4:
+                message = "Вы купили \(pieces) зелья за " + String(format: "%.2f", Double(pieces) * 4.99) + " $"
+            default:
+                message = "Вы купили \(pieces) зелий за " + String(format: "%.2f", Double(pieces) * 4.99) + " $"
+            }
+            
+            coins -= Double(pieces) * 4.99
+            print(message, ", у Вас осталось : " + String(format: "%.2f", coins) + " монет!")
+        }
+    }
+    
 }
-
+    
 class Monster: Creature {
     override init(nameOfCreature: String,attack: Int, defense: Int, health: Int, damageRange: ClosedRange<Int>) {
         super.init(nameOfCreature: nameOfCreature,attack: attack, defense: defense, health: health, damageRange: damageRange)
     }
 }
 
-let hawk = Player(nameOfCreature: "Лучник", attack: 8, defense: 5, maxHealth: 100, damageRange: 3...9)
+let hawk = Player(nameOfCreature: "Лучник", coins: 200, attack: 8, defense: 5, maxHealth: 100, damageRange: 3...9)
 let stoneGolem = Monster(nameOfCreature: "Каменный голем", attack: 14, defense: 20, health: 300, damageRange: 1...3)
 
 
@@ -116,4 +144,10 @@ stoneGolem.attack(target: hawk)
 hawk.heal()
 hawk.heal()
 hawk.heal()
-
+hawk.buyPotion(inAmount: 1)
+hawk.buyPotion(inAmount: 3)
+hawk.buyPotion(inAmount: 4)
+hawk.buyPotion(inAmount: 5)
+hawk.buyPotion(inAmount: 10)
+hawk.buyPotion(inAmount: 50)
+hawk.countOfHealing
