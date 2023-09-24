@@ -4,13 +4,7 @@ import Foundation
 class Creature {
     var attack: Int
     var defense: Int
-    var health: Int {
-        didSet {
-            if self.health == 0 {
-                print("Creature is dead, health = \(self.health)")
-            }
-        }
-    }
+    var health: Int
     var damageRange: ClosedRange<Int>
     
     init(attack: Int, defense: Int, health: Int, damageRange: ClosedRange<Int>) {
@@ -31,25 +25,23 @@ class Creature {
         for _ in 1...modifier {
             let luckyStrike = Int.random(in: 1...6)
             if luckyStrike >= 5 {
-                damage += Int.random(in: damageRange)
-                print("Attack target: \(damage)")
+                let attack = Int.random(in: damageRange)
+                damage += attack
+                print("Attack target, hint: \(attack), combo: \(damage)")
            } else {
                print("Attack missed!")
            }
-            
         }
         
         if damage > 0 {
             target.health -= damage
             print("Enemy HP: \(target.health)")
+            
             if target.health <= 0 {
                 target.health = 0
                 print("Creature has been defeated.")
             }
-        } else {
-            print("Attack missed!")
         }
-        
             
         
     }
@@ -65,3 +57,7 @@ let human = Creature(attack: 5, defense: 20, health: 30, damageRange: 1...3)
 human.health
 golem.attack(target: human)
 human.health
+human.attack(target: golem)
+golem.health
+
+ 
