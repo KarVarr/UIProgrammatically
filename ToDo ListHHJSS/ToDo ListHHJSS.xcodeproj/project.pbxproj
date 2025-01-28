@@ -14,7 +14,7 @@
 		176D6F252D492EE200AB79CD /* Exceptions for "ToDo ListHHJSS" folder in "ToDo ListHHJSS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Common/Resources/Info.plist,
 			);
 			target = 176D6F122D492EE000AB79CD /* ToDo ListHHJSS */;
 		};

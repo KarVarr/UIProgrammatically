@@ -1,13 +1,17 @@
 //
-//  ToDoListViewController.swift
-//  ToDo ListHHJSS
+//  TodoListViewController.swift
+//  Todo ListHHJSS
 //
 //  Created by Karen Vardanian on 28.01.2025.
 //
 
 import UIKit
 
-class ToDoListViewController: BaseController {
+protocol TodoListViewProtocol: AnyObject {
+    
+}
+
+class TodoListViewController: BaseController, TodoListViewProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
