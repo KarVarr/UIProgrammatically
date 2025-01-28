@@ -14,23 +14,21 @@ protocol TodoListRouterProtocol: AnyObject {
 
 final class TodoListRouter: TodoListRouterProtocol {
     func navigateToTodoDetail(from view: UIViewController, with task: Task) {
-        let todoDetailViewController = TodoDetailViewController(task: task)
-        view.navigationController?.pushViewController(todoDetailViewController, animated: true)
+//        let todoDetailViewController = TodoDetailViewController(task: task)
+//        view.navigationController?.pushViewController(todoDetailViewController, animated: true)
     }
 }
 
 
 extension TodoListRouter {
     static func createModule() -> UIViewController {
+        print("-------createModule() вызван")
         let view = TodoListViewController()
         let interactor = TodoListInteractor()
-        let presenter = TodoListPresenter()
         let router = TodoListRouter()
+        let presenter = TodoListPresenter(view: view, interactor: interactor, router: router)
         
         view.presenter = presenter
-        presenter.view = view
-        presenter.interactor = interactor
-        presenter.router = router
         interactor.presenter = presenter
         
         return view

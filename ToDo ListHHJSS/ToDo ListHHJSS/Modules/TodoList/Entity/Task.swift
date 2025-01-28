@@ -12,5 +12,5 @@ struct Task: Identifiable {
     var title: String
     var subtitle: String?
     var isDone: Bool = false
-    var Date: Date?
+    var date: Date?
 }

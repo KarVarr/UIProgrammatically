@@ -9,26 +9,32 @@ import Foundation
 
 protocol TodoListPresenterProtocol: AnyObject {
     func viewDidLoad()
-    func didSelectRow(at indexPath: IndexPath)
+}
+
+protocol TodoListViewProtocol: AnyObject {
+    func showTasks(_ tasks: [Task])
 }
 
 final class TodoListPresenter: TodoListPresenterProtocol {
-    weak var view: TodoListViewProtocol!
+    weak var view: TodoListViewProtocol?
     private let interactor: TodoListInteractorProtocol
     private let router: TodoListRouterProtocol
     
-    init(
-        interactor: TodoListInteractorProtocol,
-        router: TodoListRouterProtocol
-    ) {
+    init(view: TodoListViewProtocol, interactor: TodoListInteractorProtocol,router: TodoListRouterProtocol) {
+        self.view = view
         self.interactor = interactor
+        self.router = router
     }
     
     func viewDidLoad() {
-        <#code#>
+        print("fetch todos from interactor")
+        interactor.fetchTodos()
     }
-    
-    func didSelectRow(at indexPath: IndexPath) {
-        <#code#>
+}
+
+extension TodoListPresenter: TodoListInteractorOutputProtocol {
+    func didFetchToDos(_ todos: [Task]) {
+        print("presenter received tasks \(todos.map {$0.title})")
+        view?.showTasks(todos)
     }
 }

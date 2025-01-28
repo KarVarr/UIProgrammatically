@@ -147,7 +147,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LA9F8MT28T;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "ToDo ListHHJSS/Info.plist";
+				INFOPLIST_FILE = "ToDo ListHHJSS/Common/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -178,7 +178,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LA9F8MT28T;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "ToDo ListHHJSS/Info.plist";
+				INFOPLIST_FILE = "ToDo ListHHJSS/Common/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

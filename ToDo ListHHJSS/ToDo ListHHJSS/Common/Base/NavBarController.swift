@@ -14,6 +14,6 @@ final class NavBarController: UINavigationController {
     }
     
     private func configureAppearance() {
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationBar.prefersLargeTitles = true
     }
 }
