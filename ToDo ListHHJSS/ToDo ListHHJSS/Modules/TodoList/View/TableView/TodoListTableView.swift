@@ -8,10 +8,12 @@
 import UIKit
 
 class TodoListTableView: UITableView {
-    let table: UITableView = {
-        let table = UITableView(frame: .zero, style: .plain)
-        table.translatesAutoresizingMaskIntoConstraints = false
-        
-        return table
-    }()
+    override init(frame: CGRect, style: UITableView.Style) {
+        super.init(frame: frame, style: style)
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
