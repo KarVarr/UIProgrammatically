@@ -26,7 +26,7 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
     
     override func settingView() {
         title = "Задачи"
-        view.backgroundColor = .white
+        view.backgroundColor = .black
     }
     
     private func setupConstraints() {

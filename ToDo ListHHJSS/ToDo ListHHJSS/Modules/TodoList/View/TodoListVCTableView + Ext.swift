@@ -14,6 +14,8 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
         todoListTableView.register(TodoListCell.self, forCellReuseIdentifier: Helper.TodoListTableView.cellIdentifier)
         todoListTableView.frame = view.bounds
         todoListTableView.backgroundColor = .black
+        todoListTableView.separatorColor = .white.withAlphaComponent(0.7)
+        todoListTableView.separatorInset = UIEdgeInsets(top: .zero, left: 20, bottom: .zero, right: 20)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
