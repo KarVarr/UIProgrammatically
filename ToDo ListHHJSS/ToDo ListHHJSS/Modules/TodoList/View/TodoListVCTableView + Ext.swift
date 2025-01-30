@@ -31,7 +31,7 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.accessoryType = .disclosureIndicator
+        
         let task = tasks[indexPath.row]
         cell.configure(with: task)
         
