@@ -9,6 +9,8 @@ import Foundation
 
 protocol TodoListPresenterProtocol: AnyObject {
     func viewDidLoad()
+    func deleteTodo(_ task: TaskEntity)
+    func toggleTodoCompleted(_ task: TaskEntity)
 }
 
 protocol TodoListViewProtocol: AnyObject {
@@ -36,5 +38,13 @@ extension TodoListPresenter: TodoListInteractorOutputProtocol {
     func didFetchToDos(_ todos: [TaskEntity]) {
         print("presenter received tasks \(todos.count)")
         view?.showTasks(todos)
+    }
+    
+    func deleteTodo(_ task: TaskEntity) {
+        interactor.deleteTodo(task)
+    }
+    
+    func toggleTodoCompleted(_ task: TaskEntity) {
+        interactor.toggleTodoCompleted(task)
     }
 }

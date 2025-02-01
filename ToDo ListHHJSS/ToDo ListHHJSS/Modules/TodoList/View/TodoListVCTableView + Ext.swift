@@ -26,14 +26,26 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let task = tasks[indexPath.row]
+            tasks.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left) 
+            presenter?.deleteTodo(task)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Helper.TodoListTableView.cellIdentifier, for: indexPath) as? TodoListCell else {
             return UITableViewCell()
         }
         
-        
         let task = tasks[indexPath.row]
         cell.configure(with: task)
+        
+        cell.toggleCompletion = { [weak self] in
+            self?.presenter?.toggleTodoCompleted(task)
+        }
         
         return cell
     }

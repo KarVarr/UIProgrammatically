@@ -9,6 +9,8 @@ import Foundation
 
 protocol TodoListInteractorProtocol {
     func fetchTodos()
+    func deleteTodo(_ task: TaskEntity)
+    func toggleTodoCompleted(_ task: TaskEntity)
 }
 
 protocol TodoListInteractorOutputProtocol: AnyObject {
@@ -42,6 +44,16 @@ final class TodoListInteractor: TodoListInteractorProtocol {
             print("Загружаем данные из Core Data (\(savedTasks.count) задач)...")
             presenter?.didFetchToDos(savedTasks)
         }
+    }
+    
+    func deleteTodo(_ task: TaskEntity) {
+        CoreDataManager.shared.deleteTask(task)
+        fetchTodos()
+    }
+    
+    func toggleTodoCompleted(_ task: TaskEntity) {
+        CoreDataManager.shared.toggleTaskCompletion(task)
+        fetchTodos()
     }
 }
 

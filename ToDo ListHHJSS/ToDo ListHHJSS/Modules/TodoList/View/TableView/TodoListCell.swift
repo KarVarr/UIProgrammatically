@@ -14,6 +14,8 @@ class TodoListCell: UITableViewCell {
     let dateLabel = CustomLabel()
     let stackViewVertical = CustomStackView()
     
+    var toggleCompletion: (() -> Void)?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -21,6 +23,14 @@ class TodoListCell: UITableViewCell {
         setupLabels()
         setupImageView()
         setupStackView()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapCheckBox))
+        checkBoxImageView.customImage.isUserInteractionEnabled = true
+        checkBoxImageView.customImage.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func didTapCheckBox() {
+        toggleCompletion?()
     }
     
     required init?(coder: NSCoder) {
@@ -77,7 +87,13 @@ class TodoListCell: UITableViewCell {
     }
     
     func configure(with task: TaskEntity) {
-        titleLabel.label.text = task.todo
+        let attributeString = NSMutableAttributedString(string: task.todo ?? "")
+        if task.completed {
+            attributeString.addAttribute(.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
+        }
+        
+        titleLabel.label.attributedText = attributeString
+        
         subtitleLabel.label.text = task.subtitle ?? ""
         dateLabel.label.text = formatDate(task.date)
         
