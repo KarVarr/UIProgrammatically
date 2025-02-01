@@ -9,28 +9,40 @@ import Foundation
 
 protocol TodoListInteractorProtocol {
     func fetchTodos()
-    
 }
 
 protocol TodoListInteractorOutputProtocol: AnyObject {
-    func didFetchToDos(_ toDos: [Task])
+    func didFetchToDos(_ todos: [TaskEntity])
 }
 
 final class TodoListInteractor: TodoListInteractorProtocol {
     weak var presenter: TodoListInteractorOutputProtocol?
     
     func fetchTodos() {
-        print("отправляем запрос на список")
-        NetworkManager.shared.fetchTodos { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let tasks):
-                    print("получили данные")
-                    self?.presenter?.didFetchToDos(tasks)
-                case .failure(let error):
-                    print("ошибка нах, нет данных \(error)")
+        let savedTasks = CoreDataManager.shared.fetchTodos()
+        
+        if savedTasks.isEmpty {
+            print("Первый запуск, загружаем данные из API")
+            NetworkManager.shared.fetchTodos { [weak self] result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let tasks):
+                        print("Данные из API получены, сохраняем в Core Data...")
+                        CoreDataManager.shared.saveTasksFromAPI(tasks)
+                        
+                        let updatedTasks = CoreDataManager.shared.fetchTodos()
+                        self?.presenter?.didFetchToDos(updatedTasks)
+                        
+                    case .failure(let error):
+                        print("Ошибка загрузки API: \(error)")
+                    }
                 }
             }
+        } else {
+            print("Загружаем данные из Core Data (\(savedTasks.count) задач)...")
+            presenter?.didFetchToDos(savedTasks)
         }
     }
 }
+
+

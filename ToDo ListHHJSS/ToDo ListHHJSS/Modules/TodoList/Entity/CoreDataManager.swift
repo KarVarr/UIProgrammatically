@@ -17,7 +17,7 @@ final class CoreDataManager {
         persistentContainer = NSPersistentContainer(name: "DataModel")
         persistentContainer.loadPersistentStores { _, error in
             if let error = error {
-                fatalError("Не агрузилось сore data: \(error)")
+                fatalError("Ошибка загрузки Core Data: \(error)")
             }
         }
     }
@@ -26,45 +26,42 @@ final class CoreDataManager {
         return persistentContainer.viewContext
     }
     
+    func saveContext() {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+                print("Кор дата сохранила данные")
+            } catch {
+                print("Ошибка сохранения данных: \(error)")
+            }
+        }
+    }
+    
     func fetchTodos() -> [TaskEntity] {
         let request: NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
         do {
-            return try context.fetch(request)
+            let tasks = try context.fetch(request)
+            print("Загрузили \(tasks.count) задач из Core Data")
+            return tasks
         } catch {
-            print("ошибка загрузки: \(error)")
+            print("Ошибка загрузки задач: \(error)")
             return []
         }
     }
     
-
-    func addTask(todo: String, date: Date?, subtitle: String?) {
-        let task = TaskEntity(context: context)
-        task.id = UUID()
-        task.todo = todo
-        task.completed = false
-        task.date = date
-        task.subtitle = subtitle
-        
-        saveContext()
-    }
-    
-    func updateTask(_ task: TaskEntity, completed: Bool) {
-        task.completed = completed
-        saveContext()
-    }
-    
-    func deleteTask(_ task: TaskEntity) {
-        context.delete(task)
-        saveContext()
-    }
-    
- 
-    private func saveContext() {
-        do {
-            try context.save()
-        } catch {
-            print("не сохранилось, ошибка: \(error)")
+    //MARK: - Данные из API в codeData
+    func saveTasksFromAPI(_ tasks: [Task]) {
+        for task in tasks {
+            let newTask = TaskEntity(context: context)
+            newTask.id = Int64(task.id)
+            newTask.todo = task.todo
+            newTask.subtitle = task.subtitle
+            newTask.completed = task.completed
+            newTask.date = task.date ?? Date()
         }
+        saveContext()
+        print("Данные из API сохранены в Core Data")
     }
 }
 

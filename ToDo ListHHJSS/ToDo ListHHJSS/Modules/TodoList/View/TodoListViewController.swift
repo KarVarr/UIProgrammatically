@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoListViewController: BaseController, TodoListViewProtocol {
     var presenter: TodoListPresenterProtocol?
-    var tasks: [Task] = []
+    var tasks: [TaskEntity] = []
     let todoListTableView = TodoListTableView()
     
     override func viewDidLoad() {
@@ -17,6 +18,17 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
         configureTodoListTableView()
         setupConstraints()
         presenter?.viewDidLoad()
+        
+        let context = CoreDataManager.shared.context
+        let request: NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
+        
+        do {
+            let tasks = try context.fetch(request)
+            print("кор дата работает загрузил:\(tasks.count)")
+        } catch {
+            print("coredata не работает \(error)")
+        }
+        
     }
     
     override func addSubviews() {
@@ -37,10 +49,12 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
         ])
     }
 
-    func showTasks(_ tasks: [Task]) {
-        self.tasks = tasks
-        print("tasks in UI: \(tasks.count)")
-        todoListTableView.reloadData()
+    func showTasks(_ tasks: [TaskEntity]) {
+        DispatchQueue.main.async {
+            self.tasks = tasks
+            print("tasks in UI: \(tasks.count)")
+            self.todoListTableView.reloadData()
+        }
     }
 }
 

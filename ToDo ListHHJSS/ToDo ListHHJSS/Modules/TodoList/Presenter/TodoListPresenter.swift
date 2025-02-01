@@ -12,7 +12,7 @@ protocol TodoListPresenterProtocol: AnyObject {
 }
 
 protocol TodoListViewProtocol: AnyObject {
-    func showTasks(_ tasks: [Task])
+    func showTasks(_ tasks: [TaskEntity])
 }
 
 final class TodoListPresenter: TodoListPresenterProtocol {
@@ -33,7 +33,7 @@ final class TodoListPresenter: TodoListPresenterProtocol {
 }
 
 extension TodoListPresenter: TodoListInteractorOutputProtocol {
-    func didFetchToDos(_ todos: [Task]) {
+    func didFetchToDos(_ todos: [TaskEntity]) {
         print("presenter received tasks \(todos.count)")
         view?.showTasks(todos)
     }

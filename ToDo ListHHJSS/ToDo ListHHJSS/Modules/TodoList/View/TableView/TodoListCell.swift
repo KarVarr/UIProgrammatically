@@ -76,7 +76,7 @@ class TodoListCell: UITableViewCell {
         ])
     }
     
-    func configure(with task: Task) {
+    func configure(with task: TaskEntity) {
         titleLabel.label.text = task.todo
         subtitleLabel.label.text = task.subtitle ?? ""
         dateLabel.label.text = formatDate(task.date)
