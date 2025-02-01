@@ -34,7 +34,7 @@ final class TodoListPresenter: TodoListPresenterProtocol {
 
 extension TodoListPresenter: TodoListInteractorOutputProtocol {
     func didFetchToDos(_ todos: [Task]) {
-        print("presenter received tasks \(todos.map {$0.title})")
+        print("presenter received tasks \(todos.count)")
         view?.showTasks(todos)
     }
 }

@@ -19,12 +19,17 @@ final class TodoListInteractor: TodoListInteractorProtocol {
     weak var presenter: TodoListInteractorOutputProtocol?
     
     func fetchTodos() {
-        print("interactor fetchTodos() called")
-        let tasks = [
-            Task(title: "Молоко купи 1"),
-            Task(title: "Молоко купи 2"),
-            Task(title: "Молоко купи 3", isDone: true)
-        ]
-        presenter?.didFetchToDos(tasks)
+        print("отправляем запрос на список")
+        NetworkManager.shared.fetchTodos { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let tasks):
+                    print("получили данные")
+                    self?.presenter?.didFetchToDos(tasks)
+                case .failure(let error):
+                    print("ошибка нах, нет данных \(error)")
+                }
+            }
+        }
     }
 }

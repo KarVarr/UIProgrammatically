@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Task: Identifiable {
-    var id = UUID()
-    var title: String
+struct Task: Identifiable, Codable {
+    var id: Int
+    var todo: String
     var subtitle: String?
-    var isDone: Bool = false
+    var completed: Bool = false
     var date: Date?
 }

@@ -15,7 +15,6 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTodoListTableView()
-        print("view - call the presenter.viewdidload")
         setupConstraints()
         presenter?.viewDidLoad()
     }
@@ -38,11 +37,10 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
         ])
     }
 
-
-    
     func showTasks(_ tasks: [Task]) {
         self.tasks = tasks
-        print("tasks in UI: \(tasks.map {$0.title})")
+        print("tasks in UI: \(tasks.count)")
+        todoListTableView.reloadData()
     }
 }
 

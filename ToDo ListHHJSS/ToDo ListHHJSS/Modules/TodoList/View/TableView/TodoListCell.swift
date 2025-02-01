@@ -77,15 +77,15 @@ class TodoListCell: UITableViewCell {
     }
     
     func configure(with task: Task) {
-        titleLabel.label.text = task.title
+        titleLabel.label.text = task.todo
         subtitleLabel.label.text = task.subtitle ?? ""
         dateLabel.label.text = formatDate(task.date)
         
-        let imageName = task.isDone ? "checkmark.circle.fill" : "circle"
+        let imageName = task.completed ? "checkmark.circle.fill" : "circle"
         checkBoxImageView.customImage.image = UIImage(systemName: imageName)
-        checkBoxImageView.customImage.tintColor = task.isDone ? .yellow : .gray
+        checkBoxImageView.customImage.tintColor = task.completed ? .yellow : .gray
         
-        titleLabel.label.textColor = task.isDone ? .gray : .white
+        titleLabel.label.textColor = task.completed ? .gray : .white
     }
     
     private func formatDate(_ date: Date?) -> String {

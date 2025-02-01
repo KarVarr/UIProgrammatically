@@ -14,8 +14,7 @@ protocol TodoListRouterProtocol: AnyObject {
 
 final class TodoListRouter: TodoListRouterProtocol {
     func navigateToTodoDetail(from view: UIViewController, with task: Task) {
-//        let todoDetailViewController = TodoDetailViewController(task: task)
-//        view.navigationController?.pushViewController(todoDetailViewController, animated: true)
+
     }
 }
 
