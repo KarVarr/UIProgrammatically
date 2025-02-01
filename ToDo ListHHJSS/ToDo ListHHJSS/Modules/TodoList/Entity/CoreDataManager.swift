@@ -53,6 +53,10 @@ final class CoreDataManager {
     
     func fetchTodos() -> [TaskEntity] {
         let request: NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
+        
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
+        
         do {
             let tasks = try context.fetch(request)
             print("Загрузили \(tasks.count) задач из Core Data")

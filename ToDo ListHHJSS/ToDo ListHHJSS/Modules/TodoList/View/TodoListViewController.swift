@@ -48,7 +48,14 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
             todoListTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-
+    
+    func addNewTask(todo: String, subtitle: String?) {
+        CoreDataManager.shared.createNewTask(todo: todo, subtitle: subtitle)
+        
+        let updatedTasks = CoreDataManager.shared.fetchTodos()
+        showTasks(updatedTasks)
+    }
+    
     func showTasks(_ tasks: [TaskEntity]) {
         DispatchQueue.main.async {
             self.tasks = tasks
@@ -56,5 +63,6 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
             self.todoListTableView.reloadData()
         }
     }
+    
 }
 

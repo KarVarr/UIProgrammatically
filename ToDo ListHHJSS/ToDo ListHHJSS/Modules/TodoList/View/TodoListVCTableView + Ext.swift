@@ -13,7 +13,10 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
         todoListTableView.delegate = self
         todoListTableView.register(TodoListCell.self, forCellReuseIdentifier: Helper.TodoListTableView.cellIdentifier)
         todoListTableView.frame = view.bounds
+        todoListTableView.rowHeight = UITableView.automaticDimension
+        todoListTableView.estimatedRowHeight = 80
         todoListTableView.backgroundColor = .black
+        todoListTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 94, right: 0)
         todoListTableView.separatorColor = .white.withAlphaComponent(0.7)
         todoListTableView.separatorInset = UIEdgeInsets(top: .zero, left: 20, bottom: .zero, right: 20)
     }
@@ -22,16 +25,32 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
         tasks.count
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let destination = TodoDetailsViewController()
+        
+        navigationController?.pushViewController(destination, animated: true)
     }
+
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let task = tasks[indexPath.row]
-            tasks.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .left) 
+            
             presenter?.deleteTodo(task)
+            
+            CATransaction.begin()
+            CATransaction.setCompletionBlock { [weak self] in
+                if let rightBarButton = self?.navigationItem.rightBarButtonItem?.customView as? UILabel {
+                    rightBarButton.text = "\(self?.tasks.count ?? 0) Задач"
+                }
+            }
+            
+            tasks.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            CATransaction.commit()
         }
     }
     
@@ -42,6 +61,7 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let task = tasks[indexPath.row]
         cell.configure(with: task)
+        cell.selectionStyle = .blue
         
         cell.toggleCompletion = { [weak self] in
             self?.presenter?.toggleTodoCompleted(task)
