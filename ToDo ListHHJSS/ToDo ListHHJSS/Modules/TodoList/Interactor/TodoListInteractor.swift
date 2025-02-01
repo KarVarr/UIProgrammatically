@@ -9,6 +9,7 @@ import Foundation
 
 protocol TodoListInteractorProtocol {
     func fetchTodos()
+    
 }
 
 protocol TodoListInteractorOutputProtocol: AnyObject {
