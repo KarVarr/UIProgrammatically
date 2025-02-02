@@ -11,7 +11,7 @@ final class NetworkManager {
     static let shared = NetworkManager()
     
     private init() {}
-
+    
     func fetchTodos(completion: @escaping (Result<[Task], Error>) -> Void) {
         guard let url = URL(string: "https://dummyjson.com/todos") else { return }
         

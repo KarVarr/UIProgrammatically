@@ -8,13 +8,18 @@
 import UIKit
 import CoreData
 
+protocol TodoDetailsDelegate: AnyObject {
+    func todoDetailsDidUpdate(_ task: TaskEntity)
+}
+
 class TodoDetailsViewController: UIViewController, UITextViewDelegate {
     
     var todoItem: TaskEntity?
+    weak var delegate: TodoDetailsDelegate?
     
     var dateLabel = CustomLabel()
     var subtitleTextView: UITextView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +45,18 @@ class TodoDetailsViewController: UIViewController, UITextViewDelegate {
         addSubviews()
         layoutView()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         todoItem?.subtitle = textView.text
         CoreDataManager.shared.saveContext()
@@ -63,7 +79,7 @@ class TodoDetailsViewController: UIViewController, UITextViewDelegate {
             subtitleTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
- 
+    
     func formatDate(_ date: Date?) -> String {
         guard let date = date else { return "" }
         let formatter = DateFormatter()

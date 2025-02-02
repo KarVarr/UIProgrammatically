@@ -7,7 +7,11 @@
 
 import UIKit
 
-extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
+extension TodoListViewController: UITableViewDelegate, UITableViewDataSource, TodoDetailsDelegate {
+    func todoDetailsDidUpdate(_ task: TaskEntity) {
+        presenter?.viewDidLoad()
+    }
+    
     func configureTodoListTableView() {
         todoListTableView.dataSource = self
         todoListTableView.delegate = self
@@ -28,27 +32,16 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
         let destination = TodoDetailsViewController()
         let task = tasks[indexPath.row]
         destination.todoItem = task
+        destination.delegate = self
         navigationController?.pushViewController(destination, animated: true)
     }
-
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let task = tasks[indexPath.row]
-            
             presenter?.deleteTodo(task)
-            
-            CATransaction.begin()
-            CATransaction.setCompletionBlock { [weak self] in
-                if let rightBarButton = self?.navigationItem.rightBarButtonItem?.customView as? UILabel {
-                    rightBarButton.text = "\(self?.tasks.count ?? 0) Задач"
-                }
-            }
-            
             tasks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            
-            CATransaction.commit()
         }
     }
     

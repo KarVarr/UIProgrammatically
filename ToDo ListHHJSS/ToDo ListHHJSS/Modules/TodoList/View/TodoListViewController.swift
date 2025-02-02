@@ -68,14 +68,9 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
     func showTasks(_ tasks: [TaskEntity]) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            
-            if self.isViewLoaded, self.view.window != nil {
-                self.tasks = tasks
-                print(" задачи в UI: \(tasks.count)")
-                self.todoListTableView.reloadData()
-            } else {
-                print("TableView не в view пропускаем reloadData()")
-            }
+            self.tasks = tasks
+            print("задачи в UI: \(tasks.count)")
+            self.todoListTableView.reloadData()
         }
     }
 }
