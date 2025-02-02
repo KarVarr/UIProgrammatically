@@ -27,9 +27,7 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let destination = TodoDetailsViewController()
         let task = tasks[indexPath.row]
-        destination.taskTitle = task.todo
-        destination.taskDate = task.date
-        destination.taskSubtitle = task.subtitle
+        destination.todoItem = task
         navigationController?.pushViewController(destination, animated: true)
     }
 

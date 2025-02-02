@@ -29,6 +29,11 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
         presenter?.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        todoListTableView.reloadData()
+    }
+    
     override func addSubviews() {
         view.addSubview(todoListTableView)
         configureTodoListTableView()
