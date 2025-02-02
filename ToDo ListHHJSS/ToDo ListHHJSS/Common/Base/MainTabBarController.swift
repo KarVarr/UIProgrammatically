@@ -47,6 +47,8 @@ class MainTabBarController: UITabBarController {
         view.backgroundColor = UIColor(red: 39/255, green: 39/255, blue: 41/255, alpha: 1.0)
         view.layer.cornerRadius = 16
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.layer.masksToBounds = true
         return view
     }()
     
@@ -111,6 +113,7 @@ class MainTabBarController: UITabBarController {
         setupTabBar()
         setupAddTaskView()
         updateTasksCount()
+        
     }
     
     private func setupAddTaskView() {
@@ -163,17 +166,22 @@ class MainTabBarController: UITabBarController {
     }
     
     @objc private func addButtonTapped() {
-        dimmedBackgroundView.alpha = 0
-        addTaskView.alpha = 0
         addTaskView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        addTaskView.alpha = 0
+        dimmedBackgroundView.alpha = 0
         
-        UIView.animate(withDuration: 0.3) {
+        addTaskView.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
             self.dimmedBackgroundView.alpha = 1
             self.addTaskView.alpha = 1
-            self.addTaskView.transform = .identity
+            self.addTaskView.transform = CGAffineTransform.identity
+            self.view.layoutIfNeeded()
         }
         
-        titleTextField.becomeFirstResponder()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.titleTextField.becomeFirstResponder()
+        }
     }
     
     @objc private func handleAddTask() {
@@ -201,14 +209,15 @@ class MainTabBarController: UITabBarController {
         titleTextField.resignFirstResponder()
         subtitleTextField.resignFirstResponder()
         
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn) {
             self.dimmedBackgroundView.alpha = 0
             self.addTaskView.alpha = 0
             self.addTaskView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        } completion: { _ in
+            self.titleTextField.text = nil
+            self.subtitleTextField.text = nil
+            self.addTaskView.transform = .identity
         }
-        
-        titleTextField.text = nil
-        subtitleTextField.text = nil
     }
     
     private func setupCustomTabBar() {

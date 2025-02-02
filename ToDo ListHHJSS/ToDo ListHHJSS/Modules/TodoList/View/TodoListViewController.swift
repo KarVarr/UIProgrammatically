@@ -15,9 +15,7 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTodoListTableView()
         setupConstraints()
-        presenter?.viewDidLoad()
         
         let context = CoreDataManager.shared.context
         let request: NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
@@ -28,11 +26,12 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
         } catch {
             print("coredata не работает \(error)")
         }
-        
+        presenter?.viewDidLoad()
     }
     
     override func addSubviews() {
         view.addSubview(todoListTableView)
+        configureTodoListTableView()
     }
     
     override func settingView() {
@@ -57,12 +56,17 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
     }
     
     func showTasks(_ tasks: [TaskEntity]) {
-        DispatchQueue.main.async {
-            self.tasks = tasks
-            print("tasks in UI: \(tasks.count)")
-            self.todoListTableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            if self.isViewLoaded, self.view.window != nil {
+                self.tasks = tasks
+                print(" задачи в UI: \(tasks.count)")
+                self.todoListTableView.reloadData()
+            } else {
+                print("TableView не в view пропускаем reloadData()")
+            }
         }
     }
-    
 }
 

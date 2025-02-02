@@ -11,11 +11,8 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
     func configureTodoListTableView() {
         todoListTableView.dataSource = self
         todoListTableView.delegate = self
-        todoListTableView.register(TodoListCell.self, forCellReuseIdentifier: Helper.TodoListTableView.cellIdentifier)
-        todoListTableView.frame = view.bounds
         todoListTableView.rowHeight = UITableView.automaticDimension
         todoListTableView.estimatedRowHeight = 80
-        todoListTableView.backgroundColor = .black
         todoListTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 94, right: 0)
         todoListTableView.separatorColor = .white.withAlphaComponent(0.7)
         todoListTableView.separatorInset = UIEdgeInsets(top: .zero, left: 20, bottom: .zero, right: 20)
@@ -29,7 +26,10 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let destination = TodoDetailsViewController()
-        
+        let task = tasks[indexPath.row]
+        destination.taskTitle = task.todo
+        destination.taskDate = task.date
+        destination.taskSubtitle = task.subtitle
         navigationController?.pushViewController(destination, animated: true)
     }
 

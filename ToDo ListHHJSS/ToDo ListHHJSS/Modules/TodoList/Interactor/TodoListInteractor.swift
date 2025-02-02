@@ -24,25 +24,27 @@ final class TodoListInteractor: TodoListInteractorProtocol {
         let savedTasks = CoreDataManager.shared.fetchTodos()
         
         if savedTasks.isEmpty {
-            print("Первый запуск, загружаем данные из API")
+            print("Первый запуск загружаем данные из апи")
             NetworkManager.shared.fetchTodos { [weak self] result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let tasks):
-                        print("Данные из API получены, сохраняем в Core Data...")
+                        print("Данные из API получены сохраняем в core Data...")
                         CoreDataManager.shared.saveTasksFromAPI(tasks)
                         
                         let updatedTasks = CoreDataManager.shared.fetchTodos()
                         self?.presenter?.didFetchToDos(updatedTasks)
                         
                     case .failure(let error):
-                        print("Ошибка загрузки API: \(error)")
+                        print("Ошибка загрузки api: \(error)")
                     }
                 }
             }
         } else {
-            print("Загружаем данные из Core Data (\(savedTasks.count) задач)...")
-            presenter?.didFetchToDos(savedTasks)
+            print("-----загрузка данные из coreData (\(savedTasks.count) задач)...")
+            DispatchQueue.main.async { [weak self] in
+                self?.presenter?.didFetchToDos(savedTasks)
+            }
         }
     }
     
