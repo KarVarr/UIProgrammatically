@@ -25,5 +25,4 @@ final class NavBarController: UINavigationController {
         navigationBar.compactAppearance = appearance
         navigationBar.scrollEdgeAppearance = appearance
     }
-
 }

@@ -18,7 +18,6 @@ class TodoDetailsViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         title = todoItem?.todo ?? "Детали"
         view.backgroundColor = .black
         

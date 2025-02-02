@@ -42,6 +42,11 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
     override func settingView() {
         title = "Задачи"
         view.backgroundColor = .black
+        
+        let backButton = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
+        backButton.setTitleTextAttributes([.foregroundColor: Helper.Colors.hexColor(hex: "#FED702")], for: .normal)
+        navigationItem.backBarButtonItem = backButton
+        navigationController?.navigationBar.tintColor = Helper.Colors.hexColor(hex: "#FED702")
     }
     
     private func setupConstraints() {
