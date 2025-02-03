@@ -29,11 +29,7 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource, To
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let destination = TodoDetailsViewController()
-        let task = isSearching ? filteredTasks[indexPath.row] : tasks[indexPath.row]
-        destination.todoItem = task
-        destination.delegate = self
-        navigationController?.pushViewController(destination, animated: true)
+        editTask(at: indexPath)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -58,6 +54,27 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource, To
         }
     }
     
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
+            let editAction = UIAction(title: "Редактировать", image: UIImage(systemName: "pencil")) { _ in
+                self.editTask(at: indexPath)
+                print("edit")
+            }
+            
+            let shareAction = UIAction(title: "Поделиться", image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                self.shareTask(at: indexPath)
+                print("share")
+            }
+            
+            let deleteAction = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+                self.deleteTask(at: indexPath)
+                print("delete")
+            }
+            
+            return UIMenu(title: "", children: [editAction, shareAction, deleteAction])
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Helper.TodoListTableView.cellIdentifier, for: indexPath) as? TodoListCell else {
             return UITableViewCell()
@@ -72,5 +89,46 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource, To
         }
         
         return cell
+    }
+    
+    func deleteTask(at indexPath: IndexPath) {
+        let task = isSearching ? filteredTasks[indexPath.row] : tasks[indexPath.row]
+        
+        CoreDataManager.shared.context.delete(task)
+        CoreDataManager.shared.saveContext()
+        
+        if isSearching {
+            filteredTasks.remove(at: indexPath.row)
+            if let index = tasks.firstIndex(of: task) {
+                tasks.remove(at: index)
+            }
+        } else {
+            tasks.remove(at: indexPath.row)
+        }
+        
+        todoListTableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        if let tabBarController = self.tabBarController as? MainTabBarController {
+            tabBarController.updateTasksCount()
+        }
+    }
+    
+    func editTask(at indexPath: IndexPath) {
+        let task = isSearching ? filteredTasks[indexPath.row] : tasks[indexPath.row]
+        
+        let editVC = TodoDetailsViewController()
+        editVC.todoItem = task
+        editVC.delegate = self
+        
+        navigationController?.pushViewController(editVC, animated: true)
+    }
+    
+    func shareTask(at indexPath: IndexPath) {
+        let task = isSearching ? filteredTasks[indexPath.row] : tasks[indexPath.row]
+        
+        let textToShare = "\(task.todo ?? "Задача")\n\(task.subtitle ?? "")"
+        let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
+        
+        present(activityVC, animated: true)
     }
 }
