@@ -56,17 +56,17 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource, To
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
-            let editAction = UIAction(title: "Редактировать", image: UIImage(systemName: "pencil")) { _ in
+            let editAction = UIAction(title: "Редактировать", image: UIImage(named: "edit")) { _ in
                 self.editTask(at: indexPath)
                 print("edit")
             }
             
-            let shareAction = UIAction(title: "Поделиться", image: UIImage(systemName: "square.and.arrow.up")) { _ in
+            let shareAction = UIAction(title: "Поделиться", image: UIImage(named: "export")) { _ in
                 self.shareTask(at: indexPath)
                 print("share")
             }
             
-            let deleteAction = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+            let deleteAction = UIAction(title: "Удалить", image: UIImage(named: "trash"), attributes: .destructive) { _ in
                 self.deleteTask(at: indexPath)
                 print("delete")
             }
