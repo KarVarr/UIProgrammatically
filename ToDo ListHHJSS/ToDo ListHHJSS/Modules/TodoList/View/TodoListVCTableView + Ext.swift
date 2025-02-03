@@ -91,25 +91,29 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource, To
         return cell
     }
     
-    func deleteTask(at indexPath: IndexPath) {
+    private func deleteTask(at indexPath: IndexPath) {
         let task = isSearching ? filteredTasks[indexPath.row] : tasks[indexPath.row]
         
-        CoreDataManager.shared.context.delete(task)
-        CoreDataManager.shared.saveContext()
-        
-        if isSearching {
-            filteredTasks.remove(at: indexPath.row)
-            if let index = tasks.firstIndex(of: task) {
-                tasks.remove(at: index)
+        DispatchQueue.global(qos: .background).async {
+            CoreDataManager.shared.context.delete(task)
+            CoreDataManager.shared.saveContext()
+            
+            DispatchQueue.main.async {
+                if self.isSearching {
+                    self.filteredTasks.remove(at: indexPath.row)
+                    if let index = self.tasks.firstIndex(of: task) {
+                        self.tasks.remove(at: index)
+                    }
+                } else {
+                    self.tasks.remove(at: indexPath.row)
+                }
+                
+                self.todoListTableView.deleteRows(at: [indexPath], with: .automatic)
+                
+                if let tabBarController = self.tabBarController as? MainTabBarController {
+                    tabBarController.updateTasksCount()
+                }
             }
-        } else {
-            tasks.remove(at: indexPath.row)
-        }
-        
-        todoListTableView.deleteRows(at: [indexPath], with: .automatic)
-        
-        if let tabBarController = self.tabBarController as? MainTabBarController {
-            tabBarController.updateTasksCount()
         }
     }
     
@@ -119,7 +123,6 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource, To
         let editVC = TodoDetailsViewController()
         editVC.todoItem = task
         editVC.delegate = self
-        
         navigationController?.pushViewController(editVC, animated: true)
     }
     

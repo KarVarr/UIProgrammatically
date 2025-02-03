@@ -13,9 +13,15 @@ extension TodoListViewController: UISearchResultsUpdating {
     }
     
     func filterTasks(_ searchText: String) {
-        filteredTasks = tasks.filter { task in
-            return task.todo?.lowercased().contains(searchText.lowercased()) ?? false
+        DispatchQueue.global(qos: .background).async {
+            let filtered = self.tasks.filter { task in
+                return task.todo?.lowercased().contains(searchText.lowercased()) ?? false
+            }
+            
+            DispatchQueue.main.async {
+                self.filteredTasks = filtered
+                self.todoListTableView.reloadData()
+            }
         }
-        todoListTableView.reloadData()
     }
 }

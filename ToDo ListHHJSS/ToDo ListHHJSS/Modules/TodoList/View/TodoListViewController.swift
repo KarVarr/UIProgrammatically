@@ -18,7 +18,7 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
     var isSearching: Bool {
         return searchController.isActive && !searchBarIsEmpty
     }
-    
+
     var searchBarIsEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
     }
