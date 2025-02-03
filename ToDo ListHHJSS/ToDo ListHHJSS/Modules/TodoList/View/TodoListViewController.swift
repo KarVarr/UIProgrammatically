@@ -11,10 +11,21 @@ import CoreData
 class TodoListViewController: BaseController, TodoListViewProtocol {
     var presenter: TodoListPresenterProtocol?
     var tasks: [TaskEntity] = []
+    var filteredTasks: [TaskEntity] = []
+    var searchController: UISearchController!
     let todoListTableView = TodoListTableView()
+    
+    var isSearching: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
+    
+    var searchBarIsEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSearchController()
         setupConstraints()
         
         let context = CoreDataManager.shared.context
@@ -37,6 +48,18 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
     override func addSubviews() {
         view.addSubview(todoListTableView)
         configureTodoListTableView()
+    }
+    
+    private func setupSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Поиск"
+        searchController.searchBar.tintColor = Helper.Colors.hexColor(hex: "#FED702")
+        searchController.searchBar.barStyle = .black
+        
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     override func settingView() {
@@ -69,9 +92,11 @@ class TodoListViewController: BaseController, TodoListViewProtocol {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.tasks = tasks
+            if self.isSearching {
+                self.filterTasks(self.searchController.searchBar.text ?? "")
+            }
             print("задачи в UI: \(tasks.count)")
             self.todoListTableView.reloadData()
         }
-    }
-}
+    }}
 

@@ -23,14 +23,14 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource, To
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tasks.count
+        return isSearching ? filteredTasks.count : tasks.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let destination = TodoDetailsViewController()
-        let task = tasks[indexPath.row]
+        let task = isSearching ? filteredTasks[indexPath.row] : tasks[indexPath.row]
         destination.todoItem = task
         destination.delegate = self
         navigationController?.pushViewController(destination, animated: true)
@@ -38,10 +38,23 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource, To
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let task = tasks[indexPath.row]
+            let task = isSearching ? filteredTasks[indexPath.row] : tasks[indexPath.row]
             presenter?.deleteTodo(task)
-            tasks.remove(at: indexPath.row)
+            
+            if isSearching {
+                filteredTasks.remove(at: indexPath.row)
+                if let index = tasks.firstIndex(of: task) {
+                    tasks.remove(at: index)
+                }
+            } else {
+                tasks.remove(at: indexPath.row)
+            }
+            
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            if let tabBarController = self.tabBarController as? MainTabBarController {
+                tabBarController.updateTasksCount()
+            }
         }
     }
     
@@ -50,7 +63,7 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource, To
             return UITableViewCell()
         }
         
-        let task = tasks[indexPath.row]
+        let task = isSearching ? filteredTasks[indexPath.row] : tasks[indexPath.row]
         cell.configure(with: task)
         cell.selectionStyle = .blue
         
