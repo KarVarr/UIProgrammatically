@@ -29,9 +29,6 @@ extension ViewController {
         }
         
         addViews()
-        
-        
-        
         mainLayoutView()
     }
 }

@@ -8,7 +8,6 @@
 import UIKit
 
 extension ViewController {
-    
     func configureButtons() {
         addChildButton.customButton.setTitle(Helper.Strings.addChildButton, for: .normal)
         addChildButton.customButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
