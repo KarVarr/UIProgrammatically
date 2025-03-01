@@ -11,9 +11,9 @@ extension ViewController {
     func setupLayout() {
         [
             scrollView,
-            contentView,
+            contentView.customUIView,
             titleLabel.customLabel,
-            namelabel.customLabel,
+            nameLabel.customLabel,
             nameTextField.customTextField,
             nameContainerView.customUIView,
             ageLabel.customLabel,
@@ -22,7 +22,7 @@ extension ViewController {
             childrenHeaderStack.customStackView,
             childrenLabel.customLabel,
             addChildButton.customButton,
-            childrenStackView,
+            childrenStackView.customStackView,
             clearButton.customButton
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -30,10 +30,7 @@ extension ViewController {
         
         addViews()
         
-        childrenStackView.axis = .vertical
-        childrenStackView.spacing = 12
-        childrenStackView.alignment = .fill
-        childrenStackView.distribution = .fill
+        
         
         mainLayoutView()
     }

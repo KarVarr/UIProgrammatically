@@ -12,9 +12,9 @@ extension ViewController {
         titleLabel.customLabel.text = Helper.Strings.titleLabel
         titleLabel.customLabel.font = UIFont.systemFont(ofSize: 22, weight: .medium)
         
-        namelabel.customLabel.text = Helper.Strings.namelabel
-        namelabel.customLabel.textColor = .gray
-        namelabel.customLabel.font = UIFont.systemFont(ofSize: 14)
+        nameLabel.customLabel.text = Helper.Strings.namelabel
+        nameLabel.customLabel.textColor = .gray
+        nameLabel.customLabel.font = UIFont.systemFont(ofSize: 14)
         
         ageLabel.customLabel.text = Helper.Strings.ageLabel
         ageLabel.customLabel.textColor = .gray

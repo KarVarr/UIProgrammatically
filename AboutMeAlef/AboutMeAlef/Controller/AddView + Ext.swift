@@ -10,25 +10,25 @@ import UIKit
 extension ViewController {
     func addViews() {
         view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
+        scrollView.addSubview(contentView.customUIView)
         
-        nameContainerView.addSubview(namelabel.customLabel)
-        nameContainerView.addSubview(nameTextField.customTextField)
-        ageContainerView.addSubview(ageLabel.customLabel)
-        ageContainerView.addSubview(ageTextField.customTextField)
+        nameContainerView.customUIView.addSubview(nameLabel.customLabel)
+        nameContainerView.customUIView.addSubview(nameTextField.customTextField)
+        ageContainerView.customUIView.addSubview(ageLabel.customLabel)
+        ageContainerView.customUIView.addSubview(ageTextField.customTextField)
         
-        childrenHeaderStack.addArrangedSubview(childrenLabel.customLabel)
-        childrenHeaderStack.addArrangedSubview(addChildButton.customButton)
+        childrenHeaderStack.customStackView.addArrangedSubview(childrenLabel.customLabel)
+        childrenHeaderStack.customStackView.addArrangedSubview(addChildButton.customButton)
         
         [
             titleLabel.customLabel,
             nameContainerView.customUIView,
             ageContainerView.customUIView,
             childrenHeaderStack.customStackView,
-            childrenStackView,
+            childrenStackView.customStackView,
             clearButton.customButton
         ].forEach {
-            contentView.addSubview($0)
+            contentView.customUIView.addSubview($0)
         }
     }
 }

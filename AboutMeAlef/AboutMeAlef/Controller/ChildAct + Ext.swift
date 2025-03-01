@@ -12,25 +12,25 @@ extension ViewController {
         guard childList.count < 5 else { return }
         
         let childView = createChildView()
-        childrenStackView.addArrangedSubview(childView)
+        childrenStackView.customStackView.addArrangedSubview(childView)
         childList.append(Child(name: "", age: ""))
         
-        addChildButton.isHidden = childList.count >= 5
+        addChildButton.customButton.isHidden = childList.count >= 5
     }
     
     
     @objc func removeChild(_ sender: UIButton) {
         guard let childView = sender.superview else { return }
         
-        if let index = childrenStackView.arrangedSubviews.firstIndex(of: childView) {
-            childrenStackView.removeArrangedSubview(childView)
+        if let index = childrenStackView.customStackView.arrangedSubviews.firstIndex(of: childView) {
+            childrenStackView.customStackView.removeArrangedSubview(childView)
             childView.removeFromSuperview()
             
             if index < childList.count {
                 childList.remove(at: index)
             }
             
-            addChildButton.isHidden = childList.count >= 5
+            addChildButton.customButton.isHidden = childList.count >= 5
         }
     }
 }

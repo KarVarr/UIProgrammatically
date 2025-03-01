@@ -25,5 +25,7 @@ enum Helper {
         static let childrenLabel = "Дети (макс. 5)"
         static let nameTextField = "Имя"
         static let ageTextField = "Возраст"
+        static let addChildButton = "Добавить ребенка"
+        static let clearButton = "Очистить"
     }
 }

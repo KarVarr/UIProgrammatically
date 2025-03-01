@@ -9,6 +9,20 @@ import UIKit
 
 extension ViewController {
     func mainLayoutView() {
+        let titleLabel = titleLabel.customLabel
+        let nameLabel = nameLabel.customLabel
+        let nameContainerView = nameContainerView.customUIView
+        let nameTextField = nameTextField.customTextField
+        let ageContainerView = ageContainerView.customUIView
+        let ageLabel = ageLabel.customLabel
+        let ageTextField = ageTextField.customTextField
+        let childrenHeaderStack = childrenHeaderStack.customStackView
+        let childrenStackView = childrenStackView.customStackView
+        let addChildButton = addChildButton.customButton
+        let clearButton = clearButton.customButton
+        let contentView = contentView.customUIView
+    
+        
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
