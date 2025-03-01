@@ -7,12 +7,9 @@
 
 import UIKit
 
-struct Child {
-    var name: String
-    var age: String
-}
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController, UITextFieldDelegate {
     
     var childList: [Child] = []
     
@@ -122,29 +119,41 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        ageTextField.delegate = self
+        
         setupLayout()
         setupGestureRecognizer()
         setupKeyboardObservers()
     }
     
     private func setupLayout() {
-        // Set up translatesAutoresizingMaskIntoConstraints
-        [scrollView, contentView, titleLabel, nameLabel, nameTextField, nameContainerView,
-         ageLabel, ageTextField, ageContainerView, childrenHeaderStack, childrenLabel,
-         addChildButton, childrenStackView, clearButton].forEach {
+        [
+            scrollView,
+            contentView,
+            titleLabel,
+            nameLabel,
+            nameTextField,
+            nameContainerView,
+            ageLabel,
+            ageTextField,
+            ageContainerView,
+            childrenHeaderStack,
+            childrenLabel,
+            addChildButton,
+            childrenStackView,
+            clearButton
+        ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        // Setup containers
         nameContainerView.addSubview(nameLabel)
         nameContainerView.addSubview(nameTextField)
         ageContainerView.addSubview(ageLabel)
         ageContainerView.addSubview(ageTextField)
         
-        // Setup children header
         childrenHeaderStack.addArrangedSubview(childrenLabel)
         childrenHeaderStack.addArrangedSubview(addChildButton)
         
@@ -174,7 +183,6 @@ class ViewController: UIViewController {
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            // Name container
             nameContainerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             nameContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             nameContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
@@ -188,7 +196,6 @@ class ViewController: UIViewController {
             nameTextField.trailingAnchor.constraint(equalTo: nameContainerView.trailingAnchor, constant: -16),
             nameTextField.bottomAnchor.constraint(equalTo: nameContainerView.bottomAnchor, constant: -10),
             
-            // Age container
             ageContainerView.topAnchor.constraint(equalTo: nameContainerView.bottomAnchor, constant: 20),
             ageContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             ageContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
@@ -202,7 +209,6 @@ class ViewController: UIViewController {
             ageTextField.trailingAnchor.constraint(equalTo: ageContainerView.trailingAnchor, constant: -16),
             ageTextField.bottomAnchor.constraint(equalTo: ageContainerView.bottomAnchor, constant: -10),
             
-            // Children header stack
             childrenHeaderStack.topAnchor.constraint(equalTo: ageContainerView.bottomAnchor, constant: 30),
             childrenHeaderStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             childrenHeaderStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
@@ -210,18 +216,33 @@ class ViewController: UIViewController {
             addChildButton.heightAnchor.constraint(equalToConstant: 40),
             addChildButton.widthAnchor.constraint(equalToConstant: 220),
             
-            // Children stack
             childrenStackView.topAnchor.constraint(equalTo: childrenHeaderStack.bottomAnchor, constant: 20),
             childrenStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             childrenStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
-            // Clear button
             clearButton.topAnchor.constraint(equalTo: childrenStackView.bottomAnchor, constant: 20),
             clearButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             clearButton.heightAnchor.constraint(equalToConstant: 40),
             clearButton.widthAnchor.constraint(equalToConstant: 200),
             clearButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        
+        guard let newText = (currentText as NSString).replacingCharacters(in: range, with: string) as String? else {
+            return false
+        }
+        
+        if let newValue = Int(newText), newValue <= 99 {
+            return true
+        } else if newText.isEmpty {
+            return true
+        } else {
+            textField.text = "99"
+            return false
+        }
     }
     
     private func setupKeyboardObservers() {
@@ -232,7 +253,7 @@ class ViewController: UIViewController {
     @objc private func keyboardWillShow(_ notification: Notification) {
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let keyboardHeight = keyboardFrame.height
-
+        
         UIView.animate(withDuration: 0.3) {
             self.scrollView.contentInset.bottom = keyboardHeight + 40
             self.scrollView.verticalScrollIndicatorInsets.bottom = keyboardHeight + 40
@@ -266,11 +287,10 @@ class ViewController: UIViewController {
         addChildButton.isHidden = childList.count >= 5
     }
     
-    private func createChildView() -> UIView {
+    func createChildView() -> UIView {
         let childView = UIView()
         childView.translatesAutoresizingMaskIntoConstraints = false
         
-        // Name container
         let nameContainer = UIView()
         nameContainer.backgroundColor = .white
         nameContainer.layer.borderWidth = 1
@@ -289,7 +309,6 @@ class ViewController: UIViewController {
         nameField.font = UIFont.systemFont(ofSize: 16)
         nameField.translatesAutoresizingMaskIntoConstraints = false
         
-        // Age container
         let ageContainer = UIView()
         ageContainer.backgroundColor = .white
         ageContainer.layer.borderWidth = 1
@@ -308,15 +327,14 @@ class ViewController: UIViewController {
         ageField.keyboardType = .numberPad
         ageField.font = UIFont.systemFont(ofSize: 16)
         ageField.translatesAutoresizingMaskIntoConstraints = false
+        ageField.delegate = self
         
-        // Remove button
         let removeButton = UIButton(type: .system)
         removeButton.setTitle("Удалить", for: .normal)
         removeButton.setTitleColor(.systemBlue, for: .normal)
         removeButton.translatesAutoresizingMaskIntoConstraints = false
         removeButton.addTarget(self, action: #selector(removeChild(_:)), for: .touchUpInside)
         
-        // Add subviews
         nameContainer.addSubview(nameLabel)
         nameContainer.addSubview(nameField)
         
@@ -327,9 +345,7 @@ class ViewController: UIViewController {
         childView.addSubview(ageContainer)
         childView.addSubview(removeButton)
         
-        // Setup constraints
         NSLayoutConstraint.activate([
-            // Name container
             nameContainer.topAnchor.constraint(equalTo: childView.topAnchor),
             nameContainer.leadingAnchor.constraint(equalTo: childView.leadingAnchor),
             nameContainer.trailingAnchor.constraint(equalTo: childView.trailingAnchor, constant: -100),
@@ -343,7 +359,6 @@ class ViewController: UIViewController {
             nameField.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor, constant: -16),
             nameField.bottomAnchor.constraint(equalTo: nameContainer.bottomAnchor, constant: -10),
             
-            // Age container
             ageContainer.topAnchor.constraint(equalTo: nameContainer.bottomAnchor, constant: 10),
             ageContainer.leadingAnchor.constraint(equalTo: childView.leadingAnchor),
             ageContainer.trailingAnchor.constraint(equalTo: childView.trailingAnchor, constant: -100),
@@ -358,7 +373,6 @@ class ViewController: UIViewController {
             ageField.trailingAnchor.constraint(equalTo: ageContainer.trailingAnchor, constant: -16),
             ageField.bottomAnchor.constraint(equalTo: ageContainer.bottomAnchor, constant: -10),
             
-            // Remove button
             removeButton.topAnchor.constraint(equalTo: childView.topAnchor, constant: 10),
             removeButton.leadingAnchor.constraint(equalTo: nameContainer.trailingAnchor, constant: 10),
             removeButton.trailingAnchor.constraint(equalTo: childView.trailingAnchor)
@@ -395,7 +409,6 @@ class ViewController: UIViewController {
         nameTextField.text = ""
         ageTextField.text = ""
         
-        // Remove all child views
         childrenStackView.arrangedSubviews.forEach {
             childrenStackView.removeArrangedSubview($0)
             $0.removeFromSuperview()
