@@ -8,6 +8,22 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
+    let titleLabel = CustomLabelView()
+    let namelabel = CustomLabelView()
+    let ageLabel = CustomLabelView()
+    let childrenLabel = CustomLabelView()
+    
+    let nameTextField = CustomTextField()
+    let ageTextField = CustomTextField()
+    
+    let nameContainerView = CustomUIView()
+    let ageContainerView = CustomUIView()
+    
+    let addChildButton = CustomButtonView()
+    let clearButton = CustomButtonView()
+    
+    let childrenHeaderStack = CustomStackView()
+    
     
     var childList: [Child] = []
     
@@ -15,27 +31,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let contentView = UIView()
     let childrenStackView = UIStackView()
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Персональные данные"
-        label.font = UIFont.systemFont(ofSize: 22, weight: .medium)
-        return label
-    }()
     
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Имя"
-        label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 14)
-        return label
-    }()
     
-    let nameTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Имя"
-        textField.font = UIFont.systemFont(ofSize: 16)
-        return textField
-    }()
+    
     
     let nameContainerView: UIView = {
         let view = UIView()
@@ -46,21 +44,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return view
     }()
     
-    let ageLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Возраст"
-        label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 14)
-        return label
-    }()
+   
     
-    let ageTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Возраст"
-        textField.keyboardType = .numberPad
-        textField.font = UIFont.systemFont(ofSize: 16)
-        return textField
-    }()
     
     let ageContainerView: UIView = {
         let view = UIView()
@@ -79,12 +64,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return stack
     }()
     
-    let childrenLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Дети (макс. 5)"
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        return label
-    }()
+    
     
     let addChildButton: UIButton = {
         let button = UIButton(type: .system)

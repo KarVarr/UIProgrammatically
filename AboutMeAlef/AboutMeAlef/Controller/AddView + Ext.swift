@@ -12,16 +12,22 @@ extension ViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        nameContainerView.addSubview(nameLabel)
-        nameContainerView.addSubview(nameTextField)
-        ageContainerView.addSubview(ageLabel)
-        ageContainerView.addSubview(ageTextField)
+        nameContainerView.addSubview(namelabel.customLabel)
+        nameContainerView.addSubview(nameTextField.customTextField)
+        ageContainerView.addSubview(ageLabel.customLabel)
+        ageContainerView.addSubview(ageTextField.customTextField)
         
-        childrenHeaderStack.addArrangedSubview(childrenLabel)
-        childrenHeaderStack.addArrangedSubview(addChildButton)
+        childrenHeaderStack.addArrangedSubview(childrenLabel.customLabel)
+        childrenHeaderStack.addArrangedSubview(addChildButton.customButton)
         
-        [titleLabel, nameContainerView, ageContainerView, childrenHeaderStack,
-         childrenStackView, clearButton].forEach {
+        [
+            titleLabel.customLabel,
+            nameContainerView.customUIView,
+            ageContainerView.customUIView,
+            childrenHeaderStack.customStackView,
+            childrenStackView,
+            clearButton.customButton
+        ].forEach {
             contentView.addSubview($0)
         }
     }

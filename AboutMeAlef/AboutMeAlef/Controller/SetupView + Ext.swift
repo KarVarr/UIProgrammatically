@@ -12,18 +12,18 @@ extension ViewController {
         [
             scrollView,
             contentView,
-            titleLabel,
-            nameLabel,
-            nameTextField,
-            nameContainerView,
-            ageLabel,
-            ageTextField,
-            ageContainerView,
-            childrenHeaderStack,
-            childrenLabel,
-            addChildButton,
+            titleLabel.customLabel,
+            namelabel.customLabel,
+            nameTextField.customTextField,
+            nameContainerView.customUIView,
+            ageLabel.customLabel,
+            ageTextField.customTextField,
+            ageContainerView.customUIView,
+            childrenHeaderStack.customStackView,
+            childrenLabel.customLabel,
+            addChildButton.customButton,
             childrenStackView,
-            clearButton
+            clearButton.customButton
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
